@@ -1,29 +1,46 @@
-# Extensibility on SAP Business Technology Platform
-
-You can easily build extension applications on SAP Business Technology Platform to **extend and enhance SAP solutions without disrupting core processes**. It’s easy to integrate your systems, set up communication between them and SAP Business Technology Platform so you can start building cloud-native extensions quickly and concentrate all your efforts on developing the new logic.
-
-The SAP Business Technology Platform extensions concept provides:
-
-- Standard connections to SAP backend systems/LoBs
-- Ease of discovery and consumption of **APIs and events**
-- Central **event bus** for all event sources (SAP Event Mesh)
-
-The Extensibility services are fully integrated in the SAP Business Technology Platform Cockpit where you can register your SAP S/4HANA Cloud systems (release 1905 and higher). They support extension applications that run on Cloud Foundry runtime (not Neo). We will use the SAP S/4HANA Cloud Extensibility service available from the SAP Business Technology Platform Service Marketplace.
-
-# Steps
-
-Following the how-to guides provided, you will:
-
-1. Check on the **prerequisites**
-2. **Register your SAP S/4HANA Cloud backend** (release 1905 or higher) on the SAP Business Technology Platform
-3. Set up service plan **entitlements** (SAP S/4HANA Cloud Extensibility, SAP Event Mesh and SAP Graph) for your newly registered system from your SAP Business Technology Platform subaccount
-4. Create **service instances** of the SAP S/4HANA Cloud Extensibility service 
-5. **Configure events** in your SAP S/4HANA Cloud system to send Business Partner Created and Business Partner Changed events to SAP Event Mesh
-6. Create an **SAP Event Mesh service instance** to receive Business Partner events from SAP S/4HANA Cloud system
-7. Create an **SAP SAP Graph service instance** to access easy-to-use API for data of the Intelligent Enterprise from SAP
-8. *Deploy* the extension application on the SAP Business Technology Platform. The extension app can be used to track new and changed Business Partners as updates are made in the underlying SAP S/4HANA Cloud system.
-
 # Prerequisites
+
+## Requirements for local development
+
+* [Node js](https://nodejs.org/en/download/)
+* [Cloud Foundry Command Line Interface (CLI)](https://github.com/cloudfoundry/cli#downloads)
+* [Visual Studio Code](https://code.visualstudio.com/download) or another suitable IDE or editor of your choice
+* [SQLite ](https://sqlite.org/download.html)
+
+## Requirements in BTP
+
+* SAP Business Technology Platform Cloud Foundry global account (trial accounts are not supported)
+* SAP Business Technology Platform subaccount
+* SAP Business Technology Platform space
+
+
+### Entitlements
+
+The application requires below set of SAP Business Technology Platform Entitlements/Quota
+
+| Service                           | Plan       | Number of Instances |
+|-----------------------------------|------------|:-------------------:|
+| Event Mesh                        | default    |          1          |
+| SAP HANA Schemas & HDI Containers | hdi-shared |          1          |
+| SAP HANA Cloud                    | hana       |          1          |
+| Cloud Foundry runtime             | MEMORY     |          1          |
+| SAP Graph                         | beta       |          1          |
+| SAP S/4HANA Cloud Extensibility   | api-access |          1          |
+| SAP S/4HANA Cloud Extensibility   | messaging  |          1          |
+
+
+Optional Subscriptions:
+
+| Service                           | Plan       | Number of Instances |
+|-----------------------------------|------------|:-------------------:|
+|SAP Business Application Studio	|standard    |         1           |
+|Event Mesh	                        |standard    |         1           |
+
+
+SAP Business Application Studio provides you the development environment where you can edit, test, debug the code.
+Event Mesh subscription lets you see the queues created, consume the messages etc. 
+
+## Requirements in S/4Hana Cloud
 
 The following prerequisites need to be fulfilled / below steps are expected to have been performed before being able to execute the main steps of this mission:
 
@@ -43,9 +60,7 @@ Cloud system:
     
     BR_EMPLOYEE (Employee)
 
-- SAP Business Technology Platform Cloud Foundry global account (trial accounts are not supported)
-- SAP Business Technology Platform subaccount created
-- SAP Business Technology Platform space created
+
 
 
 

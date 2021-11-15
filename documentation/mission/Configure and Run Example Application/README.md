@@ -57,9 +57,26 @@ cf login
 
 ### Deploy Application (using MTA)
 
+#### Setup plugin
+
+>Hint: The below installation steps are not needed if you are using Business Application Studio. 
+
+- To build the multi target application, we need the [Cloud MTA Build tool](https://sap.github.io/cloud-mta-build-tool/), download the tool from [here](https://sap.github.io/cloud-mta-build-tool/download/)
+
+- For Windows system, install 'MAKE' from http://gnuwin32.sourceforge.net/packages/make.htm
+
+- [multiapps plugin](https://github.com/cloudfoundry-incubator/multiapps-cli-plugin) - ``` cf install-plugin multiapps```
+
+- mbt - ```npm install -g mbt```
+
+
+#### Build application: 
+
 ```
 mbt build
 ```
+
+#### Deploy application:
 
 ```
 cf deploy -f <path/to/mtar>

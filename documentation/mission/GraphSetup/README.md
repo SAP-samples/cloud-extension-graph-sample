@@ -7,7 +7,7 @@ SAP Graph is the easy-to-use API for the data of the Intelligent Enterprise from
 In order to use SAP Graph in SAP Business Technology Platform, a service instance needs to be created in desired space of SAP BTP Subaccount.
 It requires administrator authorization of the SAP Business Technology Platform.
 
-1. In the SAP BTP cockpit, go to Services  Instances and Subscriptions and choose Create in the top-right corner. A New Instance or Subscription wizard opens.
+1. In the SAP BTP cockpit, go to Services Instances and Subscriptions and choose Create in the top-right corner. A New Instance or Subscription wizard opens.
 
 2. Enter the basic info for your instance. Select the SAP Graph Service from the drop-down menu.
 

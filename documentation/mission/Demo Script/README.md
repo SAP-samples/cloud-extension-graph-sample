@@ -1,6 +1,6 @@
 # Execute Example Scenario
 
-The sceanrio is of creation of a new Business Partner in the SAP S/4HANA system.
+The scenario is of creation of a new Business Partner in the SAP S/4HANA system.
 
 ## Creation of a Business Partner in the SAP S/4HANA Cloud Backend
 

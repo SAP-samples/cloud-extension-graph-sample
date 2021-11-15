@@ -1,7 +1,7 @@
 # Build a Side-by-Side Extension Application Connecting to the Intelligent Enterprise using SAP Graph
 ## Description
 
-Extend SAP S/4HANA Cloud on the SAP Business Technology Platform using state of the art methodologies and technologies. Put an event-driven architecture into action, use the SAP Cloud Application Programming Model (CAP) for building on SAP S/4HANA Cloud events and use SAP Graph to consume unified APIs to retrieve all the required informations.
+Extend SAP S/4HANA Cloud on the SAP Business Technology Platform using state of the art methodologies and technologies. Put an event-driven architecture into action, use the SAP Cloud Application Programming Model (CAP) for building on SAP S/4HANA Cloud events and use SAP Graph to consume unified APIs to retrieve all the required information.
 
 The main intent of this scenario is to complement an existing business process in an SAP solution, i.e. enhancing SAP S/4HANA Cloud with additional business process steps. This involves adding major logic and/or additional data and goes beyond simple UI changes. 
 
@@ -15,7 +15,7 @@ This scenario showcases:
 
 ## Business Scenario
 
-In specific focus regions, we would like to follow up with newly created customers or existing customers that have had their data updated in our SAP S/4HANA Cloud backend. External call center employees should do this follow up for us by contacting relevant customers by phone. At the same time, the call center employees have no access to our SAP S/4HANA system. We therefore provide a custom built extension application that is specifically designed and optimized for the task and that is supplied with relevant data in real time using an event-driven approach. 
+In specific focus regions, we would like to follow up with newly created customers or existing customers that have had their data updated in our SAP S/4HANA Cloud backend. External call center employees should do this follow up for us by contacting relevant customers by phone. At the same time, the call center employees have no access to our SAP S/4HANA system. We therefore provide a custom-built extension application that is specifically designed and optimized for the task and that is supplied with relevant data in real time using an event-driven approach. 
 
 ![georel](./documentation/images/app.png)
 

@@ -12,6 +12,12 @@ From a technology perspective, the application is written in javascript and runn
 
 **Preparation**
 
+Clone the project 
+
+```
+git clone https://github.com/SAP-samples/cloud-extension-graph-sample.git
+```
+
 Add the SAP NPM Registry to your npm configuration for all @sap scoped modules.
 
 ```

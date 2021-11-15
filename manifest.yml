@@ -1,0 +1,50 @@
+# Generated manifest.yml based on template version 0.1.0
+# appName = georel-graph
+# language=nodejs
+# multitenancy=false
+---
+applications:
+# -----------------------------------------------------------------------------------
+# Backend Service
+# -----------------------------------------------------------------------------------
+- name: georel-graph-srv
+  random-route: false  # true for development only
+  path: gen/srv
+  memory: 256M
+  buildpack: nodejs_buildpack
+  routes:
+    - route: "https://georel-graph-srv((ROUTE_SUFFIX)).((LANDSCAPE_APP_DOMAIN))"
+  services:
+  - georel-graph-db
+  - georel-graph-uaa
+  - georel-graph-dest
+  - georel-graph-em
+  
+
+# -----------------------------------------------------------------------------------
+# HANA Database Content Deployer App
+# -----------------------------------------------------------------------------------
+- name: georel-graph-db-deployer
+  path: gen/db
+  no-route: true
+  health-check-type: process
+  memory: 256M
+  instances: 1
+  buildpack: nodejs_buildpack
+  services:
+  - georel-graph-db
+
+# -----------------------------------------------------------------------------------
+# UI Application Standalone Approuter
+# -----------------------------------------------------------------------------------
+- name: geo-customer-ui
+  path: app/geo-customer
+  memory: 128M
+  buildpack: nodejs_buildpack
+  env:
+    destinations: >
+      [
+        {"name": "srv-binding", "url":"https://georel-graph-srv((ROUTE_SUFFIX)).((LANDSCAPE_APP_DOMAIN))", "forwardAuthToken": true}
+      ]
+  services:
+  - georel-graph-uaa

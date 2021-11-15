@@ -1,0 +1,3 @@
+---
+LANDSCAPE_APP_DOMAIN: cfapps.eu10.hana.ondemand.com
+ROUTE_SUFFIX: '-dev'

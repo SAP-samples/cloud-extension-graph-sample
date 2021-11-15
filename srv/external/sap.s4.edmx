@@ -1,0 +1,2271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="sap.s4" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <EntityContainer Name="EntityContainer">
+                <EntitySet Name="A_AddressEmailAddress" EntityType="sap.s4.A_AddressEmailAddress"/>
+                <EntitySet Name="A_AddressFaxNumber" EntityType="sap.s4.A_AddressFaxNumber"/>
+                <EntitySet Name="A_AddressHomePageURL" EntityType="sap.s4.A_AddressHomePageURL"/>
+                <EntitySet Name="A_AddressPhoneNumber" EntityType="sap.s4.A_AddressPhoneNumber"/>
+                <EntitySet Name="A_BPContactToAddress" EntityType="sap.s4.A_BPContactToAddress">
+                    <NavigationPropertyBinding Path="to_EmailAddress" Target="A_AddressEmailAddress"/>
+                    <NavigationPropertyBinding Path="to_FaxNumber" Target="A_AddressFaxNumber"/>
+                    <NavigationPropertyBinding Path="to_MobilePhoneNumber" Target="A_AddressPhoneNumber"/>
+                    <NavigationPropertyBinding Path="to_PhoneNumber" Target="A_AddressPhoneNumber"/>
+                    <NavigationPropertyBinding Path="to_URLAddress" Target="A_AddressHomePageURL"/>
+                </EntitySet>
+                <EntitySet Name="A_BPContactToFuncAndDept" EntityType="sap.s4.A_BPContactToFuncAndDept"/>
+                <EntitySet Name="A_BuPaAddressUsage" EntityType="sap.s4.A_BuPaAddressUsage"/>
+                <EntitySet Name="A_BuPaIdentification" EntityType="sap.s4.A_BuPaIdentification"/>
+                <EntitySet Name="A_BuPaIndustry" EntityType="sap.s4.A_BuPaIndustry"/>
+                <EntitySet Name="A_BusinessPartner" EntityType="sap.s4.A_BusinessPartner">
+                    <NavigationPropertyBinding Path="to_BuPaIdentification" Target="A_BuPaIdentification"/>
+                    <NavigationPropertyBinding Path="to_BuPaIndustry" Target="A_BuPaIndustry"/>
+                    <NavigationPropertyBinding Path="to_BusinessPartnerAddress" Target="A_BusinessPartnerAddress"/>
+                    <NavigationPropertyBinding Path="to_BusinessPartnerBank" Target="A_BusinessPartnerBank"/>
+                    <NavigationPropertyBinding Path="to_BusinessPartnerContact" Target="A_BusinessPartnerContact"/>
+                    <NavigationPropertyBinding Path="to_BusinessPartnerRole" Target="A_BusinessPartnerRole"/>
+                    <NavigationPropertyBinding Path="to_BusinessPartnerTax" Target="A_BusinessPartnerTaxNumber"/>
+                    <NavigationPropertyBinding Path="to_Customer" Target="A_Customer"/>
+                    <NavigationPropertyBinding Path="to_Supplier" Target="A_Supplier"/>
+                </EntitySet>
+                <EntitySet Name="A_BusinessPartnerAddress" EntityType="sap.s4.A_BusinessPartnerAddress">
+                    <NavigationPropertyBinding Path="to_AddressUsage" Target="A_BuPaAddressUsage"/>
+                    <NavigationPropertyBinding Path="to_EmailAddress" Target="A_AddressEmailAddress"/>
+                    <NavigationPropertyBinding Path="to_FaxNumber" Target="A_AddressFaxNumber"/>
+                    <NavigationPropertyBinding Path="to_MobilePhoneNumber" Target="A_AddressPhoneNumber"/>
+                    <NavigationPropertyBinding Path="to_PhoneNumber" Target="A_AddressPhoneNumber"/>
+                    <NavigationPropertyBinding Path="to_URLAddress" Target="A_AddressHomePageURL"/>
+                </EntitySet>
+                <EntitySet Name="A_BusinessPartnerBank" EntityType="sap.s4.A_BusinessPartnerBank"/>
+                <EntitySet Name="A_BusinessPartnerContact" EntityType="sap.s4.A_BusinessPartnerContact">
+                    <NavigationPropertyBinding Path="to_ContactAddress" Target="A_BPContactToAddress"/>
+                    <NavigationPropertyBinding Path="to_ContactRelationship" Target="A_BPContactToFuncAndDept"/>
+                </EntitySet>
+                <EntitySet Name="A_BusinessPartnerRole" EntityType="sap.s4.A_BusinessPartnerRole"/>
+                <EntitySet Name="A_BusinessPartnerTaxNumber" EntityType="sap.s4.A_BusinessPartnerTaxNumber"/>
+                <EntitySet Name="A_Customer" EntityType="sap.s4.A_Customer">
+                    <NavigationPropertyBinding Path="to_CustomerCompany" Target="A_CustomerCompany"/>
+                    <NavigationPropertyBinding Path="to_CustomerSalesArea" Target="A_CustomerSalesArea"/>
+                    <NavigationPropertyBinding Path="to_CustomerTaxGrouping" Target="A_CustomerTaxGrouping"/>
+                    <NavigationPropertyBinding Path="to_CustomerText" Target="A_CustomerText"/>
+                    <NavigationPropertyBinding Path="to_CustomerUnloadingPoint" Target="A_CustomerUnloadingPoint"/>
+                    <NavigationPropertyBinding Path="_CustomerSalesAreaTaxes" Target="A_CustomerSalesAreaTax"/>
+                </EntitySet>
+                <EntitySet Name="A_CustomerCompany" EntityType="sap.s4.A_CustomerCompany">
+                    <NavigationPropertyBinding Path="to_CompanyText" Target="A_CustomerCompanyText"/>
+                    <NavigationPropertyBinding Path="to_CustomerDunning" Target="A_CustomerDunning"/>
+                    <NavigationPropertyBinding Path="to_WithHoldingTax" Target="A_CustomerWithHoldingTax"/>
+                </EntitySet>
+                <EntitySet Name="A_CustomerCompanyText" EntityType="sap.s4.A_CustomerCompanyText"/>
+                <EntitySet Name="A_CustomerDunning" EntityType="sap.s4.A_CustomerDunning">
+                    <NavigationPropertyBinding Path="_Customer" Target="A_Customer"/>
+                </EntitySet>
+                <EntitySet Name="A_CustomerSalesArea" EntityType="sap.s4.A_CustomerSalesArea">
+                    <NavigationPropertyBinding Path="to_PartnerFunction" Target="A_CustSalesPartnerFunc"/>
+                    <NavigationPropertyBinding Path="to_SalesAreaTax" Target="A_CustomerSalesAreaTax"/>
+                    <NavigationPropertyBinding Path="to_SalesAreaText" Target="A_CustomerSalesAreaText"/>
+                </EntitySet>
+                <EntitySet Name="A_CustomerSalesAreaTax" EntityType="sap.s4.A_CustomerSalesAreaTax"/>
+                <EntitySet Name="A_CustomerSalesAreaText" EntityType="sap.s4.A_CustomerSalesAreaText"/>
+                <EntitySet Name="A_CustomerTaxGrouping" EntityType="sap.s4.A_CustomerTaxGrouping"/>
+                <EntitySet Name="A_CustomerText" EntityType="sap.s4.A_CustomerText"/>
+                <EntitySet Name="A_CustomerUnloadingPoint" EntityType="sap.s4.A_CustomerUnloadingPoint"/>
+                <EntitySet Name="A_CustomerWithHoldingTax" EntityType="sap.s4.A_CustomerWithHoldingTax"/>
+                <EntitySet Name="A_CustSalesPartnerFunc" EntityType="sap.s4.A_CustSalesPartnerFunc">
+                    <NavigationPropertyBinding Path="_Customer" Target="A_Customer"/>
+                </EntitySet>
+                <EntitySet Name="A_Supplier" EntityType="sap.s4.A_Supplier">
+                    <NavigationPropertyBinding Path="to_SupplierCompany" Target="A_SupplierCompany"/>
+                    <NavigationPropertyBinding Path="to_SupplierPurchasingOrg" Target="A_SupplierPurchasingOrg"/>
+                    <NavigationPropertyBinding Path="to_SupplierText" Target="A_SupplierText"/>
+                </EntitySet>
+                <EntitySet Name="A_SupplierCompany" EntityType="sap.s4.A_SupplierCompany">
+                    <NavigationPropertyBinding Path="to_CompanyText" Target="A_SupplierCompanyText"/>
+                    <NavigationPropertyBinding Path="to_Supplier" Target="A_Supplier"/>
+                    <NavigationPropertyBinding Path="to_SupplierDunning" Target="A_SupplierDunning"/>
+                    <NavigationPropertyBinding Path="to_SupplierWithHoldingTax" Target="A_SupplierWithHoldingTax"/>
+                </EntitySet>
+                <EntitySet Name="A_SupplierCompanyText" EntityType="sap.s4.A_SupplierCompanyText"/>
+                <EntitySet Name="A_SupplierDunning" EntityType="sap.s4.A_SupplierDunning"/>
+                <EntitySet Name="A_SupplierPartnerFunc" EntityType="sap.s4.A_SupplierPartnerFunc"/>
+                <EntitySet Name="A_SupplierPurchasingOrg" EntityType="sap.s4.A_SupplierPurchasingOrg">
+                    <NavigationPropertyBinding Path="to_PartnerFunction" Target="A_SupplierPartnerFunc"/>
+                    <NavigationPropertyBinding Path="to_PurchasingOrgText" Target="A_SupplierPurchasingOrgText"/>
+                </EntitySet>
+                <EntitySet Name="A_SupplierPurchasingOrgText" EntityType="sap.s4.A_SupplierPurchasingOrgText"/>
+                <EntitySet Name="A_SupplierText" EntityType="sap.s4.A_SupplierText"/>
+                <EntitySet Name="A_SupplierWithHoldingTax" EntityType="sap.s4.A_SupplierWithHoldingTax"/>
+            </EntityContainer>
+            <EntityType Name="A_AddressEmailAddress">
+                <Key>
+                    <PropertyRef Name="AddressID"/>
+                    <PropertyRef Name="Person"/>
+                    <PropertyRef Name="OrdinalNumber"/>
+                </Key>
+                <Property Name="AddressID" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="Person" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="OrdinalNumber" Type="Edm.String" MaxLength="3" Nullable="false"/>
+                <Property Name="IsDefaultEmailAddress" Type="Edm.Boolean"/>
+                <Property Name="EmailAddress" Type="Edm.String" MaxLength="241"/>
+                <Property Name="SearchEmailAddress" Type="Edm.String" MaxLength="20"/>
+                <Property Name="AddressCommunicationRemarkText" Type="Edm.String" MaxLength="50"/>
+            </EntityType>
+            <EntityType Name="A_AddressFaxNumber">
+                <Key>
+                    <PropertyRef Name="AddressID"/>
+                    <PropertyRef Name="Person"/>
+                    <PropertyRef Name="OrdinalNumber"/>
+                </Key>
+                <Property Name="AddressID" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="Person" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="OrdinalNumber" Type="Edm.String" MaxLength="3" Nullable="false"/>
+                <Property Name="IsDefaultFaxNumber" Type="Edm.Boolean"/>
+                <Property Name="FaxCountry" Type="Edm.String" MaxLength="3"/>
+                <Property Name="FaxNumber" Type="Edm.String" MaxLength="30"/>
+                <Property Name="FaxNumberExtension" Type="Edm.String" MaxLength="10"/>
+                <Property Name="InternationalFaxNumber" Type="Edm.String" MaxLength="30"/>
+                <Property Name="AddressCommunicationRemarkText" Type="Edm.String" MaxLength="50"/>
+            </EntityType>
+            <EntityType Name="A_AddressHomePageURL">
+                <Key>
+                    <PropertyRef Name="AddressID"/>
+                    <PropertyRef Name="Person"/>
+                    <PropertyRef Name="OrdinalNumber"/>
+                    <PropertyRef Name="ValidityStartDate"/>
+                    <PropertyRef Name="IsDefaultURLAddress"/>
+                </Key>
+                <Property Name="AddressID" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="Person" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="OrdinalNumber" Type="Edm.String" MaxLength="3" Nullable="false"/>
+                <Property Name="ValidityStartDate" Type="Edm.Date" Nullable="false"/>
+                <Property Name="IsDefaultURLAddress" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="SearchURLAddress" Type="Edm.String" MaxLength="50"/>
+                <Property Name="AddressCommunicationRemarkText" Type="Edm.String" MaxLength="50"/>
+                <Property Name="URLFieldLength" Type="Edm.Int32"/>
+                <Property Name="WebsiteURL" Type="Edm.String" MaxLength="2048"/>
+            </EntityType>
+            <EntityType Name="A_AddressPhoneNumber">
+                <Key>
+                    <PropertyRef Name="AddressID"/>
+                    <PropertyRef Name="Person"/>
+                    <PropertyRef Name="OrdinalNumber"/>
+                </Key>
+                <Property Name="AddressID" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="Person" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="OrdinalNumber" Type="Edm.String" MaxLength="3" Nullable="false"/>
+                <Property Name="DestinationLocationCountry" Type="Edm.String" MaxLength="3"/>
+                <Property Name="IsDefaultPhoneNumber" Type="Edm.Boolean"/>
+                <Property Name="PhoneNumber" Type="Edm.String" MaxLength="30"/>
+                <Property Name="PhoneNumberExtension" Type="Edm.String" MaxLength="10"/>
+                <Property Name="InternationalPhoneNumber" Type="Edm.String" MaxLength="30"/>
+                <Property Name="PhoneNumberType" Type="Edm.String" MaxLength="1"/>
+                <Property Name="AddressCommunicationRemarkText" Type="Edm.String" MaxLength="50"/>
+            </EntityType>
+            <EntityType Name="A_BPContactToAddress">
+                <Key>
+                    <PropertyRef Name="RelationshipNumber"/>
+                    <PropertyRef Name="BusinessPartnerCompany"/>
+                    <PropertyRef Name="BusinessPartnerPerson"/>
+                    <PropertyRef Name="ValidityEndDate"/>
+                    <PropertyRef Name="AddressID"/>
+                </Key>
+                <Property Name="RelationshipNumber" Type="Edm.String" MaxLength="12" Nullable="false"/>
+                <Property Name="BusinessPartnerCompany" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="BusinessPartnerPerson" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="ValidityEndDate" Type="Edm.Date" Nullable="false"/>
+                <Property Name="AddressID" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="AddressNumber" Type="Edm.String" MaxLength="10"/>
+                <Property Name="AdditionalStreetPrefixName" Type="Edm.String" MaxLength="40"/>
+                <Property Name="AdditionalStreetSuffixName" Type="Edm.String" MaxLength="40"/>
+                <Property Name="AddressTimeZone" Type="Edm.String" MaxLength="6"/>
+                <Property Name="CareOfName" Type="Edm.String" MaxLength="40"/>
+                <Property Name="CityCode" Type="Edm.String" MaxLength="12"/>
+                <Property Name="CityName" Type="Edm.String" MaxLength="40"/>
+                <Property Name="CompanyPostalCode" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Country" Type="Edm.String" MaxLength="3"/>
+                <Property Name="County" Type="Edm.String" MaxLength="40"/>
+                <Property Name="DeliveryServiceNumber" Type="Edm.String" MaxLength="10"/>
+                <Property Name="DeliveryServiceTypeCode" Type="Edm.String" MaxLength="4"/>
+                <Property Name="District" Type="Edm.String" MaxLength="40"/>
+                <Property Name="FormOfAddress" Type="Edm.String" MaxLength="4"/>
+                <Property Name="FullName" Type="Edm.String" MaxLength="80"/>
+                <Property Name="HomeCityName" Type="Edm.String" MaxLength="40"/>
+                <Property Name="HouseNumber" Type="Edm.String" MaxLength="10"/>
+                <Property Name="HouseNumberSupplementText" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Language" Type="Edm.String" MaxLength="2"/>
+                <Property Name="POBox" Type="Edm.String" MaxLength="10"/>
+                <Property Name="POBoxDeviatingCityName" Type="Edm.String" MaxLength="40"/>
+                <Property Name="POBoxDeviatingCountry" Type="Edm.String" MaxLength="3"/>
+                <Property Name="POBoxDeviatingRegion" Type="Edm.String" MaxLength="3"/>
+                <Property Name="POBoxIsWithoutNumber" Type="Edm.Boolean"/>
+                <Property Name="POBoxLobbyName" Type="Edm.String" MaxLength="40"/>
+                <Property Name="POBoxPostalCode" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Person" Type="Edm.String" MaxLength="10"/>
+                <Property Name="PostalCode" Type="Edm.String" MaxLength="10"/>
+                <Property Name="PrfrdCommMediumType" Type="Edm.String" MaxLength="3"/>
+                <Property Name="Region" Type="Edm.String" MaxLength="3"/>
+                <Property Name="StreetName" Type="Edm.String" MaxLength="60"/>
+                <Property Name="StreetPrefixName" Type="Edm.String" MaxLength="40"/>
+                <Property Name="StreetSuffixName" Type="Edm.String" MaxLength="40"/>
+                <Property Name="TaxJurisdiction" Type="Edm.String" MaxLength="15"/>
+                <Property Name="TransportZone" Type="Edm.String" MaxLength="10"/>
+                <Property Name="AddressRepresentationCode" Type="Edm.String" MaxLength="1"/>
+                <Property Name="ContactRelationshipFunction" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ContactRelationshipDepartment" Type="Edm.String" MaxLength="40"/>
+                <Property Name="Floor" Type="Edm.String" MaxLength="10"/>
+                <Property Name="ContactPersonBuilding" Type="Edm.String" MaxLength="10"/>
+                <Property Name="RoomNumber" Type="Edm.String" MaxLength="10"/>
+                <Property Name="ContactPersonPrfrdCommMedium" Type="Edm.String" MaxLength="3"/>
+                <Property Name="CorrespondenceShortName" Type="Edm.String" MaxLength="10"/>
+                <Property Name="InhouseMail" Type="Edm.String" MaxLength="10"/>
+                <NavigationProperty Name="to_EmailAddress" Type="Collection(sap.s4.A_AddressEmailAddress)"/>
+                <NavigationProperty Name="to_FaxNumber" Type="Collection(sap.s4.A_AddressFaxNumber)"/>
+                <NavigationProperty Name="to_MobilePhoneNumber" Type="Collection(sap.s4.A_AddressPhoneNumber)"/>
+                <NavigationProperty Name="to_PhoneNumber" Type="Collection(sap.s4.A_AddressPhoneNumber)"/>
+                <NavigationProperty Name="to_URLAddress" Type="Collection(sap.s4.A_AddressHomePageURL)"/>
+            </EntityType>
+            <EntityType Name="A_BPContactToFuncAndDept">
+                <Key>
+                    <PropertyRef Name="RelationshipNumber"/>
+                    <PropertyRef Name="BusinessPartnerCompany"/>
+                    <PropertyRef Name="BusinessPartnerPerson"/>
+                    <PropertyRef Name="ValidityEndDate"/>
+                </Key>
+                <Property Name="RelationshipNumber" Type="Edm.String" MaxLength="12" Nullable="false"/>
+                <Property Name="BusinessPartnerCompany" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="BusinessPartnerPerson" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="ValidityEndDate" Type="Edm.Date" Nullable="false"/>
+                <Property Name="ContactPersonFunction" Type="Edm.String" MaxLength="4"/>
+                <Property Name="ContactPersonDepartment" Type="Edm.String" MaxLength="4"/>
+                <Property Name="PhoneNumber" Type="Edm.String" MaxLength="30"/>
+                <Property Name="PhoneNumberExtension" Type="Edm.String" MaxLength="10"/>
+                <Property Name="FaxNumber" Type="Edm.String" MaxLength="30"/>
+                <Property Name="FaxNumberExtension" Type="Edm.String" MaxLength="10"/>
+                <Property Name="EmailAddress" Type="Edm.String" MaxLength="241"/>
+                <Property Name="RelationshipCategory" Type="Edm.String" MaxLength="6"/>
+            </EntityType>
+            <EntityType Name="A_BuPaAddressUsage">
+                <Key>
+                    <PropertyRef Name="BusinessPartner"/>
+                    <PropertyRef Name="ValidityEndDate"/>
+                    <PropertyRef Name="AddressUsage"/>
+                    <PropertyRef Name="AddressID"/>
+                </Key>
+                <Property Name="BusinessPartner" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="ValidityEndDate" Type="Edm.DateTimeOffset" Precision="7" Nullable="false"/>
+                <Property Name="AddressUsage" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="AddressID" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="ValidityStartDate" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="StandardUsage" Type="Edm.Boolean"/>
+                <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4"/>
+            </EntityType>
+            <EntityType Name="A_BuPaIdentification">
+                <Key>
+                    <PropertyRef Name="BusinessPartner"/>
+                    <PropertyRef Name="BPIdentificationType"/>
+                    <PropertyRef Name="BPIdentificationNumber"/>
+                </Key>
+                <Property Name="BusinessPartner" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="BPIdentificationType" Type="Edm.String" MaxLength="6" Nullable="false"/>
+                <Property Name="BPIdentificationNumber" Type="Edm.String" MaxLength="60" Nullable="false"/>
+                <Property Name="BPIdnNmbrIssuingInstitute" Type="Edm.String" MaxLength="40"/>
+                <Property Name="BPIdentificationEntryDate" Type="Edm.Date"/>
+                <Property Name="Country" Type="Edm.String" MaxLength="3"/>
+                <Property Name="Region" Type="Edm.String" MaxLength="3"/>
+                <Property Name="ValidityStartDate" Type="Edm.Date"/>
+                <Property Name="ValidityEndDate" Type="Edm.Date"/>
+                <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4"/>
+            </EntityType>
+            <EntityType Name="A_BuPaIndustry">
+                <Key>
+                    <PropertyRef Name="IndustrySector"/>
+                    <PropertyRef Name="IndustrySystemType"/>
+                    <PropertyRef Name="BusinessPartner"/>
+                </Key>
+                <Property Name="IndustrySector" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="IndustrySystemType" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="BusinessPartner" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="IsStandardIndustry" Type="Edm.String" MaxLength="1"/>
+                <Property Name="IndustryKeyDescription" Type="Edm.String" MaxLength="100"/>
+            </EntityType>
+            <EntityType Name="A_BusinessPartner">
+                <Key>
+                    <PropertyRef Name="BusinessPartner"/>
+                </Key>
+                <Property Name="BusinessPartner" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="Customer" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Supplier" Type="Edm.String" MaxLength="10"/>
+                <Property Name="AcademicTitle" Type="Edm.String" MaxLength="4"/>
+                <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4"/>
+                <Property Name="BusinessPartnerCategory" Type="Edm.String" MaxLength="1"/>
+                <Property Name="BusinessPartnerFullName" Type="Edm.String" MaxLength="81"/>
+                <Property Name="BusinessPartnerGrouping" Type="Edm.String" MaxLength="4"/>
+                <Property Name="BusinessPartnerName" Type="Edm.String" MaxLength="81"/>
+                <Property Name="BusinessPartnerUUID" Type="Edm.Guid"/>
+                <Property Name="CorrespondenceLanguage" Type="Edm.String" MaxLength="2"/>
+                <Property Name="CreatedByUser" Type="Edm.String" MaxLength="12"/>
+                <Property Name="CreationDate" Type="Edm.Date"/>
+                <Property Name="CreationTime" Type="Edm.TimeOfDay"/>
+                <Property Name="FirstName" Type="Edm.String" MaxLength="40"/>
+                <Property Name="FormOfAddress" Type="Edm.String" MaxLength="4"/>
+                <Property Name="Industry" Type="Edm.String" MaxLength="10"/>
+                <Property Name="InternationalLocationNumber1" Type="Edm.String" MaxLength="7"/>
+                <Property Name="InternationalLocationNumber2" Type="Edm.String" MaxLength="5"/>
+                <Property Name="IsFemale" Type="Edm.Boolean"/>
+                <Property Name="IsMale" Type="Edm.Boolean"/>
+                <Property Name="IsNaturalPerson" Type="Edm.String" MaxLength="1"/>
+                <Property Name="IsSexUnknown" Type="Edm.Boolean"/>
+                <Property Name="GenderCodeName" Type="Edm.String" MaxLength="1"/>
+                <Property Name="Language" Type="Edm.String" MaxLength="2"/>
+                <Property Name="LastChangeDate" Type="Edm.Date"/>
+                <Property Name="LastChangeTime" Type="Edm.TimeOfDay"/>
+                <Property Name="LastChangedByUser" Type="Edm.String" MaxLength="12"/>
+                <Property Name="LastName" Type="Edm.String" MaxLength="40"/>
+                <Property Name="LegalForm" Type="Edm.String" MaxLength="2"/>
+                <Property Name="OrganizationBPName1" Type="Edm.String" MaxLength="40"/>
+                <Property Name="OrganizationBPName2" Type="Edm.String" MaxLength="40"/>
+                <Property Name="OrganizationBPName3" Type="Edm.String" MaxLength="40"/>
+                <Property Name="OrganizationBPName4" Type="Edm.String" MaxLength="40"/>
+                <Property Name="OrganizationFoundationDate" Type="Edm.Date"/>
+                <Property Name="OrganizationLiquidationDate" Type="Edm.Date"/>
+                <Property Name="SearchTerm1" Type="Edm.String" MaxLength="20"/>
+                <Property Name="SearchTerm2" Type="Edm.String" MaxLength="20"/>
+                <Property Name="AdditionalLastName" Type="Edm.String" MaxLength="40"/>
+                <Property Name="BirthDate" Type="Edm.Date"/>
+                <Property Name="BusinessPartnerBirthDateStatus" Type="Edm.String" MaxLength="1"/>
+                <Property Name="BusinessPartnerBirthplaceName" Type="Edm.String" MaxLength="40"/>
+                <Property Name="BusinessPartnerDeathDate" Type="Edm.Date"/>
+                <Property Name="BusinessPartnerIsBlocked" Type="Edm.Boolean"/>
+                <Property Name="BusinessPartnerType" Type="Edm.String" MaxLength="4"/>
+                <Property Name="ETag" Type="Edm.String" MaxLength="26"/>
+                <Property Name="GroupBusinessPartnerName1" Type="Edm.String" MaxLength="40"/>
+                <Property Name="GroupBusinessPartnerName2" Type="Edm.String" MaxLength="40"/>
+                <Property Name="IndependentAddressID" Type="Edm.String" MaxLength="10"/>
+                <Property Name="InternationalLocationNumber3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="MiddleName" Type="Edm.String" MaxLength="40"/>
+                <Property Name="NameCountry" Type="Edm.String" MaxLength="3"/>
+                <Property Name="NameFormat" Type="Edm.String" MaxLength="2"/>
+                <Property Name="PersonFullName" Type="Edm.String" MaxLength="80"/>
+                <Property Name="PersonNumber" Type="Edm.String" MaxLength="10"/>
+                <Property Name="IsMarkedForArchiving" Type="Edm.Boolean"/>
+                <Property Name="BusinessPartnerIDByExtSystem" Type="Edm.String" MaxLength="20"/>
+                <Property Name="TradingPartner" Type="Edm.String" MaxLength="6"/>
+                <NavigationProperty Name="to_BuPaIdentification" Type="Collection(sap.s4.A_BuPaIdentification)"/>
+                <NavigationProperty Name="to_BuPaIndustry" Type="Collection(sap.s4.A_BuPaIndustry)"/>
+                <NavigationProperty Name="to_BusinessPartnerAddress" Type="Collection(sap.s4.A_BusinessPartnerAddress)"/>
+                <NavigationProperty Name="to_BusinessPartnerBank" Type="Collection(sap.s4.A_BusinessPartnerBank)"/>
+                <NavigationProperty Name="to_BusinessPartnerContact" Type="Collection(sap.s4.A_BusinessPartnerContact)"/>
+                <NavigationProperty Name="to_BusinessPartnerRole" Type="Collection(sap.s4.A_BusinessPartnerRole)"/>
+                <NavigationProperty Name="to_BusinessPartnerTax" Type="Collection(sap.s4.A_BusinessPartnerTaxNumber)"/>
+                <NavigationProperty Name="to_Customer" Type="sap.s4.A_Customer"/>
+                <NavigationProperty Name="to_Supplier" Type="sap.s4.A_Supplier"/>
+            </EntityType>
+            <EntityType Name="A_BusinessPartnerAddress">
+                <Key>
+                    <PropertyRef Name="BusinessPartner"/>
+                    <PropertyRef Name="AddressID"/>
+                </Key>
+                <Property Name="BusinessPartner" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="AddressID" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="ValidityStartDate" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="ValidityEndDate" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4"/>
+                <Property Name="AddressUUID" Type="Edm.Guid"/>
+                <Property Name="AdditionalStreetPrefixName" Type="Edm.String" MaxLength="40"/>
+                <Property Name="AdditionalStreetSuffixName" Type="Edm.String" MaxLength="40"/>
+                <Property Name="AddressTimeZone" Type="Edm.String" MaxLength="6"/>
+                <Property Name="CareOfName" Type="Edm.String" MaxLength="40"/>
+                <Property Name="CityCode" Type="Edm.String" MaxLength="12"/>
+                <Property Name="CityName" Type="Edm.String" MaxLength="40"/>
+                <Property Name="CompanyPostalCode" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Country" Type="Edm.String" MaxLength="3"/>
+                <Property Name="County" Type="Edm.String" MaxLength="40"/>
+                <Property Name="DeliveryServiceNumber" Type="Edm.String" MaxLength="10"/>
+                <Property Name="DeliveryServiceTypeCode" Type="Edm.String" MaxLength="4"/>
+                <Property Name="District" Type="Edm.String" MaxLength="40"/>
+                <Property Name="FormOfAddress" Type="Edm.String" MaxLength="4"/>
+                <Property Name="FullName" Type="Edm.String" MaxLength="80"/>
+                <Property Name="HomeCityName" Type="Edm.String" MaxLength="40"/>
+                <Property Name="HouseNumber" Type="Edm.String" MaxLength="10"/>
+                <Property Name="HouseNumberSupplementText" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Language" Type="Edm.String" MaxLength="2"/>
+                <Property Name="POBox" Type="Edm.String" MaxLength="10"/>
+                <Property Name="POBoxDeviatingCityName" Type="Edm.String" MaxLength="40"/>
+                <Property Name="POBoxDeviatingCountry" Type="Edm.String" MaxLength="3"/>
+                <Property Name="POBoxDeviatingRegion" Type="Edm.String" MaxLength="3"/>
+                <Property Name="POBoxIsWithoutNumber" Type="Edm.Boolean"/>
+                <Property Name="POBoxLobbyName" Type="Edm.String" MaxLength="40"/>
+                <Property Name="POBoxPostalCode" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Person" Type="Edm.String" MaxLength="10"/>
+                <Property Name="PostalCode" Type="Edm.String" MaxLength="10"/>
+                <Property Name="PrfrdCommMediumType" Type="Edm.String" MaxLength="3"/>
+                <Property Name="Region" Type="Edm.String" MaxLength="3"/>
+                <Property Name="StreetName" Type="Edm.String" MaxLength="60"/>
+                <Property Name="StreetPrefixName" Type="Edm.String" MaxLength="40"/>
+                <Property Name="StreetSuffixName" Type="Edm.String" MaxLength="40"/>
+                <Property Name="TaxJurisdiction" Type="Edm.String" MaxLength="15"/>
+                <Property Name="TransportZone" Type="Edm.String" MaxLength="10"/>
+                <Property Name="AddressIDByExternalSystem" Type="Edm.String" MaxLength="20"/>
+                <Property Name="CountyCode" Type="Edm.String" MaxLength="8"/>
+                <Property Name="TownshipCode" Type="Edm.String" MaxLength="8"/>
+                <Property Name="TownshipName" Type="Edm.String" MaxLength="40"/>
+                <NavigationProperty Name="to_AddressUsage" Type="Collection(sap.s4.A_BuPaAddressUsage)"/>
+                <NavigationProperty Name="to_EmailAddress" Type="Collection(sap.s4.A_AddressEmailAddress)"/>
+                <NavigationProperty Name="to_FaxNumber" Type="Collection(sap.s4.A_AddressFaxNumber)"/>
+                <NavigationProperty Name="to_MobilePhoneNumber" Type="Collection(sap.s4.A_AddressPhoneNumber)"/>
+                <NavigationProperty Name="to_PhoneNumber" Type="Collection(sap.s4.A_AddressPhoneNumber)"/>
+                <NavigationProperty Name="to_URLAddress" Type="Collection(sap.s4.A_AddressHomePageURL)"/>
+            </EntityType>
+            <EntityType Name="A_BusinessPartnerBank">
+                <Key>
+                    <PropertyRef Name="BusinessPartner"/>
+                    <PropertyRef Name="BankIdentification"/>
+                </Key>
+                <Property Name="BusinessPartner" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="BankIdentification" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="BankCountryKey" Type="Edm.String" MaxLength="3"/>
+                <Property Name="BankName" Type="Edm.String" MaxLength="60"/>
+                <Property Name="BankNumber" Type="Edm.String" MaxLength="15"/>
+                <Property Name="SWIFTCode" Type="Edm.String" MaxLength="11"/>
+                <Property Name="BankControlKey" Type="Edm.String" MaxLength="2"/>
+                <Property Name="BankAccountHolderName" Type="Edm.String" MaxLength="60"/>
+                <Property Name="BankAccountName" Type="Edm.String" MaxLength="40"/>
+                <Property Name="ValidityStartDate" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="ValidityEndDate" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="IBAN" Type="Edm.String" MaxLength="34"/>
+                <Property Name="IBANValidityStartDate" Type="Edm.Date"/>
+                <Property Name="BankAccount" Type="Edm.String" MaxLength="18"/>
+                <Property Name="BankAccountReferenceText" Type="Edm.String" MaxLength="20"/>
+                <Property Name="CollectionAuthInd" Type="Edm.Boolean"/>
+                <Property Name="CityName" Type="Edm.String" MaxLength="35"/>
+                <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4"/>
+            </EntityType>
+            <EntityType Name="A_BusinessPartnerContact">
+                <Key>
+                    <PropertyRef Name="RelationshipNumber"/>
+                    <PropertyRef Name="BusinessPartnerCompany"/>
+                    <PropertyRef Name="BusinessPartnerPerson"/>
+                    <PropertyRef Name="ValidityEndDate"/>
+                </Key>
+                <Property Name="RelationshipNumber" Type="Edm.String" MaxLength="12" Nullable="false"/>
+                <Property Name="BusinessPartnerCompany" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="BusinessPartnerPerson" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="ValidityEndDate" Type="Edm.Date" Nullable="false"/>
+                <Property Name="ValidityStartDate" Type="Edm.Date"/>
+                <Property Name="IsStandardRelationship" Type="Edm.Boolean"/>
+                <Property Name="RelationshipCategory" Type="Edm.String" MaxLength="6"/>
+                <NavigationProperty Name="to_ContactAddress" Type="Collection(sap.s4.A_BPContactToAddress)"/>
+                <NavigationProperty Name="to_ContactRelationship" Type="sap.s4.A_BPContactToFuncAndDept"/>
+            </EntityType>
+            <EntityType Name="A_BusinessPartnerRole">
+                <Key>
+                    <PropertyRef Name="BusinessPartner"/>
+                    <PropertyRef Name="BusinessPartnerRole"/>
+                </Key>
+                <Property Name="BusinessPartner" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="BusinessPartnerRole" Type="Edm.String" MaxLength="6" Nullable="false"/>
+                <Property Name="ValidFrom" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="ValidTo" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4"/>
+            </EntityType>
+            <EntityType Name="A_BusinessPartnerTaxNumber">
+                <Key>
+                    <PropertyRef Name="BusinessPartner"/>
+                    <PropertyRef Name="BPTaxType"/>
+                </Key>
+                <Property Name="BusinessPartner" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="BPTaxType" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="BPTaxNumber" Type="Edm.String" MaxLength="20"/>
+                <Property Name="BPTaxLongNumber" Type="Edm.String" MaxLength="60"/>
+                <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4"/>
+            </EntityType>
+            <EntityType Name="A_Customer">
+                <Key>
+                    <PropertyRef Name="Customer"/>
+                </Key>
+                <Property Name="Customer" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4"/>
+                <Property Name="BillingIsBlockedForCustomer" Type="Edm.String" MaxLength="2"/>
+                <Property Name="CreatedByUser" Type="Edm.String" MaxLength="12"/>
+                <Property Name="CreationDate" Type="Edm.Date"/>
+                <Property Name="CustomerAccountGroup" Type="Edm.String" MaxLength="4"/>
+                <Property Name="CustomerClassification" Type="Edm.String" MaxLength="2"/>
+                <Property Name="CustomerFullName" Type="Edm.String" MaxLength="220"/>
+                <Property Name="CustomerName" Type="Edm.String" MaxLength="80"/>
+                <Property Name="DeliveryIsBlocked" Type="Edm.String" MaxLength="2"/>
+                <Property Name="NFPartnerIsNaturalPerson" Type="Edm.String" MaxLength="1"/>
+                <Property Name="OrderIsBlockedForCustomer" Type="Edm.String" MaxLength="2"/>
+                <Property Name="PostingIsBlocked" Type="Edm.Boolean"/>
+                <Property Name="Supplier" Type="Edm.String" MaxLength="10"/>
+                <Property Name="CustomerCorporateGroup" Type="Edm.String" MaxLength="10"/>
+                <Property Name="FiscalAddress" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Industry" Type="Edm.String" MaxLength="4"/>
+                <Property Name="IndustryCode1" Type="Edm.String" MaxLength="10"/>
+                <Property Name="IndustryCode2" Type="Edm.String" MaxLength="10"/>
+                <Property Name="IndustryCode3" Type="Edm.String" MaxLength="10"/>
+                <Property Name="IndustryCode4" Type="Edm.String" MaxLength="10"/>
+                <Property Name="IndustryCode5" Type="Edm.String" MaxLength="10"/>
+                <Property Name="InternationalLocationNumber1" Type="Edm.String" MaxLength="7"/>
+                <Property Name="NielsenRegion" Type="Edm.String" MaxLength="2"/>
+                <Property Name="ResponsibleType" Type="Edm.String" MaxLength="2"/>
+                <Property Name="TaxNumber1" Type="Edm.String" MaxLength="16"/>
+                <Property Name="TaxNumber2" Type="Edm.String" MaxLength="11"/>
+                <Property Name="TaxNumber3" Type="Edm.String" MaxLength="18"/>
+                <Property Name="TaxNumber4" Type="Edm.String" MaxLength="18"/>
+                <Property Name="TaxNumber5" Type="Edm.String" MaxLength="60"/>
+                <Property Name="TaxNumberType" Type="Edm.String" MaxLength="2"/>
+                <Property Name="VATRegistration" Type="Edm.String" MaxLength="20"/>
+                <Property Name="DeletionIndicator" Type="Edm.Boolean"/>
+                <Property Name="ExpressTrainStationName" Type="Edm.String" MaxLength="25"/>
+                <Property Name="TrainStationName" Type="Edm.String" MaxLength="25"/>
+                <Property Name="CityCode" Type="Edm.String" MaxLength="4"/>
+                <Property Name="County" Type="Edm.String" MaxLength="3"/>
+                <NavigationProperty Name="to_CustomerCompany" Type="Collection(sap.s4.A_CustomerCompany)"/>
+                <NavigationProperty Name="to_CustomerSalesArea" Type="Collection(sap.s4.A_CustomerSalesArea)"/>
+                <NavigationProperty Name="to_CustomerTaxGrouping" Type="Collection(sap.s4.A_CustomerTaxGrouping)"/>
+                <NavigationProperty Name="to_CustomerText" Type="Collection(sap.s4.A_CustomerText)"/>
+                <NavigationProperty Name="to_CustomerUnloadingPoint" Type="Collection(sap.s4.A_CustomerUnloadingPoint)"/>
+                <NavigationProperty Name="_CustomerSalesAreaTaxes" Type="Collection(sap.s4.A_CustomerSalesAreaTax)"/>
+            </EntityType>
+            <EntityType Name="A_CustomerCompany">
+                <Key>
+                    <PropertyRef Name="Customer"/>
+                    <PropertyRef Name="CompanyCode"/>
+                </Key>
+                <Property Name="Customer" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="APARToleranceGroup" Type="Edm.String" MaxLength="4"/>
+                <Property Name="AccountByCustomer" Type="Edm.String" MaxLength="12"/>
+                <Property Name="AccountingClerk" Type="Edm.String" MaxLength="2"/>
+                <Property Name="AccountingClerkFaxNumber" Type="Edm.String" MaxLength="31"/>
+                <Property Name="AccountingClerkInternetAddress" Type="Edm.String" MaxLength="130"/>
+                <Property Name="AccountingClerkPhoneNumber" Type="Edm.String" MaxLength="30"/>
+                <Property Name="AlternativePayerAccount" Type="Edm.String" MaxLength="10"/>
+                <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4"/>
+                <Property Name="CollectiveInvoiceVariant" Type="Edm.String" MaxLength="1"/>
+                <Property Name="CustomerAccountNote" Type="Edm.String" MaxLength="30"/>
+                <Property Name="CustomerHeadOffice" Type="Edm.String" MaxLength="10"/>
+                <Property Name="CustomerSupplierClearingIsUsed" Type="Edm.Boolean"/>
+                <Property Name="HouseBank" Type="Edm.String" MaxLength="5"/>
+                <Property Name="InterestCalculationCode" Type="Edm.String" MaxLength="2"/>
+                <Property Name="InterestCalculationDate" Type="Edm.Date"/>
+                <Property Name="IntrstCalcFrequencyInMonths" Type="Edm.String" MaxLength="2"/>
+                <Property Name="IsToBeLocallyProcessed" Type="Edm.Boolean"/>
+                <Property Name="ItemIsToBePaidSeparately" Type="Edm.Boolean"/>
+                <Property Name="LayoutSortingRule" Type="Edm.String" MaxLength="3"/>
+                <Property Name="PaymentBlockingReason" Type="Edm.String" MaxLength="1"/>
+                <Property Name="PaymentMethodsList" Type="Edm.String" MaxLength="10"/>
+                <Property Name="PaymentTerms" Type="Edm.String" MaxLength="4"/>
+                <Property Name="PaytAdviceIsSentbyEDI" Type="Edm.Boolean"/>
+                <Property Name="PhysicalInventoryBlockInd" Type="Edm.Boolean"/>
+                <Property Name="ReconciliationAccount" Type="Edm.String" MaxLength="10"/>
+                <Property Name="RecordPaymentHistoryIndicator" Type="Edm.Boolean"/>
+                <Property Name="UserAtCustomer" Type="Edm.String" MaxLength="15"/>
+                <Property Name="DeletionIndicator" Type="Edm.Boolean"/>
+                <Property Name="CashPlanningGroup" Type="Edm.String" MaxLength="10"/>
+                <Property Name="KnownOrNegotiatedLeave" Type="Edm.String" MaxLength="4"/>
+                <Property Name="ValueAdjustmentKey" Type="Edm.String" MaxLength="2"/>
+                <Property Name="CustomerAccountGroup" Type="Edm.String" MaxLength="4"/>
+                <NavigationProperty Name="to_CompanyText" Type="Collection(sap.s4.A_CustomerCompanyText)"/>
+                <NavigationProperty Name="to_CustomerDunning" Type="Collection(sap.s4.A_CustomerDunning)"/>
+                <NavigationProperty Name="to_WithHoldingTax" Type="Collection(sap.s4.A_CustomerWithHoldingTax)"/>
+            </EntityType>
+            <EntityType Name="A_CustomerCompanyText">
+                <Key>
+                    <PropertyRef Name="Customer"/>
+                    <PropertyRef Name="CompanyCode"/>
+                    <PropertyRef Name="Language"/>
+                    <PropertyRef Name="LongTextID"/>
+                </Key>
+                <Property Name="Customer" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="Language" Type="Edm.String" MaxLength="2" Nullable="false"/>
+                <Property Name="LongTextID" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="LongText" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="A_CustomerDunning">
+                <Key>
+                    <PropertyRef Name="Customer"/>
+                    <PropertyRef Name="CompanyCode"/>
+                    <PropertyRef Name="DunningArea"/>
+                </Key>
+                <Property Name="Customer" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="DunningArea" Type="Edm.String" MaxLength="2" Nullable="false"/>
+                <Property Name="DunningBlock" Type="Edm.String" MaxLength="1"/>
+                <Property Name="DunningLevel" Type="Edm.String" MaxLength="1"/>
+                <Property Name="DunningProcedure" Type="Edm.String" MaxLength="4"/>
+                <Property Name="DunningRecipient" Type="Edm.String" MaxLength="10"/>
+                <Property Name="LastDunnedOn" Type="Edm.Date"/>
+                <Property Name="LegDunningProcedureOn" Type="Edm.Date"/>
+                <Property Name="DunningClerk" Type="Edm.String" MaxLength="2"/>
+                <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4"/>
+                <Property Name="CustomerAccountGroup" Type="Edm.String" MaxLength="4"/>
+                <NavigationProperty Name="_Customer" Type="sap.s4.A_Customer" Nullable="false">
+                    <ReferentialConstraint Property="Customer" ReferencedProperty="Customer"/>
+                </NavigationProperty>
+            </EntityType>
+            <EntityType Name="A_CustomerSalesArea">
+                <Key>
+                    <PropertyRef Name="Customer"/>
+                    <PropertyRef Name="SalesOrganization"/>
+                    <PropertyRef Name="DistributionChannel"/>
+                    <PropertyRef Name="Division"/>
+                </Key>
+                <Property Name="Customer" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="SalesOrganization" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="DistributionChannel" Type="Edm.String" MaxLength="2" Nullable="false"/>
+                <Property Name="Division" Type="Edm.String" MaxLength="2" Nullable="false"/>
+                <Property Name="AccountByCustomer" Type="Edm.String" MaxLength="12"/>
+                <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4"/>
+                <Property Name="BillingIsBlockedForCustomer" Type="Edm.String" MaxLength="2"/>
+                <Property Name="CompleteDeliveryIsDefined" Type="Edm.Boolean"/>
+                <Property Name="Currency" Type="Edm.String" MaxLength="5"/>
+                <Property Name="CustomerABCClassification" Type="Edm.String" MaxLength="2"/>
+                <Property Name="CustomerAccountAssignmentGroup" Type="Edm.String" MaxLength="2"/>
+                <Property Name="CustomerGroup" Type="Edm.String" MaxLength="2"/>
+                <Property Name="CustomerPaymentTerms" Type="Edm.String" MaxLength="4"/>
+                <Property Name="CustomerPriceGroup" Type="Edm.String" MaxLength="2"/>
+                <Property Name="CustomerPricingProcedure" Type="Edm.String" MaxLength="2"/>
+                <Property Name="DeliveryIsBlockedForCustomer" Type="Edm.String" MaxLength="2"/>
+                <Property Name="DeliveryPriority" Type="Edm.String" MaxLength="2"/>
+                <Property Name="IncotermsClassification" Type="Edm.String" MaxLength="3"/>
+                <Property Name="IncotermsLocation2" Type="Edm.String" MaxLength="70"/>
+                <Property Name="IncotermsVersion" Type="Edm.String" MaxLength="4"/>
+                <Property Name="IncotermsLocation1" Type="Edm.String" MaxLength="70"/>
+                <Property Name="DeletionIndicator" Type="Edm.Boolean"/>
+                <Property Name="IncotermsTransferLocation" Type="Edm.String" MaxLength="28"/>
+                <Property Name="InvoiceDate" Type="Edm.String" MaxLength="2"/>
+                <Property Name="ItemOrderProbabilityInPercent" Type="Edm.String" MaxLength="3"/>
+                <Property Name="OrderCombinationIsAllowed" Type="Edm.Boolean"/>
+                <Property Name="OrderIsBlockedForCustomer" Type="Edm.String" MaxLength="2"/>
+                <Property Name="PartialDeliveryIsAllowed" Type="Edm.String" MaxLength="1"/>
+                <Property Name="PriceListType" Type="Edm.String" MaxLength="2"/>
+                <Property Name="SalesGroup" Type="Edm.String" MaxLength="3"/>
+                <Property Name="SalesOffice" Type="Edm.String" MaxLength="4"/>
+                <Property Name="ShippingCondition" Type="Edm.String" MaxLength="2"/>
+                <Property Name="SupplyingPlant" Type="Edm.String" MaxLength="4"/>
+                <Property Name="SalesDistrict" Type="Edm.String" MaxLength="6"/>
+                <Property Name="InvoiceListSchedule" Type="Edm.String" MaxLength="2"/>
+                <Property Name="ExchangeRateType" Type="Edm.String" MaxLength="4"/>
+                <Property Name="AdditionalCustomerGroup1" Type="Edm.String" MaxLength="3"/>
+                <Property Name="AdditionalCustomerGroup2" Type="Edm.String" MaxLength="3"/>
+                <Property Name="AdditionalCustomerGroup3" Type="Edm.String" MaxLength="3"/>
+                <Property Name="AdditionalCustomerGroup4" Type="Edm.String" MaxLength="3"/>
+                <Property Name="AdditionalCustomerGroup5" Type="Edm.String" MaxLength="3"/>
+                <Property Name="PaymentGuaranteeProcedure" Type="Edm.String" MaxLength="4"/>
+                <Property Name="CustomerAccountGroup" Type="Edm.String" MaxLength="4"/>
+                <NavigationProperty Name="to_PartnerFunction" Type="Collection(sap.s4.A_CustSalesPartnerFunc)"/>
+                <NavigationProperty Name="to_SalesAreaTax" Type="Collection(sap.s4.A_CustomerSalesAreaTax)"/>
+                <NavigationProperty Name="to_SalesAreaText" Type="Collection(sap.s4.A_CustomerSalesAreaText)"/>
+            </EntityType>
+            <EntityType Name="A_CustomerSalesAreaTax">
+                <Key>
+                    <PropertyRef Name="Customer"/>
+                    <PropertyRef Name="SalesOrganization"/>
+                    <PropertyRef Name="DistributionChannel"/>
+                    <PropertyRef Name="Division"/>
+                    <PropertyRef Name="DepartureCountry"/>
+                    <PropertyRef Name="CustomerTaxCategory"/>
+                </Key>
+                <Property Name="Customer" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="SalesOrganization" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="DistributionChannel" Type="Edm.String" MaxLength="2" Nullable="false"/>
+                <Property Name="Division" Type="Edm.String" MaxLength="2" Nullable="false"/>
+                <Property Name="DepartureCountry" Type="Edm.String" MaxLength="3" Nullable="false"/>
+                <Property Name="CustomerTaxCategory" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="CustomerTaxClassification" Type="Edm.String" MaxLength="1"/>
+            </EntityType>
+            <EntityType Name="A_CustomerSalesAreaText">
+                <Key>
+                    <PropertyRef Name="Customer"/>
+                    <PropertyRef Name="SalesOrganization"/>
+                    <PropertyRef Name="DistributionChannel"/>
+                    <PropertyRef Name="Division"/>
+                    <PropertyRef Name="Language"/>
+                    <PropertyRef Name="LongTextID"/>
+                </Key>
+                <Property Name="Customer" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="SalesOrganization" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="DistributionChannel" Type="Edm.String" MaxLength="2" Nullable="false"/>
+                <Property Name="Division" Type="Edm.String" MaxLength="2" Nullable="false"/>
+                <Property Name="Language" Type="Edm.String" MaxLength="2" Nullable="false"/>
+                <Property Name="LongTextID" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="LongText" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="A_CustomerTaxGrouping">
+                <Key>
+                    <PropertyRef Name="Customer"/>
+                    <PropertyRef Name="CustomerTaxGroupingCode"/>
+                </Key>
+                <Property Name="Customer" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="CustomerTaxGroupingCode" Type="Edm.String" MaxLength="3" Nullable="false"/>
+                <Property Name="CustTaxGrpExemptionCertificate" Type="Edm.String" MaxLength="15"/>
+                <Property Name="CustTaxGroupExemptionRate" Type="Edm.Decimal" Scale="2" Precision="5"/>
+                <Property Name="CustTaxGroupExemptionStartDate" Type="Edm.Date"/>
+                <Property Name="CustTaxGroupExemptionEndDate" Type="Edm.Date"/>
+                <Property Name="CustTaxGroupSubjectedStartDate" Type="Edm.Date"/>
+                <Property Name="CustTaxGroupSubjectedEndDate" Type="Edm.Date"/>
+            </EntityType>
+            <EntityType Name="A_CustomerText">
+                <Key>
+                    <PropertyRef Name="Customer"/>
+                    <PropertyRef Name="Language"/>
+                    <PropertyRef Name="LongTextID"/>
+                </Key>
+                <Property Name="Customer" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="Language" Type="Edm.String" MaxLength="2" Nullable="false"/>
+                <Property Name="LongTextID" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="LongText" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="A_CustomerUnloadingPoint">
+                <Key>
+                    <PropertyRef Name="Customer"/>
+                    <PropertyRef Name="UnloadingPointName"/>
+                </Key>
+                <Property Name="Customer" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="UnloadingPointName" Type="Edm.String" MaxLength="25" Nullable="false"/>
+                <Property Name="CustomerFactoryCalenderCode" Type="Edm.String" MaxLength="2"/>
+                <Property Name="BPGoodsReceivingHoursCode" Type="Edm.String" MaxLength="3"/>
+                <Property Name="IsDfltBPUnloadingPoint" Type="Edm.Boolean"/>
+                <Property Name="MondayMorningOpeningTime" Type="Edm.TimeOfDay"/>
+                <Property Name="MondayMorningClosingTime" Type="Edm.TimeOfDay"/>
+                <Property Name="MondayAfternoonOpeningTime" Type="Edm.TimeOfDay"/>
+                <Property Name="MondayAfternoonClosingTime" Type="Edm.TimeOfDay"/>
+                <Property Name="TuesdayMorningOpeningTime" Type="Edm.TimeOfDay"/>
+                <Property Name="TuesdayMorningClosingTime" Type="Edm.TimeOfDay"/>
+                <Property Name="TuesdayAfternoonOpeningTime" Type="Edm.TimeOfDay"/>
+                <Property Name="TuesdayAfternoonClosingTime" Type="Edm.TimeOfDay"/>
+                <Property Name="WednesdayMorningOpeningTime" Type="Edm.TimeOfDay"/>
+                <Property Name="WednesdayMorningClosingTime" Type="Edm.TimeOfDay"/>
+                <Property Name="WednesdayAfternoonOpeningTime" Type="Edm.TimeOfDay"/>
+                <Property Name="WednesdayAfternoonClosingTime" Type="Edm.TimeOfDay"/>
+                <Property Name="ThursdayMorningOpeningTime" Type="Edm.TimeOfDay"/>
+                <Property Name="ThursdayMorningClosingTime" Type="Edm.TimeOfDay"/>
+                <Property Name="ThursdayAfternoonOpeningTime" Type="Edm.TimeOfDay"/>
+                <Property Name="ThursdayAfternoonClosingTime" Type="Edm.TimeOfDay"/>
+                <Property Name="FridayMorningOpeningTime" Type="Edm.TimeOfDay"/>
+                <Property Name="FridayMorningClosingTime" Type="Edm.TimeOfDay"/>
+                <Property Name="FridayAfternoonOpeningTime" Type="Edm.TimeOfDay"/>
+                <Property Name="FridayAfternoonClosingTime" Type="Edm.TimeOfDay"/>
+                <Property Name="SaturdayMorningOpeningTime" Type="Edm.TimeOfDay"/>
+                <Property Name="SaturdayMorningClosingTime" Type="Edm.TimeOfDay"/>
+                <Property Name="SaturdayAfternoonOpeningTime" Type="Edm.TimeOfDay"/>
+                <Property Name="SaturdayAfternoonClosingTime" Type="Edm.TimeOfDay"/>
+                <Property Name="SundayMorningOpeningTime" Type="Edm.TimeOfDay"/>
+                <Property Name="SundayMorningClosingTime" Type="Edm.TimeOfDay"/>
+                <Property Name="SundayAfternoonOpeningTime" Type="Edm.TimeOfDay"/>
+                <Property Name="SundayAfternoonClosingTime" Type="Edm.TimeOfDay"/>
+            </EntityType>
+            <EntityType Name="A_CustomerWithHoldingTax">
+                <Key>
+                    <PropertyRef Name="Customer"/>
+                    <PropertyRef Name="CompanyCode"/>
+                    <PropertyRef Name="WithholdingTaxType"/>
+                </Key>
+                <Property Name="Customer" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="WithholdingTaxType" Type="Edm.String" MaxLength="2" Nullable="false"/>
+                <Property Name="WithholdingTaxCode" Type="Edm.String" MaxLength="2"/>
+                <Property Name="WithholdingTaxAgent" Type="Edm.Boolean"/>
+                <Property Name="ObligationDateBegin" Type="Edm.Date"/>
+                <Property Name="ObligationDateEnd" Type="Edm.Date"/>
+                <Property Name="WithholdingTaxNumber" Type="Edm.String" MaxLength="16"/>
+                <Property Name="WithholdingTaxCertificate" Type="Edm.String" MaxLength="25"/>
+                <Property Name="WithholdingTaxExmptPercent" Type="Edm.Decimal" Scale="2" Precision="5"/>
+                <Property Name="ExemptionDateBegin" Type="Edm.Date"/>
+                <Property Name="ExemptionDateEnd" Type="Edm.Date"/>
+                <Property Name="ExemptionReason" Type="Edm.String" MaxLength="2"/>
+                <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4"/>
+            </EntityType>
+            <EntityType Name="A_CustSalesPartnerFunc">
+                <Key>
+                    <PropertyRef Name="Customer"/>
+                    <PropertyRef Name="SalesOrganization"/>
+                    <PropertyRef Name="DistributionChannel"/>
+                    <PropertyRef Name="Division"/>
+                    <PropertyRef Name="PartnerCounter"/>
+                    <PropertyRef Name="PartnerFunction"/>
+                </Key>
+                <Property Name="Customer" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="SalesOrganization" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="DistributionChannel" Type="Edm.String" MaxLength="2" Nullable="false"/>
+                <Property Name="Division" Type="Edm.String" MaxLength="2" Nullable="false"/>
+                <Property Name="PartnerCounter" Type="Edm.String" MaxLength="3" Nullable="false"/>
+                <Property Name="PartnerFunction" Type="Edm.String" MaxLength="2" Nullable="false"/>
+                <Property Name="BPCustomerNumber" Type="Edm.String" MaxLength="10"/>
+                <Property Name="CustomerPartnerDescription" Type="Edm.String" MaxLength="30"/>
+                <Property Name="DefaultPartner" Type="Edm.Boolean"/>
+                <Property Name="Supplier" Type="Edm.String" MaxLength="10"/>
+                <Property Name="PersonnelNumber" Type="Edm.String" MaxLength="8"/>
+                <Property Name="ContactPerson" Type="Edm.String" MaxLength="10"/>
+                <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4"/>
+                <NavigationProperty Name="_Customer" Type="sap.s4.A_Customer" Nullable="false">
+                    <ReferentialConstraint Property="Customer" ReferencedProperty="Customer"/>
+                </NavigationProperty>
+            </EntityType>
+            <EntityType Name="A_Supplier">
+                <Key>
+                    <PropertyRef Name="Supplier"/>
+                </Key>
+                <Property Name="Supplier" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="AlternativePayeeAccountNumber" Type="Edm.String" MaxLength="10"/>
+                <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4"/>
+                <Property Name="CreatedByUser" Type="Edm.String" MaxLength="12"/>
+                <Property Name="CreationDate" Type="Edm.Date"/>
+                <Property Name="Customer" Type="Edm.String" MaxLength="10"/>
+                <Property Name="PaymentIsBlockedForSupplier" Type="Edm.Boolean"/>
+                <Property Name="PostingIsBlocked" Type="Edm.Boolean"/>
+                <Property Name="PurchasingIsBlocked" Type="Edm.Boolean"/>
+                <Property Name="SupplierAccountGroup" Type="Edm.String" MaxLength="4"/>
+                <Property Name="SupplierFullName" Type="Edm.String" MaxLength="220"/>
+                <Property Name="SupplierName" Type="Edm.String" MaxLength="80"/>
+                <Property Name="VATRegistration" Type="Edm.String" MaxLength="20"/>
+                <Property Name="BirthDate" Type="Edm.Date"/>
+                <Property Name="ConcatenatedInternationalLocNo" Type="Edm.String" MaxLength="20"/>
+                <Property Name="DeletionIndicator" Type="Edm.Boolean"/>
+                <Property Name="FiscalAddress" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Industry" Type="Edm.String" MaxLength="4"/>
+                <Property Name="InternationalLocationNumber1" Type="Edm.String" MaxLength="7"/>
+                <Property Name="InternationalLocationNumber2" Type="Edm.String" MaxLength="5"/>
+                <Property Name="InternationalLocationNumber3" Type="Edm.String" MaxLength="1"/>
+                <Property Name="IsNaturalPerson" Type="Edm.String" MaxLength="1"/>
+                <Property Name="ResponsibleType" Type="Edm.String" MaxLength="2"/>
+                <Property Name="SuplrQltyInProcmtCertfnValidTo" Type="Edm.Date"/>
+                <Property Name="SuplrQualityManagementSystem" Type="Edm.String" MaxLength="4"/>
+                <Property Name="SupplierCorporateGroup" Type="Edm.String" MaxLength="10"/>
+                <Property Name="SupplierProcurementBlock" Type="Edm.String" MaxLength="2"/>
+                <Property Name="TaxNumber1" Type="Edm.String" MaxLength="16"/>
+                <Property Name="TaxNumber2" Type="Edm.String" MaxLength="11"/>
+                <Property Name="TaxNumber3" Type="Edm.String" MaxLength="18"/>
+                <Property Name="TaxNumber4" Type="Edm.String" MaxLength="18"/>
+                <Property Name="TaxNumber5" Type="Edm.String" MaxLength="60"/>
+                <Property Name="TaxNumberResponsible" Type="Edm.String" MaxLength="18"/>
+                <Property Name="TaxNumberType" Type="Edm.String" MaxLength="2"/>
+                <Property Name="SuplrProofOfDelivRlvtCode" Type="Edm.String" MaxLength="1"/>
+                <Property Name="BR_TaxIsSplit" Type="Edm.Boolean"/>
+                <NavigationProperty Name="to_SupplierCompany" Type="Collection(sap.s4.A_SupplierCompany)"/>
+                <NavigationProperty Name="to_SupplierPurchasingOrg" Type="Collection(sap.s4.A_SupplierPurchasingOrg)"/>
+                <NavigationProperty Name="to_SupplierText" Type="Collection(sap.s4.A_SupplierText)"/>
+            </EntityType>
+            <EntityType Name="A_SupplierCompany">
+                <Key>
+                    <PropertyRef Name="Supplier"/>
+                    <PropertyRef Name="CompanyCode"/>
+                </Key>
+                <Property Name="Supplier" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4"/>
+                <Property Name="CompanyCodeName" Type="Edm.String" MaxLength="25"/>
+                <Property Name="PaymentBlockingReason" Type="Edm.String" MaxLength="1"/>
+                <Property Name="SupplierIsBlockedForPosting" Type="Edm.Boolean"/>
+                <Property Name="AccountingClerk" Type="Edm.String" MaxLength="2"/>
+                <Property Name="AccountingClerkFaxNumber" Type="Edm.String" MaxLength="31"/>
+                <Property Name="AccountingClerkPhoneNumber" Type="Edm.String" MaxLength="30"/>
+                <Property Name="SupplierClerk" Type="Edm.String" MaxLength="15"/>
+                <Property Name="SupplierClerkURL" Type="Edm.String" MaxLength="130"/>
+                <Property Name="PaymentMethodsList" Type="Edm.String" MaxLength="10"/>
+                <Property Name="PaymentTerms" Type="Edm.String" MaxLength="4"/>
+                <Property Name="ClearCustomerSupplier" Type="Edm.Boolean"/>
+                <Property Name="IsToBeLocallyProcessed" Type="Edm.Boolean"/>
+                <Property Name="ItemIsToBePaidSeparately" Type="Edm.Boolean"/>
+                <Property Name="PaymentIsToBeSentByEDI" Type="Edm.Boolean"/>
+                <Property Name="HouseBank" Type="Edm.String" MaxLength="5"/>
+                <Property Name="CheckPaidDurationInDays" Type="Edm.Decimal" Scale="0" Precision="3"/>
+                <Property Name="Currency" Type="Edm.String" MaxLength="5"/>
+                <Property Name="BillOfExchLmtAmtInCoCodeCrcy" Type="Edm.Decimal" Scale="3" Precision="14"/>
+                <Property Name="SupplierClerkIDBySupplier" Type="Edm.String" MaxLength="12"/>
+                <Property Name="ReconciliationAccount" Type="Edm.String" MaxLength="10"/>
+                <Property Name="InterestCalculationCode" Type="Edm.String" MaxLength="2"/>
+                <Property Name="InterestCalculationDate" Type="Edm.Date"/>
+                <Property Name="IntrstCalcFrequencyInMonths" Type="Edm.String" MaxLength="2"/>
+                <Property Name="SupplierHeadOffice" Type="Edm.String" MaxLength="10"/>
+                <Property Name="AlternativePayee" Type="Edm.String" MaxLength="10"/>
+                <Property Name="LayoutSortingRule" Type="Edm.String" MaxLength="3"/>
+                <Property Name="APARToleranceGroup" Type="Edm.String" MaxLength="4"/>
+                <Property Name="SupplierCertificationDate" Type="Edm.Date"/>
+                <Property Name="SupplierAccountNote" Type="Edm.String" MaxLength="30"/>
+                <Property Name="WithholdingTaxCountry" Type="Edm.String" MaxLength="3"/>
+                <Property Name="DeletionIndicator" Type="Edm.Boolean"/>
+                <Property Name="CashPlanningGroup" Type="Edm.String" MaxLength="10"/>
+                <Property Name="IsToBeCheckedForDuplicates" Type="Edm.Boolean"/>
+                <Property Name="MinorityGroup" Type="Edm.String" MaxLength="3"/>
+                <Property Name="SupplierAccountGroup" Type="Edm.String" MaxLength="4"/>
+                <NavigationProperty Name="to_CompanyText" Type="Collection(sap.s4.A_SupplierCompanyText)"/>
+                <NavigationProperty Name="to_Supplier" Type="sap.s4.A_Supplier"/>
+                <NavigationProperty Name="to_SupplierDunning" Type="Collection(sap.s4.A_SupplierDunning)"/>
+                <NavigationProperty Name="to_SupplierWithHoldingTax" Type="Collection(sap.s4.A_SupplierWithHoldingTax)"/>
+            </EntityType>
+            <EntityType Name="A_SupplierCompanyText">
+                <Key>
+                    <PropertyRef Name="Supplier"/>
+                    <PropertyRef Name="CompanyCode"/>
+                    <PropertyRef Name="Language"/>
+                    <PropertyRef Name="LongTextID"/>
+                </Key>
+                <Property Name="Supplier" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="Language" Type="Edm.String" MaxLength="2" Nullable="false"/>
+                <Property Name="LongTextID" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="LongText" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="A_SupplierDunning">
+                <Key>
+                    <PropertyRef Name="Supplier"/>
+                    <PropertyRef Name="CompanyCode"/>
+                    <PropertyRef Name="DunningArea"/>
+                </Key>
+                <Property Name="Supplier" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="DunningArea" Type="Edm.String" MaxLength="2" Nullable="false"/>
+                <Property Name="DunningBlock" Type="Edm.String" MaxLength="1"/>
+                <Property Name="DunningLevel" Type="Edm.String" MaxLength="1"/>
+                <Property Name="DunningProcedure" Type="Edm.String" MaxLength="4"/>
+                <Property Name="DunningRecipient" Type="Edm.String" MaxLength="10"/>
+                <Property Name="LastDunnedOn" Type="Edm.Date"/>
+                <Property Name="LegDunningProcedureOn" Type="Edm.Date"/>
+                <Property Name="DunningClerk" Type="Edm.String" MaxLength="2"/>
+                <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4"/>
+                <Property Name="SupplierAccountGroup" Type="Edm.String" MaxLength="4"/>
+            </EntityType>
+            <EntityType Name="A_SupplierPartnerFunc">
+                <Key>
+                    <PropertyRef Name="Supplier"/>
+                    <PropertyRef Name="PurchasingOrganization"/>
+                    <PropertyRef Name="SupplierSubrange"/>
+                    <PropertyRef Name="Plant"/>
+                    <PropertyRef Name="PartnerFunction"/>
+                    <PropertyRef Name="PartnerCounter"/>
+                </Key>
+                <Property Name="Supplier" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="PurchasingOrganization" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="SupplierSubrange" Type="Edm.String" MaxLength="6" Nullable="false"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="PartnerFunction" Type="Edm.String" MaxLength="2" Nullable="false"/>
+                <Property Name="PartnerCounter" Type="Edm.String" MaxLength="3" Nullable="false"/>
+                <Property Name="DefaultPartner" Type="Edm.Boolean"/>
+                <Property Name="CreationDate" Type="Edm.Date"/>
+                <Property Name="CreatedByUser" Type="Edm.String" MaxLength="12"/>
+                <Property Name="ReferenceSupplier" Type="Edm.String" MaxLength="10"/>
+                <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4"/>
+            </EntityType>
+            <EntityType Name="A_SupplierPurchasingOrg">
+                <Key>
+                    <PropertyRef Name="Supplier"/>
+                    <PropertyRef Name="PurchasingOrganization"/>
+                </Key>
+                <Property Name="Supplier" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="PurchasingOrganization" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="CalculationSchemaGroupCode" Type="Edm.String" MaxLength="2"/>
+                <Property Name="DeletionIndicator" Type="Edm.Boolean"/>
+                <Property Name="IncotermsClassification" Type="Edm.String" MaxLength="3"/>
+                <Property Name="IncotermsTransferLocation" Type="Edm.String" MaxLength="28"/>
+                <Property Name="IncotermsVersion" Type="Edm.String" MaxLength="4"/>
+                <Property Name="IncotermsLocation1" Type="Edm.String" MaxLength="70"/>
+                <Property Name="IncotermsLocation2" Type="Edm.String" MaxLength="70"/>
+                <Property Name="InvoiceIsGoodsReceiptBased" Type="Edm.Boolean"/>
+                <Property Name="MaterialPlannedDeliveryDurn" Type="Edm.Decimal" Scale="0" Precision="3"/>
+                <Property Name="MinimumOrderAmount" Type="Edm.Decimal" Scale="3" Precision="14"/>
+                <Property Name="PaymentTerms" Type="Edm.String" MaxLength="4"/>
+                <Property Name="PricingDateControl" Type="Edm.String" MaxLength="1"/>
+                <Property Name="PurOrdAutoGenerationIsAllowed" Type="Edm.Boolean"/>
+                <Property Name="PurchaseOrderCurrency" Type="Edm.String" MaxLength="5"/>
+                <Property Name="PurchasingGroup" Type="Edm.String" MaxLength="3"/>
+                <Property Name="PurchasingIsBlockedForSupplier" Type="Edm.Boolean"/>
+                <Property Name="ShippingCondition" Type="Edm.String" MaxLength="2"/>
+                <Property Name="SupplierABCClassificationCode" Type="Edm.String" MaxLength="1"/>
+                <Property Name="SupplierPhoneNumber" Type="Edm.String" MaxLength="16"/>
+                <Property Name="SupplierRespSalesPersonName" Type="Edm.String" MaxLength="30"/>
+                <Property Name="SupplierConfirmationControlKey" Type="Edm.String" MaxLength="4"/>
+                <Property Name="IsOrderAcknRqd" Type="Edm.Boolean"/>
+                <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4"/>
+                <Property Name="SupplierAccountGroup" Type="Edm.String" MaxLength="4"/>
+                <NavigationProperty Name="to_PartnerFunction" Type="Collection(sap.s4.A_SupplierPartnerFunc)"/>
+                <NavigationProperty Name="to_PurchasingOrgText" Type="Collection(sap.s4.A_SupplierPurchasingOrgText)"/>
+            </EntityType>
+            <EntityType Name="A_SupplierPurchasingOrgText">
+                <Key>
+                    <PropertyRef Name="Supplier"/>
+                    <PropertyRef Name="PurchasingOrganization"/>
+                    <PropertyRef Name="Language"/>
+                    <PropertyRef Name="LongTextID"/>
+                </Key>
+                <Property Name="Supplier" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="PurchasingOrganization" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="Language" Type="Edm.String" MaxLength="2" Nullable="false"/>
+                <Property Name="LongTextID" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="LongText" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="A_SupplierText">
+                <Key>
+                    <PropertyRef Name="Supplier"/>
+                    <PropertyRef Name="Language"/>
+                    <PropertyRef Name="LongTextID"/>
+                </Key>
+                <Property Name="Supplier" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="Language" Type="Edm.String" MaxLength="2" Nullable="false"/>
+                <Property Name="LongTextID" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="LongText" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="A_SupplierWithHoldingTax">
+                <Key>
+                    <PropertyRef Name="Supplier"/>
+                    <PropertyRef Name="CompanyCode"/>
+                    <PropertyRef Name="WithholdingTaxType"/>
+                </Key>
+                <Property Name="Supplier" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" Nullable="false"/>
+                <Property Name="WithholdingTaxType" Type="Edm.String" MaxLength="2" Nullable="false"/>
+                <Property Name="ExemptionDateBegin" Type="Edm.Date"/>
+                <Property Name="ExemptionDateEnd" Type="Edm.Date"/>
+                <Property Name="ExemptionReason" Type="Edm.String" MaxLength="2"/>
+                <Property Name="IsWithholdingTaxSubject" Type="Edm.Boolean"/>
+                <Property Name="RecipientType" Type="Edm.String" MaxLength="2"/>
+                <Property Name="WithholdingTaxCertificate" Type="Edm.String" MaxLength="25"/>
+                <Property Name="WithholdingTaxCode" Type="Edm.String" MaxLength="2"/>
+                <Property Name="WithholdingTaxExmptPercent" Type="Edm.Decimal" Scale="2" Precision="5"/>
+                <Property Name="WithholdingTaxNumber" Type="Edm.String" MaxLength="16"/>
+                <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4"/>
+            </EntityType>
+            <Annotation Term="Core.SchemaVersion" String="0.1.0"/>
+            <Annotations Target="sap.s4.EntityContainer">
+                <Annotation Term="Capabilities.KeyAsSegmentSupported" Bool="true"/>
+                <Annotation Term="Common.Label" String="SAP Graph service for sap.s4"/>
+            </Annotations>
+            <Annotations Target="sap.s4.A_AddressEmailAddress">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.EntityContainer/A_AddressEmailAddress">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.A_AddressFaxNumber">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.EntityContainer/A_AddressFaxNumber">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.A_AddressHomePageURL">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.EntityContainer/A_AddressHomePageURL">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.A_AddressPhoneNumber">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.EntityContainer/A_AddressPhoneNumber">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.A_BPContactToAddress">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.EntityContainer/A_BPContactToAddress">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.A_BPContactToFuncAndDept">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.EntityContainer/A_BPContactToFuncAndDept">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.A_BuPaAddressUsage">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.EntityContainer/A_BuPaAddressUsage">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.A_BuPaIdentification">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.EntityContainer/A_BuPaIdentification">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.A_BuPaIndustry">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.EntityContainer/A_BuPaIndustry">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.A_BusinessPartner">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.EntityContainer/A_BusinessPartner">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.A_BusinessPartnerAddress">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.EntityContainer/A_BusinessPartnerAddress">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.A_BusinessPartnerBank">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.EntityContainer/A_BusinessPartnerBank">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.A_BusinessPartnerContact">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.EntityContainer/A_BusinessPartnerContact">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.A_BusinessPartnerRole">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.EntityContainer/A_BusinessPartnerRole">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.A_BusinessPartnerTaxNumber">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.EntityContainer/A_BusinessPartnerTaxNumber">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.A_Customer">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.EntityContainer/A_Customer">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.A_CustomerCompany">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.EntityContainer/A_CustomerCompany">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.A_CustomerCompanyText">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.EntityContainer/A_CustomerCompanyText">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.A_CustomerDunning">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.EntityContainer/A_CustomerDunning">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.A_CustomerSalesArea">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.EntityContainer/A_CustomerSalesArea">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.A_CustomerSalesAreaTax">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.EntityContainer/A_CustomerSalesAreaTax">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.A_CustomerSalesAreaText">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.EntityContainer/A_CustomerSalesAreaText">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.A_CustomerTaxGrouping">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.EntityContainer/A_CustomerTaxGrouping">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.A_CustomerText">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.EntityContainer/A_CustomerText">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.A_CustomerUnloadingPoint">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.EntityContainer/A_CustomerUnloadingPoint">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.A_CustomerWithHoldingTax">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.EntityContainer/A_CustomerWithHoldingTax">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.A_CustSalesPartnerFunc">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.EntityContainer/A_CustSalesPartnerFunc">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.A_Supplier">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.EntityContainer/A_Supplier">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.A_SupplierCompany">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.EntityContainer/A_SupplierCompany">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.A_SupplierCompanyText">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.EntityContainer/A_SupplierCompanyText">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.A_SupplierDunning">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.EntityContainer/A_SupplierDunning">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.A_SupplierPartnerFunc">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.EntityContainer/A_SupplierPartnerFunc">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.A_SupplierPurchasingOrg">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.EntityContainer/A_SupplierPurchasingOrg">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.A_SupplierPurchasingOrgText">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.EntityContainer/A_SupplierPurchasingOrgText">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.A_SupplierText">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.EntityContainer/A_SupplierText">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.A_SupplierWithHoldingTax">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="sap.s4.EntityContainer/A_SupplierWithHoldingTax">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

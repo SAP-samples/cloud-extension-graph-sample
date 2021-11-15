@@ -1,0 +1,5 @@
+conditionId;name;descr;criticality
+1;New;Newly created customer;3
+2;Active;Customer is active;5
+3;Win-Back;Customer is not extending license;1
+4;Inactive;Customer has signed-off;2

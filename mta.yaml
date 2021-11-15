@@ -1,0 +1,111 @@
+## Generated mta.yaml based on template version 0.4.0
+## appName = georel-graph
+## language=nodejs; multitenant=false
+## approuter=
+_schema-version: '3.1'
+ID: georel-graph
+version: 1.0.0
+description: "A simple CAP project."
+parameters:
+  enable-parallel-deployments: true
+   
+build-parameters:
+  before-all:
+   - builder: custom
+     commands:
+      - npm install --production
+      - npx -p @sap/cds-dk cds build --production
+
+modules:
+ # --------------------- SERVER MODULE ------------------------
+ - name: georel-graph-srv
+ # ------------------------------------------------------------
+   type: nodejs
+   path: gen/srv
+   parameters:
+     buildpack: nodejs_buildpack
+   requires:
+    # Resources extracted from CAP configuration
+    - name: georel-graph-db
+    - name: georel-graph-uaa
+    - name: georel-graph-dest
+    - name: georel-graph-em
+   provides:
+    - name: srv-binding      # required by consumers of CAP services (e.g. approuter)
+      properties:
+        srv-url: ${default-url}
+
+ # -------------------- SIDECAR MODULE ------------------------
+ - name: georel-graph-db-deployer
+ # ------------------------------------------------------------
+   type: hdb
+   path: gen/db  
+   parameters:
+     buildpack: nodejs_buildpack
+   requires:
+    # 'hana' and 'xsuaa' resources extracted from CAP configuration
+    - name: georel-graph-db
+    - name: georel-graph-uaa
+
+ # -------------------- UI MODULE ------------------------
+ - name: geo-customer-ui
+  # ------------------------------------------------------------
+   type: html5
+   path: app/geo-customer
+   parameters:
+     disk-quota: 1024MB
+     memory: 128MB
+   build-parameters:
+     builder: npm
+    # commands:
+     #  - npm run-script build
+   requires:
+     - name: georel-graph-dest # <-- Destination Service
+     - name: georel-graph-uaa # <-- User Authentication and Authorization
+     - name: srv-binding
+       group: destinations
+       properties:
+         forwardAuthToken: true
+         name: srv-binding
+         url: '~{srv-url}'
+
+
+resources:
+ # services extracted from CAP configuration
+ # 'service-plan' can be configured via 'cds.requires.<name>.vcap.plan'
+# ------------------------------------------------------------
+ - name: georel-graph-db
+# ------------------------------------------------------------
+   type: com.sap.xs.hdi-container
+   parameters:
+     service: hana  # or 'hanatrial' on trial landscapes
+     service-plan: hdi-shared
+   properties:
+     hdi-service-name: ${service-name}
+# ------------------------------------------------------------
+ - name: georel-graph-uaa
+# ------------------------------------------------------------
+   type: org.cloudfoundry.managed-service
+   parameters:
+     path: ./xs-security.json
+     service: xsuaa
+     service-plan: application  
+     config:
+       xsappname: georel-graph-${space}    #  name + space dependency
+       tenant-mode: dedicated
+
+ # -----Destination Service -----------------------------------
+ - name: georel-graph-dest
+ # ------------------------------------------------------------
+   parameters:
+     service: destination
+     service-plan: lite
+   type: org.cloudfoundry.managed-service
+ # -----Event Mesh Service -----------------------------------
+ - name: georel-graph-em
+ # ------------------------------------------------------------
+   parameters:
+     path: ./em.json 
+     service: enterprise-messaging
+     service-plan: default
+   type: org.cloudfoundry.managed-service

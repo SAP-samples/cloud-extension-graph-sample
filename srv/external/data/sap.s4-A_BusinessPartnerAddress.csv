@@ -1,0 +1,6 @@
+BusinessPartner,AddressID,StreetName,CityName,Country,postalCode
+"1000161","124462","Dietmar-Hopp-Allee 162","Walldorf","DE","12345"
+"1000212","124462","Dietmar-Hopp-Allee 162","Walldorf","US","12345"
+"555","124462","Hope Street","Whitefield","DE","12345"
+"777","124462","Hope Street","Whitefield","IN","12345"
+"777","5678","Avengers Street","Waldorf","DE","12345"

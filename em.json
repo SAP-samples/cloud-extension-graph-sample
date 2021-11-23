@@ -22,8 +22,7 @@
                 "${namespace}/*"
             ],
             "subscribeFilter": [
-                "${namespace}/*",
-                "sap/S4HANAOD/g999/*"
+                "*"
             ]
         }
     }

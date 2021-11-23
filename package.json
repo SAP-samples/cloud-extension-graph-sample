@@ -33,7 +33,11 @@
           "kind": "enterprise-messaging-shared",
           "queue": {
             "name": "sap/geograph/1/georel-graph-srv/1234"
-          }
+          },
+          "amqp": {
+             "incomingSessionWindow": 30
+          },
+          "format": "cloudevents"
         }
       },
       "db": {
@@ -41,9 +45,6 @@
       },
       "uaa": {
         "kind": "xsuaa"
-      },
-      "---auth": {
-        "kind": "xsuaa-auth"
       },
       "auth": {
         "kind": "jwt-auth"

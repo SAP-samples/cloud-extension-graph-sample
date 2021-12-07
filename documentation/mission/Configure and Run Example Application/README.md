@@ -4,23 +4,13 @@ With the app coding ready on your device, you now need to perform a few steps to
   
 In detail you have to adapt the *manifest.yaml* and the *service.js* files.
 
-1. Find the *manifest.yaml*  and *services-manifest.yml* in your installation folder , open it and perform the below
+Find the *manifest.yaml*  and *services-manifest.yml* in your installation folder , open it and perform the below
 adjustments, if at all needed. Adjustments are only needed if you have adjusted the services names during the earlier steps or plan for using an app name without the random route option with the push command later.
     
   In case you are wondering about the correct service names, you can look then up the SAP Business Technology Platform Cockpit.
   
  ![Services](./images/run2.png)
   
-2. In a next step go to >installation folder< /georel-graph/srv and open the file geo-service.js with the editor of your choice.
-  
- ![service file](./images/run3.png)  
-  
-- Enter or adapt the constant for *BP_CREATED*. It includes the namespace of the S/4HANA Cloud system plus the four-character parameter corresponding to *emClientId*
-
-The namespace of the S/4HANA Cloud system has to be entered. This should be *sap/S4HANAOD/* plus the four-character parameter you had picked in step 6 of Setup Connectivity and Extensibility for *emClientId* followed by "ce/sap/s4/beh/businesspartner/v1/BusinessPartner/Created/v1".
-
-Final value should look like this: sap/S4HANAOD/g999/ce/sap/s4/beh/businesspartner/v1/BusinessPartner/Created/v1
-
 
 # Deployment
 

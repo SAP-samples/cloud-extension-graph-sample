@@ -45,10 +45,10 @@ cf login
     cf create-service-push --vars-file vars-dev.yml --push-as-subprocess
 ```
 
-In case Create-Service-Push plugin is missing, execute the following command to install it.
+  In case Create-Service-Push plugin is missing, execute the following command to install it.
 
 ```
-cf install-plugin -r CF-Community "Create-Service-Push"
+    cf install-plugin -r CF-Community "Create-Service-Push"
 ```
 
 ### Deploy Application (using MTA)

@@ -52,7 +52,7 @@
       "GRAPH_CC": {
         "kind": "odata",
         "credentials": {
-          "path": "v1/sap.s4",
+          "path": "sap.s4",
           "destination": "graph-api-cc"
         }
       },

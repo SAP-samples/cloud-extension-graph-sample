@@ -61,7 +61,7 @@ https://help.sap.com/viewer/84bbf6acb5384861add4cb6939bef647/Beta/en-US/d3a155b8
         "services": [
           {
             "destinationName": "<destination_name>",
-            "path": null
+            "path": "/sap/opu/odata/sap/API_BUSINESS_PARTNER/"
           }
         ]
       }

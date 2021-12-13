@@ -110,4 +110,4 @@ Please use the graph API to configure destinations with:
 
 ![OAuth2ClientCredential](./images/OAuth2ClientCredentialDestination.png)
 
-Please maintain Graph API in URL. Please refer SAP Graph's service key to fill Client ID, Client Secret and Token Service URL. 
+Maintain the Graph API in the URL(for example, "https://xxxx.graph.sap/api/v1"). This is the URL that you received after activation of graph configuration in the previous step). Refer to SAP Graph's service key to fill Client ID, Client Secret and Token Service URL. Please ensure that token service URL is suffixed with "/oauth/token". 

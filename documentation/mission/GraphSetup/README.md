@@ -86,7 +86,7 @@ https://help.sap.com/viewer/84bbf6acb5384861add4cb6939bef647/Beta/en-US/d3a155b8
     }
   }
 ```
-  Please do ensure that the path "/sap/opu/odata/sap/API_BUSINESS_PARTNER/" is specified along with the destination(created prior via. SAP Extensibility Service)/
+  Please do ensure that the path "/sap/opu/odata/sap/API_BUSINESS_PARTNER/" is specified along with the destination(created prior via. SAP Extensibility Service).
 
 4. Activate the configuration
 

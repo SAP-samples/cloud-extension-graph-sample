@@ -370,11 +370,6 @@ Hint: Look for your emClientId that you had provided in an earlier step.
 10. Click *Create*.
 
 
-# Configure destination for S/4HANA Cloud System
-
-You need to configure a destination for your S/4HANA Cloud System which would be used for Graph configuration in the next steps.
-
-
 
 
 

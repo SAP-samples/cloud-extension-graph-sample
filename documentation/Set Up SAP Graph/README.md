@@ -37,7 +37,7 @@ It requires administrator authorization of SAP BTP.
 
 The graphctl command line tool is used to configure your SAP Graph tenant. See section [Install graphctl](https://help.sap.com/viewer/84bbf6acb5384861add4cb6939bef647/Beta/en-US/b1b729334aae4021870374237016516e.html?q=graphctl) for more details.
 
-1. Install graphctl:
+1. Install [graphctl](https://help.sap.com/viewer/84bbf6acb5384861add4cb6939bef647/Beta/en-US/b1b729334aae4021870374237016516e.html), the command line tool used to configure your graph tenant:
 
   ```
   npm install -g @sap/graph-toolkit

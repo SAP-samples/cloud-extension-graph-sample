@@ -55,6 +55,7 @@ modules:
    parameters:
      disk-quota: 1024MB
      memory: 128MB
+     buildpack: nodejs_buildpack
    build-parameters:
      builder: npm
     # commands:

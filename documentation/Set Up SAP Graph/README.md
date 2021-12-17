@@ -33,6 +33,12 @@ It requires administrator authorization of SAP BTP.
 
 10. Share the previously downloaded service with the relevant user.
 
+Note:
+
+As SAP Graph is a beta feature, please ensure that beta features are enabled in the subaccount.
+
+![enableBetaFeature](./images/enableBetaFeature.png)
+
 ## SAP Graph Configuration
 
 The graphctl command line tool is used to configure your SAP Graph tenant. See section [Install graphctl](https://help.sap.com/viewer/84bbf6acb5384861add4cb6939bef647/Beta/en-US/b1b729334aae4021870374237016516e.html) for more details.

@@ -1,8 +1,8 @@
 # Build an Extension Application Using SAP Graph and SAP Event Mesh
 
-[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/cloud-extension-graph-sample)](https://api.reuse.software/info/github.com/SAP-samples/cloud-extension-graph-sample)
-
 > Note: The content of this GitHub repository has been created as source for the SAP Discovery Center Mission [Build an Extension Application Using SAP Graph and SAP Event Mesh](https://discovery-center.cloud.sap/missions/?appType=platform&category=extensionsuite-developmentefficiency)<!-- TODO: update URL once mission was published -->. We recommend using directly the mission in the SAP Discovery Center.
+
+[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/cloud-extension-graph-sample)](https://api.reuse.software/info/github.com/SAP-samples/cloud-extension-graph-sample)
 
 ## Description
 
@@ -50,7 +50,7 @@ The tutorial focus on the following aspects:
 
 - Building a side-by-side extension to [SAP S/4HANA Cloud](https://help.sap.com/viewer/product/SAP_S4HANA_CLOUD/2111.501/en-US?task=discover_task)
 - Setting up Eventing and consuming events from SAP S/4HANA Cloud using [SAP Event Mesh](https://help.sap.com/viewer/product/SAP_EM/Cloud/en-US)
-- Consuming data via API calls using [SAP Graph](https://help.sap.com/viewer/84bbf6acb5384861add4cb6939bef647/Beta/en-US) <!-- TODO: is still beta -->
+- Consuming data via API calls using [SAP Graph](https://help.sap.com/viewer/84bbf6acb5384861add4cb6939bef647/Beta/en-US)
 - Developing an application on [SAP BTP](https://help.sap.com/viewer/product/BTP/Cloud/en-US?task=discover_task) using [CAP](https://cap.cloud.sap/docs/)
 - Implementing an [SAP Fiori elements](https://help.sap.com/viewer/product/SAP_FIORI_tools/Latest/en-US) UI
 

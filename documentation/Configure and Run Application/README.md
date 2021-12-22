@@ -11,7 +11,7 @@ Find the *manifest.yaml* and *services-manifest.yml* files in your installation 
 
 # Deployment
 
-We are going to use the Cloud Foundry Command Line Interface (CLI) for the deployment. In case you have not installed it yet please do it as mentioned in the [Prerequisites](./documentation/Prerequisites/README.md).
+We are going to use the Cloud Foundry Command Line Interface (CLI) for the deployment. In case you have not installed it yet please do it as mentioned in the [Prerequisites](../Prerequisites/README.md).
 
 Deployment can be done either using a manifest file or [MTA](https://help.sap.com/products/BTP/65de2977205c403bbc107264b8eccf4b/d04fc0e2ad894545aebfd7126384307c.html?locale=en-US) file. You can choose from the two following options:
 

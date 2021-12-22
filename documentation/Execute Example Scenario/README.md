@@ -30,9 +30,9 @@ On the details page, there’s an *Edit* button, which allows to switch to edit-
 cf apps
 ```
 
-2. Find the URL for the Geo Relations app - this is the launch URL for the Geo Relations application.
+2. Find the URL for the "geo-customer-ui" app - this is the launch URL for the Geo Relations application.
 
-3. Copy the URL into a browser and choose the `/georelApplication.html` link.
+3. Open the URL in a browser.
 
 4. Choose the tile for Geo Relations app.
 

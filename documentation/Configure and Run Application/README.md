@@ -82,12 +82,7 @@ Example URL: *geo.cfapps.us10.hana.ondemand.com*
 
 > Using the command `CF apps` you can always look up this information.
 
-4. Replace `geo` with the host name, which was entered in the *manifest.yaml* file.
-
-5. Open the URL of your deployed app in a browser. Choose the hyperlink `/geo-customer/webapp/index.html`.
-
-  ![Application](./images/run4.png)
-
+4. Open the URL of your deployed UI application in a browser.
 
 # Create a Role
 

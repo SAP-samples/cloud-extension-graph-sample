@@ -15,7 +15,7 @@ You can either clone the code from GitHub or download and extract the ZIP file p
 git clone https://github.com/SAP-samples/cloud-extension-graph-sample.git
 ```
 
-2. Navigate to the folder of your application in which the `package.json` is located, which should be <your installation folder>/georel.
+2. Navigate to the folder of your application in which the `package.json` is located, which should be <your installation folder>/cloud-extension-graph-sample.
 
 3. Before you continue, make sure that you’ve completed the prerequisites and installed SQLite tools (for Windows users only). Run the following three commands:
 
@@ -24,7 +24,6 @@ npm install
 
 npm install sqlite3 -D
 
-cds deploy --to sqlite
 ```
 
 > In case of issues or errors, make sure that your Node installation is up to date. Specifically in case of issues installing SQLite3 packages on Windows you could try:

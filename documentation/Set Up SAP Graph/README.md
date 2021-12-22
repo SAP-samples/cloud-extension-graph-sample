@@ -29,7 +29,7 @@ It requires administrator authorization of SAP BTP.
 
 ![Download Key](./images/downloadKey.png)
 
-9. To configure SAP Graph, a user must have the `SAP_Graph_Key_User` authorization role. To assign this role to a user, you must create a role collection, add the role of `SAP_Graph_Key_User`, and then assign it to the relevant user. See subsection [Create Role Collection and Add Roles](https://help.sap.com/viewer/84bbf6acb5384861add4cb6939bef647/Beta/en-US/d3a155b8842b4a43b1367c2edb1c964e.html) in the SAP Graph documentation for more details.
+9. To configure SAP Graph, a user must have the `SAP_Graph_Key_User` authorization role. To assign this role to a user, you must create a role collection, add the role of `SAP_Graph_Key_User`, and then assign it to the relevant user. See subsection [Create Role Collection and Add Roles](https://help.sap.com/viewer/84bbf6acb5384861add4cb6939bef647/PROD/en-US/d3a155b8842b4a43b1367c2edb1c964e.html) in the SAP Graph documentation for more details.
 
 10. Share the previously downloaded service with the relevant user.
 
@@ -41,7 +41,7 @@ As SAP Graph is a beta feature, please ensure that beta features are enabled in 
 
 ## SAP Graph Configuration
 
-The graphctl command line tool is used to configure your SAP Graph tenant. See section [Install graphctl](https://help.sap.com/viewer/84bbf6acb5384861add4cb6939bef647/Beta/en-US/b1b729334aae4021870374237016516e.html) for more details.
+The graphctl command line tool is used to configure your SAP Graph tenant. See section [Install graphctl](https://help.sap.com/viewer/84bbf6acb5384861add4cb6939bef647/PROD/en-US/b1b729334aae4021870374237016516e.html) for more details.
 
 1. Install graphctl:
 
@@ -111,7 +111,7 @@ Make sure that the path `/sap/opu/odata/sap/API_BUSINESS_PARTNER/` is specified 
 
   ![Graph Activation](./images/graphActivation.png)
 
-See section [Configuration File](https://help.sap.com/viewer/84bbf6acb5384861add4cb6939bef647/Beta/en-US/56a40529c2ef42969dfc94c44e603bde.html) in the SAP Graph documentation for more details.
+See section [Configuration File](https://help.sap.com/viewer/84bbf6acb5384861add4cb6939bef647/PROD/en-US/56a40529c2ef42969dfc94c44e603bde.html) in the SAP Graph documentation for more details.
 
 ## Set Up SAP Graph Destination
 

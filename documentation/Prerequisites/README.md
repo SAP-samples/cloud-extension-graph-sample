@@ -46,6 +46,8 @@ Optional Subscriptions:
 
 [SAP Event Mesh](https://help.sap.com/viewer/product/SAP_EM/Cloud/en-US) is a fully managed cloud service that allows applications to communicate through asynchronous events. Create responsive applications that work independently and participate in event-driven business processes across your business ecosystem for greater agility and scalability.
 
+## Prerequisites for SAP HANA Cloud
+Please make sure that you have an instance of SAP HANA database in your space. For more details, please refer [this](https://help.sap.com/viewer/9ae9104a46f74a6583ce5182e7fb20cb/hanacloud/en-US/f7febb16072b41f7ac90abf5ea1d4b86.html).
 
 ## Prerequisites for SAP S/4HANA Cloud
 

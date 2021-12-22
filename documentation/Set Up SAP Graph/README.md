@@ -63,7 +63,7 @@ The graphctl command line tool is used to configure your SAP Graph tenant. See s
   graphctl generate config [-f <config.jsonc>]
   ```
 
-4. Adapt the configuration if needed. A sample configuration file likes like:
+4. Adapt the configuration if needed. A sample configuration file looks like this. Please ensure that the path field `/sap/opu/odata/sap/API_BUSINESS_PARTNER/` is specified along with the destination (created prior using SAP Extensibility Service) in configuration.
 
 ```
 {
@@ -100,8 +100,6 @@ The graphctl command line tool is used to configure your SAP Graph tenant. See s
     }
   }
 ```
-
-Make sure that the path `/sap/opu/odata/sap/API_BUSINESS_PARTNER/` is specified along with the destination (created prior using SAP Extensibility Service).
 
 4. Activate the configuration:
 

@@ -35,7 +35,7 @@ It requires administrator authorization of SAP BTP.
 
 Note:
 
-As SAP Graph is a beta feature, please ensure that beta features are enabled in the subaccount.
+As SAP Graph is a beta feature, ensure that beta features are enabled in the subaccount.
 
 ![enableBetaFeature](./images/enableBetaFeature.png)
 
@@ -63,7 +63,7 @@ The graphctl command line tool is used to configure your SAP Graph tenant. See s
   graphctl generate config [-f <config.jsonc>]
   ```
 
-4. Adapt the configuration if needed. A sample configuration file looks like this. Please ensure that the path field `/sap/opu/odata/sap/API_BUSINESS_PARTNER/` is specified along with the destination (created prior using SAP Extensibility Service) in configuration.
+4. Adapt the configuration if needed. A sample configuration file looks like this. Ensure that the path field `/sap/opu/odata/sap/API_BUSINESS_PARTNER/` is specified along with the destination (created prior using SAP Extensibility Service) in configuration.
 
 ```
 {

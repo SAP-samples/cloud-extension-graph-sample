@@ -1,5 +1,7 @@
 # Prerequisites
 
+This section contains the prerequisites that you would have to get started. It’s likely that you have some of the software already installed, so you can just skip those steps.
+
 ## Prerequisites in General
 
 * [SAP S/4HANA Cloud]((https://help.sap.com/viewer/product/SAP_S4HANA_CLOUD/2111.501/en-US?task=discover_task)) system
@@ -47,7 +49,8 @@ Optional Subscriptions:
 [SAP Event Mesh](https://help.sap.com/viewer/product/SAP_EM/Cloud/en-US) is a fully managed cloud service that allows applications to communicate through asynchronous events. Create responsive applications that work independently and participate in event-driven business processes across your business ecosystem for greater agility and scalability.
 
 ## Prerequisites for SAP HANA Cloud
-Make sure that you have an instance of SAP HANA database in your space. For more details, refer [this](https://help.sap.com/viewer/9ae9104a46f74a6583ce5182e7fb20cb/hanacloud/en-US/f7febb16072b41f7ac90abf5ea1d4b86.html).
+
+Make sure that you have an instance of SAP HANA database in your space. For more details, see section [Create an SAP HANA Database Instance Using SAP HANA Cloud Central](https://help.sap.com/viewer/9ae9104a46f74a6583ce5182e7fb20cb/hanacloud/en-US/f7febb16072b41f7ac90abf5ea1d4b86.html) in the SAP HANA Cloud documentation.
 
 ## Prerequisites for SAP S/4HANA Cloud
 
@@ -63,6 +66,8 @@ Make sure you have the following roles assigned to your user in the SAP S/4HANA 
     BR_BUPA_MASTER_SPECIALIST (Master Data Specialist - Business Partner Data)
 
     BR_EMPLOYEE (Employee)
+
+
 
 
 

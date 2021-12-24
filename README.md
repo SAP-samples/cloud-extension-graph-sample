@@ -1,6 +1,6 @@
 # Build an Extension Application Using SAP Graph and SAP Event Mesh
 
-> Note: The content of this GitHub repository has been created as source for the SAP Discovery Center Mission [Build an Extension Application Using SAP Graph and SAP Event Mesh](https://discovery-center.cloud.sap/missions/?appType=platform&category=extensionsuite-developmentefficiency)<!-- TODO: update URL once mission was published -->. We recommend using directly the mission in the SAP Discovery Center.
+> Note: The content of this GitHub repository has been created as source for the SAP Discovery Center Mission [Build an Extension Application Using SAP Graph and SAP Event Mesh](https://discovery-center.cloud.sap/missiondetail/3702/3745/). We recommend using directly the mission in the SAP Discovery Center.
 
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/cloud-extension-graph-sample)](https://api.reuse.software/info/github.com/SAP-samples/cloud-extension-graph-sample)
 

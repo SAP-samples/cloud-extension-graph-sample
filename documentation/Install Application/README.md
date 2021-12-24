@@ -23,7 +23,6 @@ git clone https://github.com/SAP-samples/cloud-extension-graph-sample.git
 npm install
 
 npm install sqlite3 -D
-
 ```
 
 > In case of issues or errors, make sure that your Node installation is up to date. Specifically in case of issues installing SQLite3 packages on Windows you could try:

@@ -1,13 +1,11 @@
 # Set Up Connectivity and Extensibility
 
-## Register Your SAP S/4HANA Cloud System
-
 To build extension applications for your SAP S/4HANA Cloud system, you need to connect your SAP S/4HANA Cloud system to your SAP BTP global account.
 
-To be able to do this, in respect to authorizations, you must be:
+## Register Your SAP S/4HANA Cloud System
 
+To be able to do register your SAP S/4HANA Cloud system in your SAP BTP cockpit, in respect to authorizations, you must be:
 - An administrator of the SAP BTP global account
-
 - An administrator of the SAP S/4HANA Cloud system
 
 ### Acquire an SAP BTP Integration Token for Registration
@@ -80,11 +78,11 @@ In case that you do not have a subaccount for SAP BTP in place you have to follo
 
 4. Create a Spac in your new subaccount.
 
-See sections [Create a Subaccount](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/05280a123d3044ae97457a25b3013918.html?q=subaccount) and [Create Spaces](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/2f6ed22ccf424dae84345f4500c2d8ea.html) in SAP BTP documentation for more details.
+See sections [Create a Subaccount](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/05280a123d3044ae97457a25b3013918.html?q=subaccount) and [Create Spaces](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/2f6ed22ccf424dae84345f4500c2d8ea.html) the  BTP documentation for more details.
 
 ## Set Up Entitlement for SAP S/4HANA Cloud Extensibility
 
-1. In [SAP BTP Cockpit](https://account.hana.ondemand.com/), open your global account and navigate to **Entitlements** &rarr; **Subaccount Assignments**.
+1. In the [SAP BTP Cockpit](https://account.hana.ondemand.com/), open your global account and navigate to **Entitlements** &rarr; **Subaccount Assignments**.
 
  ![SAP BTP Cockpit](./images/setup7.png)
 

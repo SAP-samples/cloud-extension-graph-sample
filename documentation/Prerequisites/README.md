@@ -9,7 +9,7 @@ This section contains the prerequisites that you would have to get started. Itâ€
 
 ## Prerequisites for Local Development
 
-* [Node.js](https://nodejs.org/en/download/)
+* [Node.js](https://nodejs.org/en/download/). You can find the latest Node.js version supported by CAP [here](https://cap.cloud.sap/docs/advanced/troubleshooting#node-version)
 * [Cloud Foundry Command Line Interface (CLI)](https://github.com/cloudfoundry/cli#downloads)
 * [Visual Studio Code](https://code.visualstudio.com/download) or another suitable IDE or editor of your choice
 * [SQLite](https://sqlite.org/download.html) (for Windows only). Find the steps how to install it in the CAP documentation in section [How Do I Install SQLite](https://cap.cloud.sap/docs/advanced/troubleshooting#how-do-i-install-sqlite-on-windows).

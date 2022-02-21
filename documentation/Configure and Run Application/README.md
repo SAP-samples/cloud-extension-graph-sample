@@ -67,7 +67,7 @@ This creates a `mtar` file `<xxx.mtar>` in the current folder.
 1. Deploy the module to your current Cloud Foundry space:
 
 ```
-cf deploy -f <path/to/mtar>
+cf deploy <path/to/mtar>
 ```
 
 2. The deployment can take some minutes. After successful deployment, check if all the services have been created:

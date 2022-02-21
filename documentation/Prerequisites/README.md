@@ -4,7 +4,7 @@ This section contains the prerequisites that you would have to get started. Itâ€
 
 ## Prerequisites in General
 
-* [SAP S/4HANA Cloud]((https://help.sap.com/viewer/product/SAP_S4HANA_CLOUD/2111.501/en-US?task=discover_task)) system
+* [SAP S/4HANA Cloud](https://help.sap.com/viewer/product/SAP_S4HANA_CLOUD/2111.501/en-US?task=discover_task) system
 * SAP BTP Cloud Foundry [global account](https://help.sap.com/products/BTP/65de2977205c403bbc107264b8eccf4b/8ed4a705efa0431b910056c0acdbf377.html?locale=en-US#loioc165d95ee700407eb181770901caec94). SAP BTP trial accounts are not supported.
 
 ## Prerequisites for Local Development

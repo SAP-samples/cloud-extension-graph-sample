@@ -54,7 +54,7 @@ The graphctl command line tool is used to configure your SAP Graph tenant. See s
 2. To use the tool, you have to log in by using the service key shared by your administrator:
 
   ```
-  graphctl login [-s <service-key.json>]
+  graphctl login [-f <service-key.json>]
   ```
 
 3. Generate the configuration file:

@@ -109,6 +109,8 @@ The graphctl command line tool is used to configure your SAP Graph tenant. See s
 
   ![Graph Activation](./images/graphActivation.png)
 
+> If a business data graph with the same identifier already exists in the current landscape, activation will fail, unless the **--force** option is used to overwrite the same business data graph.
+
 See section [Configuration File](https://help.sap.com/viewer/84bbf6acb5384861add4cb6939bef647/PROD/en-US/56a40529c2ef42969dfc94c44e603bde.html) in the SAP Graph documentation for more details.
 
 ## Set Up SAP Graph Destination

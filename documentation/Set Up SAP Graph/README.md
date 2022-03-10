@@ -115,7 +115,7 @@ See section [Configuration File](https://help.sap.com/viewer/84bbf6acb5384861add
 
 ## Set Up SAP Graph Destination
 
-Maintain the **Graph API** in the URL (for example, `https://xxxx.graph.sap/api/v1`). This is the URL that you received after activation of graph configuration in the previous step. Refer to SAP Graph's service key to fill **Client ID**, **Client Secret**, and **Token Service URL**. Make sure that the token service URL is suffixed with `/oauth/token`.
+Maintain the **Graph API** in the URL (for example, `https://xxxx.graph.sap/api/v1`). This is the URL that you received after activation of graph configuration in the previous step. Refer to SAP Graph's service key to fill **Client ID** and **Client Secret**. The **Token Service URL** is derived by suffixing the **URL** mentioned in service key with `/oauth/token`.
 
 Use the Graph API to configure the destinations with:
 

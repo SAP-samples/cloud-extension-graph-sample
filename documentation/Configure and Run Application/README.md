@@ -33,7 +33,13 @@ cf login
 
 3. Ensure you are in the folder that contains the *manifest.yaml* file.
 
-4. Execute the following command, using [CF service push plugin](https://github.com/dawu415/CF-CLI-Create-Service-Push-Plugin):
+4. Execute the command:
+
+```
+cds build --production
+```
+
+5. Execute the following command, using [CF service push plugin](https://github.com/dawu415/CF-CLI-Create-Service-Push-Plugin):
 
 ```
 cf create-service-push --vars-file vars-dev.yml --push-as-subprocess

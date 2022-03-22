@@ -57,13 +57,7 @@ The graphctl command line tool is used to configure your SAP Graph tenant. See s
   graphctl login [-f <service-key.json>]
   ```
 
-3. Generate the configuration file:
-
-  ```
-  graphctl generate config [-f <config.jsonc>]
-  ```
-
-4. Adapt the configuration if needed. A sample configuration file looks like this. Ensure that path field `/sap/opu/odata/sap/API_BUSINESS_PARTNER/` is specified along with the destination (created prior using SAP Extensibility Service) in configuration.
+3. Create a new file named **config.json** and copy the below configuration into it. Ensure that correct destination name (created prior using SAP Extensibility Service) is specified in the configuration.
 
 ```
 {
@@ -75,7 +69,7 @@ The graphctl command line tool is used to configure your SAP Graph tenant. See s
         "services": [
           {
             "destinationName": "<destination_name>",
-            "path": "/sap/opu/odata/sap/API_BUSINESS_PARTNER/"
+            "path": "sap/opu/odata/sap/API_BUSINESS_PARTNER"
           }
         ]
       }
@@ -101,15 +95,15 @@ The graphctl command line tool is used to configure your SAP Graph tenant. See s
   }
 ```
 
-5. Activate the configuration:
+5. Activate the configuration(using the JSON file **config.json** created in the previous step):
 
   ```
-  graphctl activate config -f <config.jsonc>
+  graphctl activate config -f <config.json>
   ```
 
   ![Graph Activation](./images/graphActivation.png)
 
-> If a business data graph with the same identifier already exists in the current landscape, activation will fail, unless the **--force** option is used to overwrite the same business data graph. <br /> <br /> graphctl activate config -f <config.jsonc> [--force]
+> If a business data graph with the same identifier already exists in the current landscape, activation will fail, unless the **--force** option is used to overwrite the same business data graph. <br /> <br /> graphctl activate config -f <config.json> [--force]
 
 See section [Configuration File](https://help.sap.com/viewer/84bbf6acb5384861add4cb6939bef647/PROD/en-US/56a40529c2ef42969dfc94c44e603bde.html) in the SAP Graph documentation for more details.
 

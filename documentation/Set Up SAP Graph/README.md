@@ -95,7 +95,7 @@ The graphctl command line tool is used to configure your SAP Graph tenant. See s
   }
 ```
 
-5. Activate the configuration(using the JSON file **config.json** created in the previous step):
+4. Activate the configuration(using the JSON file **config.json** created in the previous step):
 
   ```
   graphctl activate config -f <config.json>

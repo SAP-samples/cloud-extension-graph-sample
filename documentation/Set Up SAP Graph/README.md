@@ -13,7 +13,7 @@ It requires administrator authorization of SAP BTP.
 
 3. Select **SAP Graph** from the dropdown list for **Service**.
 
-4. Select **beta** as **Plan**.
+4. Select **free** as **Plan**.
 
 5. Enter a name for your instance.
 
@@ -33,11 +33,6 @@ It requires administrator authorization of SAP BTP.
 
 10. Share the previously downloaded service with the relevant user.
 
-Note:
-
-As SAP Graph is a beta feature, ensure that beta features are enabled in the subaccount.
-
-![enableBetaFeature](./images/enableBetaFeature.png)
 
 ## SAP Graph Configuration
 

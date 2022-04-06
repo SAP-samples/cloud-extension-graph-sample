@@ -31,7 +31,7 @@ The application requires the following set of SAP BTP [Entitlements and Quotas](
 | SAP HANA Schemas & HDI Containers | hdi-shared |          1          |
 | SAP HANA Cloud                    | hana       |          1          |
 | Cloud Foundry Runtime             | MEMORY     |          2          |
-| SAP Graph                         | beta       |          1          |
+| SAP Graph                         | free       |          1          |
 | SAP S/4HANA Cloud Extensibility   | api-access |          1          |
 | SAP S/4HANA Cloud Extensibility   | messaging  |          1          |
 

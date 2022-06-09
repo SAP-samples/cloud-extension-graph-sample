@@ -57,7 +57,7 @@ The graphctl command line tool is used to configure your SAP Graph tenant. See s
 ```
 {
     "businessDataGraphIdentifier": "v1",
-    "graphModelVersion": "1.0.0",
+    "graphModelVersion": "^v2",
     "dataSources": [
       {
         "name": "s4",

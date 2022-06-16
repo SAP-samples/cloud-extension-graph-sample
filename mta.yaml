@@ -24,6 +24,7 @@ modules:
    path: gen/srv
    parameters:
      buildpack: nodejs_buildpack
+     memory: 256M
    requires:
     # Resources extracted from CAP configuration
     - name: georel-graph-db
@@ -42,6 +43,7 @@ modules:
    path: gen/db  
    parameters:
      buildpack: nodejs_buildpack
+     memory: 256M
    requires:
     # 'hana' and 'xsuaa' resources extracted from CAP configuration
     - name: georel-graph-db

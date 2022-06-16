@@ -72,11 +72,11 @@ In case that you do not have a subaccount for SAP BTP in place you have to follo
 
 1. In [SAP BTP Cockpit](https://account.hana.ondemand.com/), open your global account.
 
-2. Create a Subaccount.
+2. Create a **Subaccount**.
 
-3. Enable Cloud Foundry for your new subaccount.
+3. Enable **Cloud Foundry** for your new subaccount.
 
-4. Create a Spac in your new subaccount.
+4. Create a **Space** in your new subaccount.
 
 See sections [Create a Subaccount](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/05280a123d3044ae97457a25b3013918.html?q=subaccount) and [Create Spaces](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/2f6ed22ccf424dae84345f4500c2d8ea.html) the  BTP documentation for more details.
 

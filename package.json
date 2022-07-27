@@ -32,7 +32,7 @@
     "features": {
       "fetch_csrf": true
     },
-    "log": {
+    "--log": {
       "levels": {
         "remote": "debug"
       }
@@ -90,7 +90,7 @@
         "model": "srv/external/sap.s4",
         "credentials": {
           "path": "/v1/sap.s4",
-          "destination": "graph-api-cc"
+          "destination": "graph-api"
         }
       },
       "sap.graph": {
@@ -98,7 +98,7 @@
         "model": "srv/external/sap.graph",
         "credentials": {
           "path": "/v1/sap.graph",
-          "destination": "graph-api-cc"
+          "destination": "graph-api"
         }
       },
       "sap.c4c": {
@@ -106,7 +106,7 @@
         "model": "srv/external/sap.c4c",
         "credentials": {
           "path": "/v1/sap.c4c",
-          "destination": "graph-api-cc"
+          "destination": "graph-api"
         }
       }
     },

@@ -1,10 +1,11 @@
-# Set Up Connectivity and Extensibility
+# Set Up SAP BTP and SAP S/4HANA Cloud
+## Set Up Connectivity and Extensibility
 
 To build extension applications for your SAP S/4HANA Cloud system, you need to connect your SAP S/4HANA Cloud system to your SAP BTP global account.
 
 ## Register Your SAP S/4HANA Cloud System
 
-To be able to do register your SAP S/4HANA Cloud system in your SAP BTP cockpit, in respect to authorizations, you must be:
+Register your SAP S/4HANA Cloud system in your SAP BTP cockpit, in respect to authorizations, you must be:
 - An administrator of the SAP BTP global account
 - An administrator of the SAP S/4HANA Cloud system
 
@@ -12,23 +13,21 @@ To be able to do register your SAP S/4HANA Cloud system in your SAP BTP cockpit,
 
 1. In your [SAP BTP Cockpit](https://account.hana.ondemand.com/), open your global account.
 
-2. In your global account, navigate to **System Landscape** &rarr; **Add System** in the left-hand pane.
+2. In your global account, navigate to **Services** &rarr; **Register System** in the left-hand pane.
 
-3. In the **Add System** popup, enter the **System Name** for the SAP S/4HANA Cloud system you want to connect.
+3. In the **Register System** popup, enter the **System Name** for the SAP S/4HANA Cloud system you want to connect.
 
-- Recommendation: Use a name that uniquely identifies this system.
+> Recommendation: Use a name that uniquely identifies this system.
 
  ![Register System](./images/setup1.png)
 
-4. In the dropdown list for **Type**, choose `SAP S/4HANA Cloud`.
-
-5. Choose **Register**.
-
-SAP BTP generates an integration token so the SAP S/4HANA Cloud system administrator can configure integration with the SAP BTP from your SAP S/4HANA Cloud system.
+4. In the dropdown list for **Type**, choose `SAP S/4HANA Cloud` and choose **Register**.
 
  ![Choose Register](./images/setup2.png)
 
-6. Copy the generated token and close the dialog box.
+> SAP BTP generates an integration token so the SAP S/4HANA Cloud system administrator can configure integration with the SAP BTP from your SAP S/4HANA Cloud system.
+
+5. Copy the generated token and close the dialog box.
 
  ![Token](./images/setup3.png)
 
@@ -36,27 +35,27 @@ SAP BTP generates an integration token so the SAP S/4HANA Cloud system administr
 
 1. Log in to your SAP S/4HANA Cloud tenant.
 
-2. Navigate from **Home** to **Communication Management** tab and choose the tile **Maintain Extensions on SAP BTP**.
+2. Navigate from **Home** to the **Communication Management** tab and choose the tile **Maintain Extensions on SAP BTP**.
 
  ![Maintain](./images/setup4.png)
 
-3. On **Maintain Extensions on SAP BTP** screen in the **Extensions** section, choose **New**.
+3. On **Maintain Extensions on SAP BTP** screen area in the **Extensions** section, choose **New**.
 
  ![New](./images/setup5.png)
 
-4. In the **Integration Token** field, paste in the integration token generated and copied from SAP BTP (see previous steps 5 and 6).
+4. In the **Integration Token** field, paste in the integration token generated and copied from SAP BTP (see previous step 5).
 
  ![Paste](./images/setup6.png)
 
 5. Enter a **Description** for your system integration token.
 
-- Recommendation: Use the same name you entered in SAP BTP when you generated the token in the previous step.
+> Recommendation: Use the same name you entered in SAP BTP when you generated the token in the previous step.
 
 6. Choose **Save**.
 
-- A new entry is displayed for your system in the table with the status *Enabling*.
+- A new entry is displayed for your system in the table with the status ***Enabling**.
 - Wait for a few seconds.
-- After the automated integration, the status of your system integration changes to *Enabled*.
+- After the automated integration, the status of your system integration changes to **Enabled**.
 - The same takes place on the SAP BTP side. Wait until the status displayed for your newly registered system switches to **Registered** – potentially you need to refresh your page.
 
 
@@ -78,15 +77,15 @@ In case that you do not have a subaccount for SAP BTP in place you have to follo
 
 4. Create a **Space** in your new subaccount.
 
-See sections [Create a Subaccount](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/05280a123d3044ae97457a25b3013918.html?q=subaccount) and [Create Spaces](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/2f6ed22ccf424dae84345f4500c2d8ea.html) the  BTP documentation for more details.
+> See sections [Create a Subaccount](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/05280a123d3044ae97457a25b3013918.html?q=subaccount) and [Create Spaces](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/2f6ed22ccf424dae84345f4500c2d8ea.html) in the SAP BTP documentation for more details.
 
 ## Set Up Entitlement for SAP S/4HANA Cloud Extensibility
 
-1. In the [SAP BTP Cockpit](https://account.hana.ondemand.com/), open your global account and navigate to **Entitlements** &rarr; **Subaccount Assignments**.
+1. In the [SAP BTP Cockpit](https://account.hana.ondemand.com/), open your global account and navigate to **Entitlements** &rarr; **Subaccount Assignments** in the left-hand pane.
 
  ![SAP BTP Cockpit](./images/setup7.png)
 
-2. In the Subaccounts dropdown list, select your subaccount and choose **Ok**.
+2. In the **Subaccounts** dropdown list, select your subaccount and choose **Ok**.
 
 3. Choose **Configure Entitlements** &rarr; **Add Service Plans**.
 
@@ -141,9 +140,7 @@ See sections [Create a Subaccount](https://help.sap.com/viewer/65de2977205c403bb
 
 5. Choose **Save**.
 
-**Check**
-
-Your service entitlements overview should look like this:
+> Your service entitlements overview should look like this:
 
  ![Screen](./images/setup14.png)
 
@@ -151,7 +148,7 @@ Your service entitlements overview should look like this:
 
 # Create Service Instances of SAP S/4HANA Cloud Extensibility Service with Service Plans
 
-To allow SAP BTP applications to consume events and APIs from SAP S/4HANA Cloud, you need to create the relevant service instances of SAP S/4HANA Cloud Extensibility for the service plans *api-access* and *messaging*.
+To allow SAP BTP applications to consume events and APIs from SAP S/4HANA Cloud, you need to create the relevant service instances of SAP S/4HANA Cloud Extensibility for the service plans **api-access** and **messaging**.
 
 ## Create Service Instance with Service Plan *messaging*
 
@@ -169,7 +166,7 @@ You need to create a new service instance of SAP S/4HANA Cloud Extensibility wit
 
 4. In the **New Instance or Subscription** wizard, select the **Service** *SAP S/4HANA Cloud Extensibility* with **plan** *messaging* from the dropdown lists. Choose a CLI-friendly **Instance Name** for your instance, for example, *georelmessaging*.
 
-   > You can freely choose the instance name. You would have to do a few changes in the provided code later on, so for simplicity it is recommended to stick to `georelmessaging` as this is the name we use in the code.
+   > You can freely choose the instance name. You would have to do a few changes in the provided code later on, so for simplicity it is recommended to stick to `georelmessaging` as this is the name you use in the code.
 
  ![Plan](./images/setup17.png)
 
@@ -199,7 +196,7 @@ You need to create a new service instance of SAP S/4HANA Cloud Extensibility wit
 
 You need to create a new service instance of SAP S/4HANA Cloud Extensibility with service plan *api-access* to access the BusinessPartner API and enable its usage.
 
-1. Go to your subaccount.
+1. Navigate to your subaccount.
 
 2. Navigate to **Service Marketplace** and choose **SAP S/4HANA Cloud Extensibility**.
 
@@ -218,7 +215,7 @@ You need to create a new service instance of SAP S/4HANA Cloud Extensibility wit
 
 6. Choose **Next**.
 
-7. In the **Specify Parameters** dialog box, you need to copy the following template and paste it into that box replacing the content filled in there automatically.
+7. In the **Specify the parameters in JSON format** dialog box, you need to copy the template from the next step and paste it into that box replacing the content filled in there automatically.
 
  ![Bupa](./images/setup22.png)
 
@@ -284,13 +281,13 @@ You need to create a new service instance of SAP S/4HANA Cloud Extensibility wit
 }
 ```
 
-See section [Communication Arrangement JSON File - Properties](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/553a4c6b98be4c1ba7d1dfa0e9df8669.html) in the SAP BTP documentation for more details.
+> See section [Communication Arrangement JSON File - Properties](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/553a4c6b98be4c1ba7d1dfa0e9df8669.html) in the SAP BTP documentation for more details.
 
 8. Choose **Next**.
 
 9. Choose **Create**.
 
-The newly created instance appears in the list of instances in the **Instance** panel.
+> The newly created instance appears in the list of instances in the **Instance** panel.
 
  ![Instance Appears](./images/setup23.png)
 

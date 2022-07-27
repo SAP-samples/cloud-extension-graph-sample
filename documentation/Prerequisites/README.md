@@ -9,7 +9,7 @@ This section contains the prerequisites that you would have to get started. Itâ€
 
 ## Prerequisites for Local Development
 
-* [Node.js](https://nodejs.org/en/download/). You can find the latest Node.js version supported by CAP [here](https://cap.cloud.sap/docs/advanced/troubleshooting#node-version)
+* [Node.js](https://nodejs.org/en/download/) - find the latest Node.js version supported by [CAP](https://cap.cloud.sap/docs/advanced/troubleshooting#node-version)
 * [Cloud Foundry Command Line Interface (CLI)](https://github.com/cloudfoundry/cli#downloads)
 * [Visual Studio Code](https://code.visualstudio.com/download) or another suitable IDE or editor of your choice
 * [SQLite](https://sqlite.org/download.html) (for Windows only). Find the steps how to install it in the CAP documentation in section [How Do I Install SQLite](https://cap.cloud.sap/docs/advanced/troubleshooting#how-do-i-install-sqlite-on-windows).
@@ -30,7 +30,7 @@ The application requires the following set of SAP BTP [Entitlements and Quotas](
 | Event Mesh                        | default    |          1          |
 | SAP HANA Schemas & HDI Containers | hdi-shared |          1          |
 | SAP HANA Cloud                    | hana       |          1          |
-| Cloud Foundry Runtime             | MEMORY     |          1          |
+| Cloud Foundry Runtime             | MEMORY     |          2          |
 | SAP Graph                         | free       |          1          |
 | SAP S/4HANA Cloud Extensibility   | api-access |          1          |
 | SAP S/4HANA Cloud Extensibility   | messaging  |          1          |
@@ -50,7 +50,7 @@ Optional Subscriptions:
 
 ## Prerequisites for SAP HANA Cloud
 
-Make sure that you have an instance of SAP HANA database in your space. For more details, see section [Create an SAP HANA Database Instance Using SAP HANA Cloud Central](https://help.sap.com/viewer/9ae9104a46f74a6583ce5182e7fb20cb/hanacloud/en-US/f7febb16072b41f7ac90abf5ea1d4b86.html) in the SAP HANA Cloud documentation.
+Make sure that you have an instance of SAP HANA database in your space. For more details, see section [Create an SAP HANA Database Instance Using SAP HANA Cloud Central](https://help.sap.com/docs/HANA_CLOUD/9ae9104a46f74a6583ce5182e7fb20cb/784a1dbb421a4da29fb1e3bdf5f198ec.html) in the SAP HANA Cloud documentation.
 
 ## Prerequisites for SAP S/4HANA Cloud
 
@@ -67,7 +67,12 @@ Make sure you have the following roles assigned to your user in the SAP S/4HANA 
 
     BR_EMPLOYEE (Employee)
 
+## Requirements in SAP Sales Cloud
 
+Make sure you have the following roles assigned to your user in the SAP Sales
+Cloud system:
+
+    (Administrator)
 
 
 

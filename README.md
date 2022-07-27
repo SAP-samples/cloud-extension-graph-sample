@@ -8,24 +8,31 @@
 
 Extend SAP S/4HANA Cloud on the SAP Business Technology Platform (SAP BTP) using state-of-the-art methodologies and technologies. Put an event-driven architecture into action, use the SAP Cloud Application Programming Model (CAP) for building on SAP S/4HANA Cloud events, and use SAP Graph to consume unified APIs to retrieve all the required information.
 
-The main intent of this scenario is to complement an existing business process in an SAP solution, which means, enhancing SAP S/4HANA Cloud with additional business process steps. This involves adding major logic and/or additional data and goes beyond simple UI changes.
+The main intent of this scenario is to complement an existing business process in an SAP solution, which means, enhancing SAP S/4HANA Cloud and SAP Sales Cloud with additional business process steps. This involves adding major logic and/or additional data and goes beyond simple UI changes.
 
 ## Business Scenario
 
-In specific focus regions, we would like to follow up with newly created customers or existing customers that have had their data updated in our SAP S/4HANA Cloud backend. External call center employees should do this follow-up for us by contacting relevant customers by phone. At the same time, the call center employees have no access to our SAP S/4HANA system. We, therefore, provide a custom-built extension application that is designed and optimized for the task and that is supplied with relevant data in real time using an event-driven approach.
+As a call centre employee of a premium beverage company called Icy Cool, John would like to get alerted when new retailer is onboarded as a customer in his region (e.g Canada) and view the customer address details. 
+
+John would then proceed to call the customer, understand specific requirements, followed by 
+- Identifying and assigning the sales employee to the account team (in SAP Sales Cloud)
+- Adding delivery unloading point (in SAP S/4HANA Cloud)
+- Updating the status of the customer(in extension application)
+
+Through this extension application, the beverage company ensures that the call centre employee can set up the desired master data in two SAP systems
 
 ![georel](./documentation/images/app.png)
 
 **Current Position - What is the challenge?**
 
 - Business Partner data available only in SAP S/4HANA system
-- Call center employees need access to SAP S/4HANA for their work
+- Call center employees need access to SAP S/4HANA and SAP Sales Cloud for their work
 - No custom UI for specific geo marketing use case
 
 **Destination - What is the outcome?**
 
 - Changes in SAP S/4HANA Cloud communicated via events in real time to extension application
-- Custom extension application works independently from SAP S/4HANA
+- Custom extension application works independently from SAP S/4HANA Cloud and SAP Sales cloud
 - Call center employees only need access to custom app
 
 **Development Challenges**
@@ -36,11 +43,9 @@ In specific focus regions, we would like to follow up with newly created custome
 
 - SAP Graph
 
-## Architecture
+## Solution Architecture
 
-### Solution Diagram
-
-The extension application is developed using the CAP and runs on the SAP BTP. It consumes platform services like SAP Event Mesh and SAP Graph services. The events generated in SAP S/4HANA Cloud are inserted into an SAP Event Mesh queue created by CAP. The application consumes these events and inserts relevant business partners into the local database. The extensions application uses SAP Graph APIs to read Business Partner data from the SAP S/4HANA Cloud system.
+The extension application is developed using the CAP and runs on the SAP BTP. It consumes platform services like SAP Event Mesh and SAP Graph services. The events generated in SAP S/4HANA Cloud are inserted into an SAP Event Mesh queue created by CAP. The application consumes these events and inserts relevant business partners into the local database. The extensions application uses SAP Graph unified APIs to read Business Partner data from the SAP S/4HANA Cloud and SAP Sales Cloud systems and update the relevant details back to the source system.
 
 ![Solution diagram](./documentation/images/solutiondiagram.png)
 
@@ -59,15 +64,18 @@ The tutorial focus on the following aspects:
 
 #### Step 1: [Prerequisites](./documentation/Prerequisites/README.md)
 
-#### Step 2: [Set Up Connectivity and Extensibility](./documentation/Set%20Up%20SAP%20BTP%20and%20S4HANA/README.md)
+#### Step 2: [Set Up SAP BTP and SAP S/4HANA Cloud](./documentation/Set%20Up%20SAP%20BTP%20and%20SAP%20S/4HANA/README.md)
 
-#### Step 3: [Set Up SAP Graph](./documentation/Set%20Up%20SAP%20Graph/README.md)
+#### step 3: [Set Up SAP BTP and SAP Sales Cloud](./documentation/Set%20Up%20SAP%20BTP%20and%20SAP%20Sales%20Cloud/README.md)
+#### Step 4: [Set Up SAP Graph](./documentation/Set%20Up%20SAP%20Graph/README.md)
 
-#### Step 4: [Install Geo Relations Application](./documentation/Install%20Application/README.md)
+#### Step 5: [Install Geo Relations Application](./documentation/Install%20Application/README.md)
 
-#### Step 5: [Configure and Run Application](./documentation/Configure%20and%20Run%20Application/README.md)
+#### Step 6: [Configure and Run Application](./documentation/Configure%20and%20Run%20Application/README.md)
 
-#### Step 6: [Execute Example Scenario](./documentation/Execute%20Example%20Scenario/README.md)
+#### Step 7: [Execute Example Scenario](./documentation/Execute%20Example%20Scenario/README.md)
+
+#### Step 8: (Optional) [Set Up Mock Server](./documentation/Set%20Up%20Mock%20Server/README.md)
 
 ## Known Issues
 
@@ -75,8 +83,8 @@ The tutorial is provided on the "as-is" basis. Currently, there are no known iss
 
 ## How to Obtain Support
 
-Create an issue to get support or to report a bug [here](https://github.com/SAP-samples/cloud-extension-graph-sample/issues).
+Create an issue to get support or to report a bug in [GitHub](https://github.com/SAP-samples/cloud-extension-graph-sample/issues).
 
 ## License
 
-Copyright (c) 2021 SAP SE or an SAP affiliate company. All rights reserved. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](LICENSES/Apache-2.0.txt) file.
+Copyright (c) 2022 SAP SE or an SAP affiliate company. All rights reserved. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](LICENSES/Apache-2.0.txt) file.

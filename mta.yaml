@@ -4,7 +4,7 @@
 ## approuter=
 _schema-version: '3.1'
 ID: georel-graph
-version: 1.0.0
+version: 2.0.0
 description: "A simple CAP project."
 parameters:
   enable-parallel-deployments: true
@@ -23,8 +23,8 @@ modules:
    type: nodejs
    path: gen/srv
    parameters:
-     buildpack: nodejs_buildpack
      memory: 256M
+     buildpack: nodejs_buildpack
    requires:
     # Resources extracted from CAP configuration
     - name: georel-graph-db
@@ -42,8 +42,8 @@ modules:
    type: hdb
    path: gen/db  
    parameters:
-     buildpack: nodejs_buildpack
      memory: 256M
+     buildpack: nodejs_buildpack
    requires:
     # 'hana' and 'xsuaa' resources extracted from CAP configuration
     - name: georel-graph-db

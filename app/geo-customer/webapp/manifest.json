@@ -7,7 +7,7 @@
         "applicationVersion": {
             "version": "1.0.0"
         },
-        "title": "Manage Geo Relations",
+        "title": "Manage Customer Geo Relations",
         "description": "CAP based application connected to S4H via events and Graph",
         "dataSources": {
             "mainService": {

@@ -1,0 +1,3 @@
+ObjectID;EmployeeID;UserID;BusinessPartnerFormattedName;CountryCode;City;MobilePhoneNumber;Email
+1;1;1;test;US;city;1234567890;test@test.com
+2;22;222;Bruce;US;city;1234567880;bruce@test.com

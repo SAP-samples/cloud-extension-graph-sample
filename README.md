@@ -47,7 +47,7 @@ Through this extension application, the beverage company ensures that the call c
 
 The extension application is developed using the CAP and runs on the SAP BTP. It consumes platform services like SAP Event Mesh and SAP Graph services. The events generated in SAP S/4HANA Cloud are inserted into an SAP Event Mesh queue created by CAP. The application consumes these events and inserts relevant business partners into the local database. The extensions application uses SAP Graph unified APIs to read Business Partner data from the SAP S/4HANA Cloud and SAP Sales Cloud systems and update the relevant details back to the source system.
 
-![Solution diagram](./documentation/images/solutiondiagram.png)
+![Solution diagram](./documentation/images/solutiondiagram-p2.png)
 
 ## Focus Topics of the Mission
 

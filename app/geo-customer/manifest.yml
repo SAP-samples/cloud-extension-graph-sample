@@ -7,7 +7,7 @@ applications:
   env:
     destinations: >
       [
-        {"name": "srv-binding", "url":"https://georel-graph-srv.cfapps.eu10.hana.ondemand.com", "forwardAuthToken": true}
+        {"name": "srv-binding", "url":"https://<service-url>", "forwardAuthToken": true}
       ]
   services:
-  - geo-uaa
+  - georel-graph-uaa

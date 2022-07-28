@@ -17,10 +17,11 @@ On top, the following properties of the business partner should be filled as wel
 
 After the creation of the Business Partner, a *BusinessPartner.created* event is fired that the app receives. As a payload the event contains the Business Partner ID. In a next step, the app calls the appropriate OData service on the SAP S/4HANA Cloud system, to obtain more information on the Business Partner.
 
-Then the app checks if the Business Partner is located in the US and has role *FLCU01*. If yes, the app creates an entry in the database. This entry contains the additional information on the Business Partner. All of this happens in the background without the user noticing.
+Then the app checks if the Business Partner is located in the U.S. and has role *FLCU01*. If yes, the app creates an entry in the database. This entry contains the additional information on the Business Partner. All of this happens in the background without the user noticing.
 
 At this point, the application’s user interface needs to be manually refreshed to see the new entry in the list. Clicking on the entry allows you to view the details, including technical information and URL of the specific Business Partner in the backend.
-On the details page, there’s an *Edit* button, which allows to switch to edit-mode. Fields for which the data retrieved from the backend are read-only. After customer care activities, the user of the app can change the customer status and processing status and these changes are stored in the database. The app automatically stores a draft of changes. After pressing save, the changes are written to the database.
+On the details page, there’s an *Edit* button, which allows to switch to edit-mode. Fields for which the data retrieved from the backend are read-only. Additionally, there are two fields `Account Team Responsible` and `Delivery Unloading Point`. You can choose `Account Team Responsible` from the list of employees data available in SAP Sales Cloud system. After pressing save, the entries of these fields are saved to the respective backend systems.
+After customer care activities, the user of the app can change the customer status and processing status and these changes are stored in the database. The app automatically stores a draft of changes. After pressing save, the changes are written to the database.
 
 ## Demo Script
 
@@ -44,9 +45,9 @@ cf apps
 
 6. Log in to the SAP S/4HANA Cloud system.
 
-7. Navigate to the *Manage Business Partner Master Data* transaction.
+7. Navigate to the *Manage Customer Master Data* transaction.
 
-8. Create a Business Partner with location DE (whichever country was specified in role) and role *FLCU01*. Provide a **Language** as well for the customer.
+8. Create a Business Partner/Customer of type *Organization* with location DE(whichever country was specified in role) and role *FLCU01*. Provide language, address, email, and phone number as well for the customer.
 
     ![Business Partner](./images/3.png)
 
@@ -56,8 +57,24 @@ cf apps
 
     ![Business Partner Details](./images/4.png)
 
-11. Check out the options that the Geo Relations app offers like changing a status.
+11. Add Account Team responsible for the Business Partner from the Sales Cloud system:
 
-12. Play around with the app.
+    ![Account Team](./images/5.png)
+
+12. Fill the Delivery Unloading point:
+
+    ![Delivery point](./images/6.png)
+
+13. Notice that the changes reflected back to the Business Partner in the SAP S/4HANA Cloud and SAP Sales Cloud system.
+
+    In SAP S/4HANA Cloud system:
+    ![S/4HANA](./images/7.png)
+
+    In SAP Sales Cloud system:
+    ![Sales Cloud](./images/8.png)
+
+14. Check out the options that the Geo Relations app offers like changing a status.
+
+15. Play around with the app.
 
 

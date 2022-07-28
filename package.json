@@ -1,18 +1,20 @@
 {
   "name": "georel-graph",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Application for Customer GeoRelation Processing",
   "repository": "<Add your repository here>",
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
-    "@sap/cds": "5.6.1",
+    "@sap/cds": "^6",
     "@sap/xb-msg-amqp-v100": "^0.9.53",
     "express": "^4",
     "hdb": "^0.18.3",
     "@sap/xssec": "^3.2.2",
     "@sap/audit-logging": "^5.0.0",
-    "passport": "^0.4.1"
+    "passport": "^0.4.1",
+    "@sap-cloud-sdk/http-client": "^2.5.0",
+    "@sap-cloud-sdk/util": "^2.5.0"
   },
   "devDependencies": {
     "sqlite3": "^5.0.2",
@@ -30,6 +32,11 @@
     "features": {
       "fetch_csrf": true
     },
+    "--log": {
+      "levels": {
+        "remote": "debug"
+      }
+    },
     "requires": {
       "messaging": {
         "kind": "local-messaging",
@@ -42,10 +49,23 @@
             "incomingSessionWindow": 30
           },
           "format": "cloudevents"
+        },
+        "[hybrid]": {
+          "kind": "enterprise-messaging-shared",
+          "queue": {
+            "name": "sap/geograph/1/georel-graph-srv/1234"
+          },
+          "amqp": {
+            "incomingSessionWindow": 30
+          },
+          "format": "cloudevents"
         }
       },
       "db": {
-        "kind": "sql"
+        "kind": "sql",
+        "--credentials": {
+          "database": "geo.db"
+        }
       },
       "uaa": {
         "kind": "xsuaa"
@@ -53,7 +73,7 @@
       "auth": {
         "kind": "dummy-auth"
       },
-      "[production]":{
+      "[production]": {
         "auth": {
           "kind": "jwt-auth"
         }
@@ -61,7 +81,7 @@
       "GRAPH_CC": {
         "kind": "odata",
         "credentials": {
-          "path": "sap.s4",
+          "path": "/v1/sap.s4",
           "destination": "graph-api-cc"
         }
       },
@@ -69,7 +89,23 @@
         "kind": "odata",
         "model": "srv/external/sap.s4",
         "credentials": {
-          "path": "sap.s4",
+          "path": "/v1/sap.s4",
+          "destination": "graph-api"
+        }
+      },
+      "sap.graph": {
+        "kind": "odata",
+        "model": "srv/external/sap.graph",
+        "credentials": {
+          "path": "/v1/sap.graph",
+          "destination": "graph-api"
+        }
+      },
+      "sap.c4c": {
+        "kind": "odata",
+        "model": "srv/external/sap.c4c",
+        "credentials": {
+          "path": "/v1/sap.c4c",
           "destination": "graph-api"
         }
       }

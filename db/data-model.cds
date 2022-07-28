@@ -12,6 +12,9 @@ entity CustomerProcesses {
       customerMail       : String;
       customerCity       : String;
       comment            : String(1111);
+      deliveryPoint      : String;
+      cxsalesId          : String;
+      cxsalesObjectId    : String;
       criticality        : Integer default 1;
       backendEventTime   : Timestamp @cds.on.insert : $now;
       backendUrl         : String;
@@ -20,7 +23,6 @@ entity CustomerProcesses {
       status             : Association to Status;
       customerCondition  : Association to Conditions;
 };
-
 entity Conditions : CodeList {
   key conditionId : Integer;
       criticality : Integer;

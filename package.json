@@ -90,7 +90,7 @@
         "model": "srv/external/sap.s4",
         "credentials": {
           "path": "/v1/sap.s4",
-          "destination": "graph-api"
+          "destination": "graph-api-cc"
         }
       },
       "sap.graph": {
@@ -106,7 +106,7 @@
         "model": "srv/external/sap.c4c",
         "credentials": {
           "path": "/v1/sap.c4c",
-          "destination": "graph-api"
+          "destination": "graph-api-cc"
         }
       }
     },

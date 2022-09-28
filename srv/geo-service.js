@@ -46,17 +46,22 @@ module.exports = cds.service.impl(async (srv) => {
 
 
   updateBPCountry = async (customerId) => {
-    const bp = await graphCC.run(
-      SELECT.one(BusinessPartnerAddress)
-        //.from(BusinessPartnerAddress)
-        .where({ customerId })
-    );
-    if (!bp) return;
+
+    const bupa = await graphCC.run(
+      SELECT.one(BusinessPartner, (bp) => {
+          bp.to_BusinessPartnerAddress(address => {
+            address('customerCountry')
+          })
+      }).where({ customerId })
+    )
+    if (!bupa) return;
+    let {to_BusinessPartnerAddress:[{customerCountry}]} = bupa
+    if (!customerCountry) return
     await UPDATE(Customers)
       .where({ customerId })
-      .with({ customerCountry: bp.customerCountry });
+      .with({ customerCountry });
     LOG.info("-- Updated Customer with Country --");
-    return bp;
+    return bupa;
   };
 
   srv.on("READ", Customers, async (req, next) => {
@@ -180,7 +185,8 @@ async function prepareExpandedQuery(sapGraph, CorporateAccount, bpIDs) {
           bp.to_Customer(cust => {
             cust.to_CustomerUnloadingPoint(point => {
               point('*');
-            }).where({ 'IsDfltBPUnloadingPoint': true });
+            })
+            // .where({ 'IsDfltBPUnloadingPoint': true });
           });
       }),
       c._c4c(cx => {

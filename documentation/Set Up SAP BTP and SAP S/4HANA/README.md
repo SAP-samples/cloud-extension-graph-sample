@@ -13,15 +13,15 @@ Register your SAP S/4HANA Cloud system in your SAP BTP cockpit, in respect to au
 
 1. In your [SAP BTP Cockpit](https://account.hana.ondemand.com/), open your global account.
 
-2. In your global account, navigate to **Services** &rarr; **Register System** in the left-hand pane.
+2. In your global account, navigate to **System Landscape** in the left-hand pane and click on **Add System**
 
-3. In the **Register System** popup, enter the **System Name** for the SAP S/4HANA Cloud system you want to connect.
+3. In the **Add System** popup, enter the **System Name** for the SAP S/4HANA Cloud system you want to connect.
 
 > Recommendation: Use a name that uniquely identifies this system.
 
  ![Register System](./images/setup1.png)
 
-4. In the dropdown list for **Type**, choose `SAP S/4HANA Cloud` and choose **Register**.
+4. In the dropdown list for **Type**, choose `SAP S/4HANA Cloud` and choose **Add**.
 
  ![Choose Register](./images/setup2.png)
 

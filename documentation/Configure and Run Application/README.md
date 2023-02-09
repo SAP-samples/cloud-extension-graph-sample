@@ -9,6 +9,8 @@ Find the *manifest.yaml* and *services-manifest.yml* files in your installation 
 
  ![Services](./images/run2.png)
 
+> Note: Make sure to adapt the application security descriptor ([xs-security.json](../../xs-security.json)) with `redirect-uris` parameter to restrict access as much as possible depending on the ladscape domain as mentioned in the [official documentation](https://help.sap.com/docs/BTP/65de2977205c403bbc107264b8eccf4b/f117cab6b92d438cb2a0b5204713994b.html?q=security%20considerations#listing-allowed-redirect-uris).
+
 # Deployment
 
 You will use the Cloud Foundry Command Line Interface (CLI) for the deployment. In case you have not installed it yet do it as mentioned in the [Prerequisites](../Prerequisites/README.md).

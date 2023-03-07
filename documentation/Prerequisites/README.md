@@ -2,26 +2,25 @@
 
 This section contains the prerequisites that you would have to get started. It’s likely that you have some of the software already installed, so you can just skip those steps.
 
-## Prerequisites in General
+## Systems and Accounts
 
 * [SAP S/4HANA Cloud](https://help.sap.com/viewer/product/SAP_S4HANA_CLOUD/2111.501/en-US?task=discover_task) system
-* SAP BTP Cloud Foundry [global account](https://help.sap.com/products/BTP/65de2977205c403bbc107264b8eccf4b/8ed4a705efa0431b910056c0acdbf377.html?locale=en-US#loioc165d95ee700407eb181770901caec94). SAP BTP trial accounts are not supported.
+* [Enterprise global account](https://help.sap.com/products/BTP/65de2977205c403bbc107264b8eccf4b/8ed4a705efa0431b910056c0acdbf377.html?locale=en-US#loioc165d95ee700407eb181770901caec94) in SAP BTP with SAP BTP, Cloud Foundry enrivonment enabled. Trial accounts in SAP BTP are not supported.
 
-## Prerequisites for Local Development
+## For Local Development
 
 * [Node.js](https://nodejs.org/en/download/) - find the latest Node.js version supported by [CAP](https://cap.cloud.sap/docs/advanced/troubleshooting#node-version)
 * [Cloud Foundry Command Line Interface (CLI)](https://github.com/cloudfoundry/cli#downloads)
 * [Visual Studio Code](https://code.visualstudio.com/download) or another suitable IDE or editor of your choice
 * [SQLite](https://sqlite.org/download.html) (for Windows only). Find the steps how to install it in the CAP documentation in section [How Do I Install SQLite](https://cap.cloud.sap/docs/advanced/troubleshooting#how-do-i-install-sqlite-on-windows).
 
-## Prerequisites for SAP BTP
+## On SAP BTP Side
 
-* SAP BTP Cloud Foundry [global account](https://help.sap.com/products/BTP/65de2977205c403bbc107264b8eccf4b/8ed4a705efa0431b910056c0acdbf377.html?locale=en-US#loioc165d95ee700407eb181770901caec94). SAP BTP trial accounts are not supported.
-* SAP BTP [subaccount](https://help.sap.com/products/BTP/65de2977205c403bbc107264b8eccf4b/8ed4a705efa0431b910056c0acdbf377.html?locale=en-US#loio8d6e3a0fa4ab43e4a421d3ed08128afa)
-* SAP BTP space
+* [Subaccount](https://help.sap.com/products/BTP/65de2977205c403bbc107264b8eccf4b/8ed4a705efa0431b910056c0acdbf377.html?locale=en-US#loio8d6e3a0fa4ab43e4a421d3ed08128afa) in SAP BTP
+* Cloud Foundry Space in SAP BTP
 
 
-### Entitlements
+### Services in SAP BTP and Entitlements
 
 The application requires the following set of SAP BTP [Entitlements and Quotas](https://help.sap.com/products/BTP/65de2977205c403bbc107264b8eccf4b/00aa2c23479d42568b18882b1ca90d79.html?locale=en-US):
 
@@ -48,11 +47,11 @@ Optional Subscriptions:
 
 [SAP Event Mesh](https://help.sap.com/viewer/product/SAP_EM/Cloud/en-US) is a fully managed cloud service that allows applications to communicate through asynchronous events. Create responsive applications that work independently and participate in event-driven business processes across your business ecosystem for greater agility and scalability.
 
-## Prerequisites for SAP HANA Cloud
+## On SAP HANA Cloud Side
 
-Make sure that you have an instance of SAP HANA database in your space. For more details, see section [Create an SAP HANA Database Instance Using SAP HANA Cloud Central](https://help.sap.com/docs/HANA_CLOUD/9ae9104a46f74a6583ce5182e7fb20cb/784a1dbb421a4da29fb1e3bdf5f198ec.html) in the SAP HANA Cloud documentation.
+Make sure that you have an instance of SAP HANA database in your space. For more details, see section [Create an SAP HANA Database Instance Using SAP HANA Cloud Central](https://help.sap.com/docs/HANA_CLOUD/9ae9104a46f74a6583ce5182e7fb20cb/92c59db648b940f48105d62a34f099fc.html) in the SAP HANA Cloud documentation.
 
-## Prerequisites for SAP S/4HANA Cloud
+## On SAP S/4HANA Cloud Side
 
 Make sure you have the following roles assigned to your user in the SAP S/4HANA Cloud system:
 
@@ -67,12 +66,10 @@ Make sure you have the following roles assigned to your user in the SAP S/4HANA 
 
     BR_EMPLOYEE (Employee)
 
-## Requirements in SAP Sales Cloud
+## On SAP Sales Cloud Side
 
-Make sure you have the following roles assigned to your user in the SAP Sales
-Cloud system:
+Make sure you have the **Administrator** role assigned to your user in the SAP Sales Cloud system.
 
-    (Administrator)
 
 
 

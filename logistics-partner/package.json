@@ -1,0 +1,52 @@
+{
+  "name": "logistics-partner",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap/cds": ">=5",
+    "express": "^4",
+    "sqlite3": "^5.0.4"
+  },
+  "devDependencies": {
+    "@sap/ux-specification": "^1.102.14",
+    "sqlite3": "^5.0.4"
+  },
+  "scripts": {
+    "start": "NODE_ENV=development cds run --with-mocks --in-memory"
+  },
+  "engines": {
+    "node": "^14.18.0"
+  },
+  "eslintConfig": {
+    "extends": "eslint:recommended",
+    "env": {
+      "es2020": true,
+      "node": true,
+      "jest": true,
+      "mocha": true
+    },
+    "globals": {
+      "SELECT": true,
+      "INSERT": true,
+      "UPDATE": true,
+      "DELETE": true,
+      "CREATE": true,
+      "DROP": true,
+      "CDL": true,
+      "CQL": true,
+      "CXL": true,
+      "cds": true
+    },
+    "rules": {
+      "no-console": "off",
+      "require-atomic-updates": "off"
+    }
+  },
+  "sapux": [
+    "app/logistics",
+    "app/logistics"
+  ]
+}

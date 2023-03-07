@@ -11,9 +11,9 @@
                 defaultRenderer: 'fiori2',
                 applications: {
                     'fe-lrop-v4': {
-                        title: 'Geo Customer Relations',
-                        description: 'Manage Customer Processs',
-                        additionalInformation: 'SAPUI5.Component=geocustomer',
+                        title: 'Logistics',
+                        description: 'A Fiori application.',
+                        additionalInformation: 'SAPUI5.Component=logistics',
                         applicationType: 'URL',
                         url: './',
                         navigationMode: 'embedded'
@@ -22,15 +22,15 @@
             };
         </script>
 
-<script src="https://sapui5.hana.ondemand.com/1.95.0/test-resources/sap/ushell/bootstrap/sandbox.js"></script>
-<script
-    src="https://sapui5.hana.ondemand.com/1.95.0/resources/sap-ui-core.js"
-    data-sap-ui-libs="sap.m, sap.ushell, sap.ui.core, sap.f, sap.ui.table, sap.ui.layout"
-    data-sap-ui-compatVersion="edge"
-    data-sap-ui-theme="sap_fiori_3"
-    data-sap-ui-frameOptions="allow"
-    data-sap-ui-bindingSyntax="complex"
-></script>
+        <script src="https://sapui5.hana.ondemand.com/test-resources/sap/ushell/bootstrap/sandbox.js"></script>
+        <script
+            src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+            data-sap-ui-libs="sap.m, sap.ushell, sap.fe.templates"
+            data-sap-ui-compatVersion="edge"
+            data-sap-ui-theme="sap_fiori_3"
+            data-sap-ui-frameOptions="allow"
+            data-sap-ui-bindingSyntax="complex"
+        ></script>
         <script>
             sap.ui.getCore().attachInit(function() {
                 sap.ushell.Container.createRenderer().placeAt('content');

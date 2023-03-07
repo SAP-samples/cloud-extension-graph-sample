@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="../sap.s4/$metadata">
+        <edmx:Include Namespace="sap.s4"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Graph.xml">
+        <edmx:Include Alias="Graph" Namespace="com.sap.vocabularies.Graph.v1"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="custom.ns" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <EntityContainer Name="EntityContainer">
+                <EntitySet Name="Logistics" EntityType="custom.ns.Logistics"/>
+            </EntityContainer>
+            <EntityType Name="Logistics">
+                <Key>
+                    <PropertyRef Name="displayId"/>
+                </Key>
+                <Property Name="displayId" Type="Edm.String" Nullable="false"/>
+                <Property Name="customerId" Type="Edm.String"/>
+                <Property Name="status" Type="Edm.String"/>
+                <Property Name="title" Type="Edm.String"/>
+                <Property Name="criticality" Type="Edm.Int32"/>
+                <Property Name="deliveryPartner" Type="Edm.String"/>
+                <Property Name="expectedDelivery" Type="Edm.DateTimeOffset"/>
+                <NavigationProperty Name="_businessPartner" Type="sap.s4.A_BusinessPartner"/>
+                <Property Name="name" Type="Edm.String"/>
+            </EntityType>
+            <Annotation Term="Core.SchemaVersion" String="1"/>
+            <Annotations Target="custom.ns.Logistics">
+                <Annotation Term="Graph.CompositionRoot" Bool="true"/>
+                <Annotation Term="Graph.Projection" Bool="true"/>
+                <Annotation Term="Common.Label" String="Logistics"/>
+                <Annotation Term="Core.Description" String="Logistics partner with delivery details of artifacts to the customers"/>
+            </Annotations>
+            <Annotations Target="custom.ns.Logistics/displayId">
+                <Annotation Term="Core.Description" String="Qualified identifier"/>
+            </Annotations>
+            <Annotations Target="custom.ns.Logistics/customerId">
+                <Annotation Term="Core.Description" String="A unique identifier that represents a customer."/>
+            </Annotations>
+            <Annotations Target="custom.ns.Logistics/expectedDelivery">
+                <Annotation Term="Core.Description" String="Date and time the delivery is expected."/>
+            </Annotations>
+            <Annotations Target="custom.ns.Logistics/name">
+                <Annotation Term="Core.Computed" Bool="true"/>
+            </Annotations>
+            <Annotations Target="custom.ns.EntityContainer">
+                <Annotation Term="Capabilities.KeyAsSegmentSupported" Bool="true"/>
+                <Annotation Term="Common.Label" String="Graph service for custom.ns"/>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

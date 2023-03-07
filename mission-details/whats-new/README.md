@@ -7,7 +7,7 @@
         * Updated code structure to showcase new features (old structure is still available under the branch `phase1`)
         * New section on how to configure connection to SAP Sales Cloud
         * Consumption of data using the `unified` entities of Business Data Graph
-        * Write back to the SAP systems (SAP S/4HANA Cloud, SAP Sales Cloud) using native entities
+        * Write back to the SAP systems (SAP S/4HANA Cloud, SAP Sales Cloud) using unified entities
 
 ## 2021-12-23
 

@@ -1,5 +1,15 @@
 # What's New
 
+## 2023-03-13
+
+    > note: This release brings changes to the existing mission with additional SAP Graph capabilities.
+
+        * SAP Graph Custom extension showcase.
+        * Creation of custom unified entities - `Logistics Partner`.
+        * New Section in the details page for logistics information.
+        * Solution diagram update.
+        * Logistics Partner module.
+
 ## 2022-07-15
 
     > Important note: This release brings major changes to the existing mission.

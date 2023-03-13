@@ -12,7 +12,7 @@ git clone https://github.com/SAP-samples/cloud-extension-ecc-business-process -b
 
 ## Deployment
 
-You will use the Cloud Foundry Command Line Interface (CLI) for the deployment. In case you have not installed it yet, follow the steps described in [GitHub](https://github.com/cloudfoundry/cli#downloads).
+You will use the Cloud Foundry Command Line Interface (cf CLI) for the deployment. In case you have not installed it yet, follow the steps described in [GitHub](https://github.com/cloudfoundry/cli#downloads).
 
 To deploy the application, perform the following steps:
 
@@ -24,38 +24,44 @@ To deploy the application, perform the following steps:
 cf login -sso
 ```
 
-Or alternatively
+    Alternatively, run this command:
 
 ```
 cf login
 ```
 
-3. Log in to the account and space with `cf login`.
+3. Navigate to the folder `Mock application folder` that you have cloned from the GitHub in the previous step.
 
-4. Navigate to the folder >installation folder</
+### Deploy the Application Using MTA
 
-### Deploy Application (Using MTA)
+#### Set Up the MultiApps CF CLI Plugin
 
-#### Set Up Plugin
+> If you are using SAP Business Application Studio, skip the following steps. 
 
-> The following installation steps are not needed if you are using SAP Business Application Studio.
+1. To build the multitarget application, you need to [download](https://sap.github.io/cloud-mta-build-tool/download/) the [Cloud MTA Build Tool (MBT)](https://sap.github.io/cloud-mta-build-tool/).
 
-- To build the multitarget application, you need to [download](https://sap.github.io/cloud-mta-build-tool/download/) the [Cloud MTA Build Tool (MBT)](https://sap.github.io/cloud-mta-build-tool/).
+2. For Windows, install [MAKE](https://www.gnu.org/software/make/).
 
-- For Windows, install [MAKE](https://www.gnu.org/software/make/).
+3. To install the [MultiApps CF CLI Plugin](https://github.com/cloudfoundry-incubator/multiapps-cli-plugin), run the following command: 
 
-- To install the [MultiApps CF CLI Plugin](https://github.com/cloudfoundry-incubator/multiapps-cli-plugin), run the following command: `cf install-plugin multiapps`
+`cf install-plugin multiapps`
 
-- To install MBT, run the following command: `npm install -g mbt`
+4. To install the Cloud MTA Build Tool, run the following command: 
+
+`npm install -g mbt`
 
 
 #### Build Application
+
+To build the application, run this command: 
 
 ```
 mbt build
 ```
 
 #### Deploy Application
+
+To deploy the application, run this command: 
 
 ```
 cf deploy <path/to/mtar>
@@ -67,31 +73,31 @@ To receive the events in the SAP Event Mesh queue, bind the same Georel applicat
 
 Run the following command from the terminal:
 
-    `cf bs mock-srv georel-graph-em && cf restart mock-srv`
+`cf bs mock-srv georel-graph-em && cf restart mock-srv`
 
-### Set Up Destination in SAP BTP
+### Set Up the Destination in the SAP BTP Cockpit
 
-You need to configure two destinations for your SAP Sales Cloud System mock and the SAP S/4HANA Cloud system mock, which would be used for SAP Graph configuration in the next steps.
+You need to configure two destinations for your SAP Sales Cloud system mock and the SAP S/4HANA Cloud system mock, which would be used for the SAP Graph configuration in the next steps.
 
-1. Open your SAP BTP account and navigate to your **Subaccount**.
+1. Open the SAP BTP cockpit, go to your global account and navigate to your subaccount.
 
-2. Choose **Connectivity** in the menu on the left then choose **Destinations** &rarr; **New Destination**.
+2. Choose **Connectivity** in the left-hand navigation, and then choose **Destinations** &rarr; **New Destination**.
 
-3. Enter the following information for the first destination to the Destination Configuration and **Save** your input:
+3. Enter the following information for the first destination in the **Destination Configuration** section and save your input:
 
     - Name: `graph-c4c-dest`
     - URL: `https://<mock_srv_url>/v2/c4codata`
     - Authentication: `No Authentication`
 
-4. Again, choose **Destinations** &rarr; **New Destination** and enter the following information for the second destination and **Save** your input:
+4. Again, choose **Destinations** &rarr; **New Destination** and enter the following information for the second destination and save your input:
 
     - Name: `bupa`
     - URL: `https://<mock_srv_url>/v2/api-business-partner`
     - Authentication: `No Authentication`
 
-### Adjust Setup in SAP Graph
+### Adjust the Configuration in SAP Graph
 
-Modify the setup in SAP Graph in [Step 3](../Set%20Up%20SAP%20Graph/README.md#sap-graph-configuration)
+Adjust the configuration in SAP Graph in [Step 3](../Set%20Up%20SAP%20Graph/README.md#sap-graph-configuration).
 
 Remove the `path` parameter from the graph configuration and also adjust the destination names provided for the mock APIs in the previous step.
 
@@ -99,11 +105,11 @@ Remove the `path` parameter from the graph configuration and also adjust the des
 
 1. In the command line interface, run the command `cf apps`.
 
-2. Find the URL for the Geo Relations app (`geo-customer-ui`) - this is the launch URL for the Geo Relations application.
+2. Find the URL for the Geo Relations app (`geo-customer-ui`). This is the launch URL for the Geo Relations application.
 
 3. Open the URL in a browser.
 
-4. Choose the tile for **Geo Relations** app.
+4. Choose the tile for **Geo Relations** application.
 
 ![fiori tile](../Execute%20Example%20Scenario/images/1.png)
 
@@ -143,11 +149,11 @@ POST https://<mock_srv_url>/v2/api-business-partner/A_BusinessPartner
 
 7. Now, go back to the Geo Relations application to see if the new Business Partner has been updated in the UI.
 
-8. Go to the details page for the new Business Partner. Choose *Edit*.
+8. Go to the details page for the new Business Partner. Choose **Edit**.
 
 ![Business Partner Details](../Execute%20Example%20Scenario/images/4.png)
 
-9. Add Account Team responsible for the Business Partner from the Sales Cloud system.
+9. Add Account Team responsible for the Business Partner from the SAP Sales Cloud system.
 
     ![Account Team](../Execute%20Example%20Scenario/images/5.png)
 
@@ -174,6 +180,32 @@ GET https://<mock_srv_url>/v2/c4codata/CorporateAccountCollection('<OBJECT_ID>')
 
 Replace `mock_srv_url` and `OBJECT_ID` accordingly.
 
-12. Check out the options that the Geo Relations app offers like changing a status.
+12. Open `Logistics Information` section and notice the shipment details.
 
-13. Play around with the app.
+    ![Logistics tab](./images/9.png)
+
+    In the next step, lets add the **Delivery Partner**, **Expected Delievery** and **Shipment Status** in the Logistics partner application to see whether the changes reflect in the Geo Customer relation application.
+
+13. Open the `Logistics Partner` application that we deployed in the [earlier](../Set%20Up%20Logistics%20Partner%20app%20/README.md) chapter.
+
+    ![Logistics partner app](./images/10.png)
+
+    Open the web application.
+
+14. Find the `customerId` in the list and go to the details page.
+
+    ![Logistics partner list](./images/11.png)
+
+15. Edit the information and add/change the fields.
+
+    ![Logistics partner details](./images/12.png)
+
+    Save the changes.
+
+16. Refresh the Geo customer relation application to see the latest updates.
+
+    ![Geo customer logistics](./images/13.png)
+
+17. Check out the options that the Geo Relations app offers like changing a status.
+
+18. Play around with the application.

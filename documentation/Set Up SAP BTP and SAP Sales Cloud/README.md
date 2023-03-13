@@ -1,14 +1,13 @@
 # Set Up SAP BTP and SAP Sales Cloud
-## Set Up Communication Arrangements in Sales Cloud System
+## Set Up Communication Arrangements in the Sales Cloud System
 
-To build extension applications for your SAP Sales Cloud system, you need to connect your SAP Sales Cloud system to your SAP BTP account.
+To build extension applications for your SAP Sales Cloud system, you need to connect your SAP Sales Cloud system to your global account in SAP BTP.
 
-To be able to do this, in respect to authorizations, you must be:
+To be able to do this, you must be:
 
-- An administrator of the SAP BTP global account
+- An administrator of the global account in SAP BTP 
 
 - An administrator of the SAP Sales Cloud system
-
 
 ## Set Up Communication System
 
@@ -18,17 +17,17 @@ To be able to do this, in respect to authorizations, you must be:
 
 3. Choose **New** to create a new communication system.
 
-4. For **ID** enter *TRIAL_TECH_SYSTEM_USER*.
+4. In the **ID** field, enter *TRIAL_TECH_SYSTEM_USER*. Remember this ID.
 
-5. For **Hostname** enter *ODATA_ACCESS*.
+5. In the **Hostname** field, enter *ODATA_ACCESS*.
 
-6. For **System Access Type** choose **Internet**.
+6. In the **System Access Type** field, select **Internet**.
 
     ![Setup System](./images/setup1.png)
 
-7. In the **System instances** view choose **Add Row**.
+7. In the **System instances** view, choose **Add Row**.
 
-8. For **System Instance ID** enter *TRIAL_TECH_SYSTEM_USER*.
+8. In the **System Instance ID** field, enter *TRIAL_TECH_SYSTEM_USER*.
 
     ![Setup System2](./images/setup2.png)
 
@@ -46,7 +45,7 @@ To be able to do this, in respect to authorizations, you must be:
 
 4. Choose **Next** in the footer menu.
 
-5. For **System Instance ID**, choose the communication system name given in the previous step **TRIAL_TECH_SYSTEM_USER**.
+5. In the **System Instance ID** field, choose the communication system name given in the previous step that is **TRIAL_TECH_SYSTEM_USER**.
 
     ![setup System3](./images/setup3.png)
 
@@ -68,19 +67,19 @@ To be able to do this, in respect to authorizations, you must be:
     - employeebasicdata
     - objectidentifiermapping
 
-12. Choose **Next** and **Finish** the setup.
+12. Choose **Next** and then **Finish**.
 
     ![Setup System4](./images/setup4.png)
 
 ## Configure Destination in SAP BTP
 
-You need to configure a destination for your SAP Sales Cloud System, which would be used for Graph configuration in the next steps.
+You need to configure a destination for your SAP Sales Cloud system, which would be used for Graph configuration in the next steps.
 
-1. Open your SAP BTP global account and navigate to your **Subaccount**.
+1. Open your global account in SAP BTP and navigate to your subaccount.
 
-2. Choose **Connectivity** in the menu on the left then choose **Destinations** &rarr; **New Destination**.
+2. Choose **Connectivity** in the left-hand navigation and then choose **Destinations** &rarr; **New Destination**.
 
-3. Enter the following information to the **Destination Configuration** view:
+3. Enter the following information in the **Destination Configuration** view:
 
     - Name: `graph-c4c-dest`
     - URL: `https://<SAP_Sales_Cloud_API>/sap/c4c/odata/v1/c4codataapi`
@@ -90,7 +89,7 @@ You need to configure a destination for your SAP Sales Cloud System, which would
 
     ![Setup System5](./images/setup5.png)
 
-## Set Up Communication System for mapping Business System
+## Set Up the Communication System for the Mapping Business System
 
 1. Log on to your SAP Sales Cloud tenant.
 
@@ -98,17 +97,15 @@ You need to configure a destination for your SAP Sales Cloud System, which would
 
 3. Choose **New** to create a new communication system.
 
-4. For **ID** enter *GRAPH_S4*.
+4. In the **ID** field, enter *GRAPH_S4*.
 
-5. For **Hostname** enter *S4_HANA*.
+5. In the **Hostname** field, enter *S4_HANA*.
 
-6. For **System Access Type** choose **Internet**.
+6. In the **System Access Type** field, choose **Internet**.
 
+7. In the **System instances** view, choose **Add Row**.
 
-7. In the **System instances** view choose **Add Row**.
-
-8. For **System Instance ID** enter *GRAPH_S4*.
-
+8. In the **System Instance ID** field, enter *GRAPH_S4*.
 
 9. In the menu bar on top, choose **Actions** &rarr; **Set to Active**.
 

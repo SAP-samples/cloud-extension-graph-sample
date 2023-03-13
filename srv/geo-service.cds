@@ -5,6 +5,8 @@ using {sap.graph as graph } from './external/sap.graph';
 
 using {sap.c4c as cxsales} from './external/sap.c4c';
 
+using {custom.ns as delivery} from './external/custom.ns';
+
 service GeoService  @(requires:'authenticated-user') {
 
     extend my.CustomerProcesses with {
@@ -22,6 +24,8 @@ service GeoService  @(requires:'authenticated-user') {
     entity Conditions @readonly as projection on my.Conditions;
    
     entity Status @readonly as projection on my.Status;
+
+    entity Logistics as projection on my.Logistics;
 
     entity BusinessPartner as projection on external.A_BusinessPartner {
         key BusinessPartner         as customerId,
@@ -93,6 +97,8 @@ service GeoService  @(requires:'authenticated-user') {
        MobilePhoneNumber as phone,
        Email as email
    }
+
+   entity LogisticsPartner as projection on delivery.Logistics;
     
 
 }

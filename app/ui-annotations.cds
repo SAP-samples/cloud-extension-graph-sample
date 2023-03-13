@@ -27,6 +27,40 @@ annotate my.CustomerProcesses with @(
   
 );
 
+annotate my.Logistics with @(
+
+  UI.LineItem: [ 
+    {$Type: 'UI.DataField', Value: displayId},
+    {$Type: 'UI.DataField', Value: title},
+	{$Type: 'UI.DataField', Value: deliveryPartner},
+	{$Type: 'UI.DataField', Value: expectedDelivery},
+	{$Type: 'UI.DataField', Value: status, Criticality: criticality}
+  ],
+
+  UI.HeaderInfo: {
+    Title: { Value: displayId },
+    Description: { Value: title},
+    TypeName:'{i18n>type_logistics}', 
+    TypeNamePlural:'{i18n>type_logistics_plural}',
+    TypeImageUrl: 'sap-icon://customer'
+  },
+  
+  UI.Identification: [
+    {$Type: 'UI.DataField', Value: displayId},
+    {$Type: 'UI.DataField', Value: status}
+  ],
+
+  
+);
+
+annotate my.Logistics with {
+	displayId @title: '{i18n>shipment_id}';
+	title @title: '{i18n>shipment_title}';
+	expectedDelivery @title: '{i18n>expectedDelivery}';
+	deliveryPartner @title: '{i18n>deliveryPartner}';
+	status @title: '{i18n>shipment_status}';
+}
+
 annotate my.CustomerProcesses @(
     Capabilities: {
         Insertable : false
@@ -181,7 +215,8 @@ annotate service.CustomerProcesses with @(
 		Facets: [
 			{$Type: 'UI.ReferenceFacet', Label: '{i18n>facet_label_customer_details}', Target: '@UI.FieldGroup#BuPaInfo'},
 			{$Type: 'UI.ReferenceFacet', Label: '{i18n>facet_label_manage_relations}', Target: '@UI.FieldGroup#Relation'},
-			{$Type: 'UI.ReferenceFacet', Label: '{i18n>facet_label_technical_info}', Target: '@UI.FieldGroup#TechnicalData'}		
+			{$Type: 'UI.ReferenceFacet', Label: '{i18n>facet_label_technical_info}', Target: '@UI.FieldGroup#TechnicalData'},
+			{$Type: 'UI.ReferenceFacet', Label: '{i18n>facet_label_shipment}', Target: '_logistics/@UI.LineItem'}		
 		],
 		FieldGroup#BuPaHeader: {
 			Data: [ {Value: status.name, Criticality: status.criticality} ]   

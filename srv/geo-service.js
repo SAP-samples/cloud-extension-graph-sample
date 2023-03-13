@@ -1,4 +1,5 @@
 const cds = require("@sap/cds");
+const { data } = require("hdb/lib/protocol");
 const LOG = cds.log("geo-service");
 
 module.exports = cds.service.impl(async (srv) => {
@@ -6,13 +7,21 @@ module.exports = cds.service.impl(async (srv) => {
     BusinessPartner,
     BusinessPartnerAddress,
     CustomerProcesses: Customers,
-    CorporateAccount
+    CorporateAccount,
+    Logistics,
+    LogisticsPartner
   } = srv.entities;
   const graphAPI = await cds.connect.to("sap.s4");
   const graphCC = await cds.connect.to("GRAPH_CC");
   const messaging = await cds.connect.to("messaging");
   const sapGraph = await cds.connect.to("sap.graph");
   const sapCxsales = await cds.connect.to("sap.c4c");
+  const customAPI = await cds.connect.to("custom.ns");
+  const shipmentStatus = {
+    "SHIPPED": 1,
+    "DISPATCHED": 2,
+    "DELIVERED": 3
+  }
   const BP_CREATED =
     "sap.s4.beh.businesspartner.v1.BusinessPartner.Created.v1";
   srv.on("READ", BusinessPartner, (req) => graphAPI.tx(req).run(req.query));
@@ -81,6 +90,22 @@ module.exports = cds.service.impl(async (srv) => {
     // Determine changes and update to source system
     await determineChanges(req.data, req.query["_activeData"], req);
   });
+
+  srv.on("READ", Logistics, async (req) => {
+
+    const [{customerId}] = req.params;
+    const data =  await customAPI.run(SELECT.from(LogisticsPartner).where({ "customerId": customerId }));
+    data.$count = data.length
+    if(data.length) {
+      setShipmentCriticality(data)
+    }
+    return data;
+  });
+
+  function setShipmentCriticality(data) {
+    data.map(obj =>  obj.criticality = shipmentStatus[data.status] || 4)
+    return data;
+  }
 
   async function determineChanges(incoming, source, req) {
     if (source.deliveryPoint == null && incoming.deliveryPoint != null) {

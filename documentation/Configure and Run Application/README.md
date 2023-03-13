@@ -1,23 +1,23 @@
-# Configure and Run Application
+# Configure and Run Geo Relations Application
 
-With the app coding ready, you now need to perform a few steps to adjust the app to your own environment.
-In detail, you have to adapt the *manifest.yaml* and the *service.js* files.
+After your are ready with the application coding, you now need to adjust the application to your own environment.
+To do that, you have to adapt the *manifest.yaml* and the *service.js* files.
 
-Find the *manifest.yaml* and *services-manifest.yml* files in your installation folder and open it. Perform the following adjustments, if at all needed. Adjustments are only needed if you have adjusted the services names during the earlier steps or plan for using an app name without the random route option with the push command later.
+Find the *manifest.yaml* and *services-manifest.yml* files in your installation folder and open it. You have to adapt the *manifest.yaml* and the *service.js* files only if you have used different names in the configurations so far. If you have followed all the configurations with the exact names inside, leave the *manifest.yaml* and the *service.js* files as they are. 
 
-  In case you are wondering about the correct service names, you can look then up the [SAP BTP Cockpit](https://account.hana.ondemand.com/).
+In case you are wondering about the correct service names, you can look them up in the [SAP BTP Cockpit](https://account.hana.ondemand.com/).
 
  ![Services](./images/run2.png)
 
-> Note: Make sure to adapt the application security descriptor ([xs-security.json](../../xs-security.json)) with `redirect-uris` parameter to restrict access as much as possible depending on the ladscape domain as mentioned in the [official documentation](https://help.sap.com/docs/BTP/65de2977205c403bbc107264b8eccf4b/f117cab6b92d438cb2a0b5204713994b.html?q=security%20considerations#listing-allowed-redirect-uris).
+  > Note: Adapt the application security descriptor ([xs-security.json](../../xs-security.json)) with `redirect-uris` parameter to restrict access as much as possible depending on the landscape domain as mentioned in the [SAP Help Portal: Listing Allowed Redirect URIs](https://help.sap.com/docs/BTP/65de2977205c403bbc107264b8eccf4b/f117cab6b92d438cb2a0b5204713994b.html?q=security%20considerations#listing-allowed-redirect-uris)
 
 # Deployment
 
-You will use the Cloud Foundry Command Line Interface (CLI) for the deployment. In case you have not installed it yet do it as mentioned in the [Prerequisites](../Prerequisites/README.md).
+You will use the Cloud Foundry Command Line Interface (cf CLI) for the deployment. In case you have not installed it yet, do it as mentioned in the [Prerequisites](../Prerequisites/README.md).
 
-Deployment can be done either using a manifest file or [MTA](https://help.sap.com/products/BTP/65de2977205c403bbc107264b8eccf4b/d04fc0e2ad894545aebfd7126384307c.html?locale=en-US) file. You can choose from the two following options:
+Deployment can be done either using a manifest file or an [MTA](https://help.sap.com/products/BTP/65de2977205c403bbc107264b8eccf4b/d04fc0e2ad894545aebfd7126384307c.html?locale=en-US) file. You can choose one of the following options:
 
-### Deploy the Application using Manifest Files
+### Deploy the Application Using Manifest Files
 
 1. Open a command line window.
 
@@ -27,7 +27,7 @@ Deployment can be done either using a manifest file or [MTA](https://help.sap.co
 cf login -sso
 ```
 
-or alternatively log in to the account and space using your SAP BTP credentials:
+  or alternatively log in to the account and space using your SAP BTP credentials:
 
 ```
 cf login
@@ -35,30 +35,30 @@ cf login
 
 3. Ensure you are in the folder that contains the *manifest.yaml* file.
 
-4. Execute the following command:
+4. Run the following command:
 
 ```
 cds build --production
 ```
 
-5. Execute the following command, using [CF service push plugin](https://github.com/dawu415/CF-CLI-Create-Service-Push-Plugin):
+5. Run the following command, using the [CF service push plugin](https://github.com/dawu415/CF-CLI-Create-Service-Push-Plugin):
 
 ```
 cf create-service-push --vars-file vars-dev.yml --push-as-subprocess
 ```
-  In case Create-Service-Push plugin is missing, execute the following command to install it.
+  In case Create-Service-Push plugin is missing, run the following command to install it.
 
 ```
 cf install-plugin -r CF-Community "Create-Service-Push"
 ```
 
-### Deploy the Application using MTA
+### Deploy the Application Using MTA
 
-The deployment is based on MTA (*Multi-Target Application*, sometimes also called *MultiApps*) technology. The [MTA](https://help.sap.com/products/BTP/65de2977205c403bbc107264b8eccf4b/d04fc0e2ad894545aebfd7126384307c.html?locale=en-US) is a SAP-proprietary way to do deployments consisting of multiple modules that can be implemented in different technologies.
+The deployment is based on an MTA (*Multi-Target Application*, sometimes also called *MultiApps*) technology. The [MTA](https://help.sap.com/products/BTP/65de2977205c403bbc107264b8eccf4b/d04fc0e2ad894545aebfd7126384307c.html?locale=en-US) is an SAP-proprietary way to do deployments consisting of multiple modules that can be implemented in different technologies.
 
 #### Prerequisites
 
-Follow steps 1-4 in [tutorial](https://developers.sap.com/tutorials/btp-app-cap-mta-deployment.html)
+Follow steps 1-4 in the [Deploy Your Multi-Target Application (MTA)](https://developers.sap.com/tutorials/btp-app-cap-mta-deployment.html) tutorial.
 
 #### Build the Application
 
@@ -95,17 +95,17 @@ Example URL: *geo.cfapps.us10.hana.ondemand.com*
 
 # Create a Role
 
-After the application was deployed, you will see two **Role Templates** in [SAP BTP cockpit](https://account.hana.ondemand.com/).
+After the application is deployed, you will see two **Role Templates** in [SAP BTP cockpit](https://account.hana.ondemand.com/).
 
   ![RoleTemplate](./images/roleTemplates.png)
 
-Now, we need to create a new role using role template 'Viewer'.
+Now, you need to create a new role using role template 'Viewer'.
 
 1. Go to **Roles**.
 
 2. Add new role by choosing **+**.
 
-3. Configure role attributes. As **Role Template** choose **Viewer**.
+3. Configure role attributes. In the **Role Template** field, choose **Viewer**.
 
   ![RoleStep1](./images/createRoleStep1.png)
 

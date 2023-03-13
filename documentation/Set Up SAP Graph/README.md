@@ -1,6 +1,6 @@
 # Set Up SAP Graph
 
-SAP Graph is an API to use the data of the SAP Intelligent Enterprise. It offers an API of connected entities from the SAP domain of business processes. As a SAP BTP service, SAP Graph is compatible with SAP Cloud Application Programming Model (CAP) extension solutions and events managed using SAP Event Mesh.
+SAP Graph is an API to use the data of the SAP Intelligent Enterprise. It offers an API of connected entities from the SAP domain of business processes. As a service in SAP BTP, SAP Graph is compatible with SAP Cloud Application Programming Model (CAP) extension solutions and events managed using SAP Event Mesh.
 
 ## Initial Setup
 
@@ -10,11 +10,11 @@ To use SAP Graph in SAP BTP, a service instance needs to be created in the space
 
 2. Enter the basic information for your instance.
 
-3. Select **SAP Graph** from the dropdown list for **Service**.
+3. In the **Service** dropdown menu, select **SAP Graph**.
 
-4. Select **free** as **Plan**.
+4. In the **Plan** dropdown menu, select **free**.
 
-5. Enter a **Name** for your instance.
+5. In the **Instance Name** field, enter a name for your instance.
 
 6. Choose **Create**.
 
@@ -24,20 +24,17 @@ To use SAP Graph in SAP BTP, a service instance needs to be created in the space
 
 ![Graph Service Key](./images/serviceKey.png)
 
-8. **Download** the service key file.
+8. Download the service key file.
 
 ![Download Key](./images/downloadKey.png)
 
-9. To configure SAP Graph, a user must have the `SAP_Graph_Key_User` authorization role. To assign this role to a user, you must create a role collection, add the role of `SAP_Graph_Key_User`, and then assign it to the relevant user. See subsection [Create Role Collection and Add Roles](https://help.sap.com/viewer/84bbf6acb5384861add4cb6939bef647/PROD/en-US/d3a155b8842b4a43b1367c2edb1c964e.html) in the SAP Graph documentation for more details.
+9. To configure SAP Graph, your user must have the `Graph_Key_User.` authorization role. To assign this role to a user, you must create a role collection, add the role of `Graph_Key_User.`, and then assign it to the relevant user. See [Create Role Collection and Add Roles](https://help.sap.com/docs/help/468c925d1276476680b47d94548174a1/2660d67a0d6149c4910fb27513ffb387.html) in the SAP Graph documentation.
 
 10. Share the previously downloaded service with the relevant user.
 
-
-
-
 ## SAP Graph Configuration
 
-The graphctl command line tool is used to configure your SAP Graph tenant. See section [Install graphctl](https://help.sap.com/viewer/84bbf6acb5384861add4cb6939bef647/PROD/en-US/b1b729334aae4021870374237016516e.html) for more details.
+The graphctl command line tool is used to configure your SAP Graph tenant. See [Install graphctl](https://help.sap.com/viewer/84bbf6acb5384861add4cb6939bef647/PROD/en-US/b1b729334aae4021870374237016516e.html) for more details.
 
 1. Install graphctl:
 
@@ -45,7 +42,7 @@ The graphctl command line tool is used to configure your SAP Graph tenant. See s
   npm install -g @sap/graph-toolkit
   ```
 
-  > To test is the installation was successful exeecute `graphctl --help` in the command line window. You should see a list of all commands that graphctl supports.
+  > To check that the installation was successful, execute `graphctl --help` in the command line window. You should see a list of all commands that graphctl supports.
 
 2. To use the tool, you have to log in by using the service key shared by your administrator:
 
@@ -53,7 +50,8 @@ The graphctl command line tool is used to configure your SAP Graph tenant. See s
   graphctl login [-f <service-key.json>]
   ```
 
-<!-- This feature does not work with destination created using S/4 Hana Extensibility Service. Will be supported in future by SAP Graph.
+<!-- This feature does not work with destination created using SAP S/4HANA Cloud Extensibility service. Will be supported in future by SAP Graph.
+
 3. Generate the configuration file:
 
   ```
@@ -61,12 +59,13 @@ The graphctl command line tool is used to configure your SAP Graph tenant. See s
   ```
 -->
 
-3. Create a new file named **config.json** and copy the below configuration into it. Ensure that correct destination name (created prior using SAP Extensibility Service) is specified in the configuration.
+3. Create a new file named **config.json** and copy the following configuration into it. Ensure that correct destination name (created prior using the SAP S/4HANA Cloud Extensibility service) is specified in the configuration.
 
 ```
 {
   "businessDataGraphIdentifier": "v1",
-  "graphModelVersion": "^v2",
+  "graphModelVersion": "^v3",
+  "extensions":["logistics-extension"],
   "dataSources": [
     {
       "name": "s4",
@@ -84,6 +83,15 @@ The graphctl command line tool is used to configure your SAP Graph tenant. See s
           "destinationName": "graph-c4c-dest"
         }
       ]
+    },
+    {
+        "name": "logistics",
+        "services":[
+          {
+            "destinationName": "logistics-partner"
+          }
+        ],
+        "namespace": "custom.logistics"
     }
   ],
   "locatingPolicy": {
@@ -104,6 +112,20 @@ The graphctl command line tool is used to configure your SAP Graph tenant. See s
         "leading": "s4",
         "local": [
           "c4c"
+        ]
+      },
+      {
+        "name": "custom.logistics.*",
+        "leading": "logistics",
+        "local": [
+          "s4"
+        ]
+      },
+      {
+        "name": "custom.ns.*",
+        "leading": "logistics",
+        "local": [
+          "s4"
         ]
       },
       {
@@ -282,7 +304,17 @@ The graphctl command line tool is used to configure your SAP Graph tenant. See s
 }
 ```
 
-4. Activate the configuration(using the JSON file **config.json** created in the previous step):
+Notice `extensions` in the above configuration. These are the custom extensions (Logistics Partner) we will be registering before activating the SAP Graph configuration in the next step.
+
+4. Download the custom extension configuration [archive](../../logistics-extension-config.zip) and unzip it.
+
+5. Register the extension using the downloaded configuration files:
+
+  ```
+    graphctl register extension -d <path to unzipped logistics directory>
+  ```
+
+6. Activate the configuration (using the JSON file **config.json** created in the previous step):
 
   ```
   graphctl activate config -f <config.json>
@@ -292,25 +324,26 @@ The graphctl command line tool is used to configure your SAP Graph tenant. See s
 
 > If a business data graph with the same identifier already exists in the current landscape, activation will fail, unless the **--force** option is used to overwrite the same business data graph. <br /> <br /> graphctl activate config -f <config.json> [--force]
 
-See section [Configuration File](https://help.sap.com/viewer/84bbf6acb5384861add4cb6939bef647/PROD/en-US/56a40529c2ef42969dfc94c44e603bde.html) in the SAP Graph documentation for more details.
+See [Configuration File](https://help.sap.com/viewer/84bbf6acb5384861add4cb6939bef647/PROD/en-US/56a40529c2ef42969dfc94c44e603bde.html) in the SAP Graph documentation.
 
 ## Set Up SAP Graph Destination
 
-Maintain the **Graph API** in the URL (for example, `https://xxxx.graph.sap/api`). This is the URL that you received after activation of graph configuration in the previous step. Refer to SAP Graph's service key to fill **Client ID** and **Client Secret**. The **Token Service URL** is derived by suffixing the **URL** mentioned in service key with `/oauth/token`.
+Maintain the **Graph API** in the URL (for example, `https://xxxx.graph.sap/api`). This is the URL that you received after activation of graph configuration in the previous step. Refer to SAP Graph's service key to fill in the values for **Client ID** and **Client Secret**. The **Token Service URL** value is derived by suffixing the **URL** mentioned in service key with `/oauth/token`.
 
 Use the Graph API to configure the destinations with:
 
-1. *OAuth2JWTBearer* Authentication
+1. *OAuth2JWTBearer* Authentication:
 
-  1.1. Open your SAP BTP Account and navigate to your Subaccount
+  1.1. In the SAP BTP cockpit, go to your global account and navigate to your subaccount.
 
-  1.2. Choose Connectivity in the menu on the left then choose *Destinations -> New Destination*
+  1.2. Choose **Connectivity** in the menu on the left, and then choose **Destinations > New Destination**.
 
-  1.3. Create the Destination Configuration using the details from Service key of Graph instance:
+  1.3. Create the **Destination Configuration** using the details from Service key of the SAP Graph instance:
 
 ![OAuth2JWTBearer](./images/OAuth2JWTBearerDestination.png)
 
-2. *OAuth2ClientCredential* Authentication
+2. *OAuth2ClientCredential* Authentication:
 
 ![OAuth2ClientCredential](./images/OAuth2ClientCredentialDestination.png)
 
+>Hint: `Check Connection` button for the created destination gives the response `401:Unauthorised`. This is expected. It will be resolved when the application forwards the JWT token.

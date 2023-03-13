@@ -22,6 +22,7 @@ entity CustomerProcesses {
       backendEventSource : String;
       status             : Association to Status;
       customerCondition  : Association to Conditions;
+      _logistics         : Composition of many Logistics on _logistics.customerId = $self.customerId;
 };
 entity Conditions : CodeList {
   key conditionId : Integer;
@@ -31,4 +32,13 @@ entity Conditions : CodeList {
 entity Status : CodeList {
   key statusId    : Integer;
       criticality : Integer;
+}
+
+entity Logistics {
+  key displayId: UUID;
+      customerId: String;
+      status: String;
+      expectedDelivery: DateTime;
+      deliveryPartner: String;
+      title: String;
 }

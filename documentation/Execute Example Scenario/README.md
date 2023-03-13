@@ -73,8 +73,34 @@ cf apps
     In SAP Sales Cloud system:
     ![Sales Cloud](./images/8.png)
 
-14. Check out the options that the Geo Relations app offers like changing a status.
+14. Open `Logistics Information` section and notice the shipment details
 
-15. Play around with the app.
+    ![Logistics tab](./images/9.png)
+
+    In the next step, lets add the `Delivery Partner`, `Expected Delievery` and `Shipment Status` in the Logistics partner application to see whether the changes reflect in the Geo Customer relation application.
+
+15. Open the `Logistics Partner` application that we deployed in the [earlier](../Set%20Up%20Logistics%20Partner%20app%20/README.md) chapter.
+
+    ![Logistics partner app](./images/10.png)
+
+    Open the web application
+
+16. Find the `customerId` in the list and go to the details page
+
+    ![Logistics partner list](./images/11.png)
+
+17. Edit the information and add/change the fields
+
+    ![Logistics partner details](./images/12.png)
+
+    save the details.
+
+18. Refresh the Geo customer relation application to see the latest updates.
+
+    ![Geo customer logistics](./images/13.png)
+       
+19. Check out the options that the Geo Relations app offers like changing a status.
+
+20. Play around with the app.
 
 

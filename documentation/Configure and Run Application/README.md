@@ -46,6 +46,9 @@ cds build --production
 ```
 cf create-service-push --vars-file vars-dev.yml --push-as-subprocess
 ```
+
+> Note: Adjust the `vars-dev.yml` accordingly.
+
   In case Create-Service-Push plugin is missing, run the following command to install it.
 
 ```

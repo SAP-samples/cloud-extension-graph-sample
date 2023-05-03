@@ -6,32 +6,29 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
+    "@sap-cloud-sdk/http-client": "^2.5.0",
+    "@sap-cloud-sdk/util": "^2.5.0",
+    "@sap/audit-logging": "^5.0.0",
     "@sap/cds": "^6",
     "@sap/xb-msg-amqp-v100": "^0.9.53",
+    "@sap/xssec": "^3.2.2",
     "express": "^4",
     "hdb": "^0.18.3",
-    "@sap/xssec": "^3.2.2",
-    "@sap/audit-logging": "^5.0.0",
-    "passport": "^0.4.1",
-    "@sap-cloud-sdk/http-client": "^2.5.0",
-    "@sap-cloud-sdk/util": "^2.5.0"
+    "passport": "^0.4.1"
   },
   "devDependencies": {
-    "sqlite3": "^5.0.2",
     "chai": "^4.3.4",
     "chai-http": "^4.3.0",
-    "mocha": "^9.0.2"
+    "mocha": "^9.0.2",
+    "sqlite3": "^5.1.4"
   },
   "scripts": {
     "start": "cds run",
     "debug": "cds run --with-mocks --in-memory",
     "watch-geo-customer": "cds watch --open geo-customer/webapp/index.html#fe-lrop-v4",
-    "test:integration": "mocha tests/integration/test.js --timeout 15000 --exit"
+    "test:integration": "mocha tests/integration/test.js --timeout 360000 --exit"
   },
   "cds": {
-    "features": {
-      "fetch_csrf": true
-    },
     "--log": {
       "levels": {
         "remote": "debug"
@@ -106,6 +103,14 @@
         "model": "srv/external/sap.c4c",
         "credentials": {
           "path": "/v1/sap.c4c",
+          "destination": "graph-api-cc"
+        }
+      },
+      "custom.ns": {
+        "kind": "odata",
+        "model": "srv/external/custom.ns",
+        "credentials": {
+          "path": "/v1/custom.ns",
           "destination": "graph-api-cc"
         }
       }

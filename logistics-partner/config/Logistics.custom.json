@@ -1,116 +1,116 @@
 {
-    "version": "1.0.0",
-    "entity": "custom.ns.Logistics",
-    "label": "Logistics",
-    "sourceEntities": [
-      {
-        "name": "custom.logistics.Delivery"
-      },
-      { "name": "sap.s4.A_BusinessPartner", "join": [["customerId", "BusinessPartner"]] }
-    ],
-    "annotations": {
-      "description": "Logistics partner with delivery details of artifacts to the customers"
+  "version": "1.0.0",
+  "entity": "custom.ns.Logistics",
+  "label": "Logistics",
+  "sourceEntities": [
+    {
+      "name": "my.custom.Delivery"
     },
-    "attributes": [
-      {
-        "name": "displayId",
-        "source": [
-          "ID"
-        ],
-        "key": true,
-        "annotations": {
-          "description": "Qualified identifier"
-        },
-        "type": "String"
+    { "name": "sap.s4.A_BusinessPartner", "join": [["customerId", "BusinessPartner"]] }
+  ],
+  "annotations": {
+    "description": "Logistics partner with delivery details of artifacts to the customers"
+  },
+  "attributes": [
+    {
+      "name": "displayId",
+      "source": [
+        "ID"
+      ],
+      "key": true,
+      "annotations": {
+        "description": "Qualified identifier"
       },
-      {
-        "name": "customerId",
-        "source": [
+      "type": "String"
+    },
+    {
+      "name": "customerId",
+      "source": [
+        "customerId"
+      ],
+      "type": "String",
+      "annotations": {
+        "description": "A unique identifier that represents a customer."
+      }
+    },
+    {
+      "name": "status",
+      "source": [
+        "status"
+      ],
+      "type": "String"
+    },
+
+    {
+      "name": "title",
+      "source": [
+        "title"
+      ],
+      "type": "String"
+    },
+    {
+      "name": "criticality",
+      "source": [
+        "criticality"
+      ],
+      "type": "Integer"
+    },
+
+    {
+      "name": "deliveryPartner",
+      "source": [
+        "deliveryPartner"
+      ],
+      "type": "String"
+    },
+
+    {
+      "name": "expectedDelivery",
+      "source": [
+        "expectedDelivery"
+      ],
+      "type": "DateTime",
+      "annotations": {
+        "description": "Date and time the delivery is expected."
+      }
+    },
+
+    {
+
+      "name": "_businessPartner",
+
+      "type": "Association",
+
+      "associationTarget": "sap.s4.A_BusinessPartner"
+
+    },
+    {
+
+      "name": "_businessPartner.BusinessPartner",
+
+      "source": [
+
           "customerId"
-        ],
-        "type": "String",
-        "annotations": {
-          "description": "A unique identifier that represents a customer."
-        }
-      },
-      {
-        "name": "status",
-        "source": [
-          "status"
-        ],
-        "type": "String"
-      },
 
-      {
-        "name": "title",
-        "source": [
-          "title"
-        ],
-        "type": "String"
-      },
-      {
-        "name": "criticality",
-        "source": [
-          "criticality"
-        ],
-        "type": "Integer"
-      },
+      ]
 
-      {
-        "name": "deliveryPartner",
-        "source": [
-          "deliveryPartner"
-        ],
-        "type": "String"
-      },
- 
-      {
-        "name": "expectedDelivery",
-        "source": [
-          "expectedDelivery"
-        ],
-        "type": "DateTime",
-        "annotations": {
-          "description": "Date and time the delivery is expected."
-        }
-      },
+  },
+    {
 
-      {
+      "name": "name",
 
-        "name": "_businessPartner",
+      "source": [
 
-        "type": "Association",
+          "BusinessPartnerFullName"
 
-        "associationTarget": "sap.s4.A_BusinessPartner"
+      ],
 
-      },
-      {
+      "sourceEntity": "A_BusinessPartner",
 
-        "name": "_businessPartner.BusinessPartner",
+      "type": "String"
 
-        "source": [
-
-            "customerId"
-
-        ]
-
-    },
-      {
-
-        "name": "name",
-
-        "source": [
-
-            "BusinessPartnerFullName"
-
-        ],
-
-        "sourceEntity": "A_BusinessPartner",
-
-        "type": "String"
-
-    }
-
-
-    ]
   }
+
+
+  ]
+}

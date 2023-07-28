@@ -11,7 +11,7 @@
         "description": "CAP based application connected to S4H via events and Graph",
         "dataSources": {
             "mainService": {
-                "uri": "/geo/",
+                "uri": "/odata/v4/geo/",
                 "type": "OData",
                 "settings": {
                     "odataVersion": "4.0"

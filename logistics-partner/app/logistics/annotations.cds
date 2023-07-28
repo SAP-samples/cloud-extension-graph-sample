@@ -1,4 +1,4 @@
-using LogisticsService as service from '../../srv/logistics-service';
+using FioriService as service from '../../srv/fiori-service';
 
 annotate service.DeliveryApp with @(
     UI.LineItem : [

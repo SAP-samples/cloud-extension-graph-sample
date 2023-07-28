@@ -86,13 +86,13 @@ You need to configure two destinations for your SAP Sales Cloud system mock and 
 3. Enter the following information for the first destination in the **Destination Configuration** section and save your input:
 
     - Name: `graph-c4c-dest`
-    - URL: `https://<mock_srv_url>/v2/c4codata`
+    - URL: `https://<mock_srv_url>/v2/odata/v4/c4codata`
     - Authentication: `No Authentication`
 
 4. Again, choose **Destinations** &rarr; **New Destination** and enter the following information for the second destination and save your input:
 
     - Name: `bupa`
-    - URL: `https://<mock_srv_url>/v2/api-business-partner`
+    - URL: `https://<mock_srv_url>/v2/odata/v4/api-business-partner`
     - Authentication: `No Authentication`
 
 ### Adjust the Configuration in SAP Graph
@@ -120,7 +120,7 @@ Remove the `path` parameter from the graph configuration and also adjust the des
 6. Create a new customer in the mock server using business partner API:
 
 ```
-POST https://<mock_srv_url>/v2/api-business-partner/A_BusinessPartner
+POST https://<mock_srv_url>/v2/odata/v4/api-business-partner/A_BusinessPartner
 
 {
     "BusinessPartner": "25555",
@@ -166,7 +166,7 @@ POST https://<mock_srv_url>/v2/api-business-partner/A_BusinessPartner
 Delivery Unloading Point:
 
 ```
-GET https://<mock_srv_url>/v2/api-business-partner/A_Customer('25555')/to_CustomerUnloadingPoint
+GET https://<mock_srv_url>/v2/odata/v4/api-business-partner/A_Customer('25555')/to_CustomerUnloadingPoint
 
 ```
 
@@ -174,7 +174,7 @@ Account Team:
 
 ```
 
-GET https://<mock_srv_url>/v2/c4codata/CorporateAccountCollection('<OBJECT_ID>')/CorporateAccountTeam
+GET https://<mock_srv_url>/v2/odata/v4/c4codata/CorporateAccountCollection('<OBJECT_ID>')/CorporateAccountTeam
 
 ```
 

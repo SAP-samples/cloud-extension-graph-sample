@@ -35,10 +35,11 @@ entity Status : CodeList {
 }
 
 entity Logistics {
-  key displayId: UUID;
+  key displayId: String;
       customerId: String;
       status: String;
-      expectedDelivery: DateTime;
-      deliveryPartner: String;
+      expectedDelivery: DateTime @readonly;
+      deliveryPartner: String @readonly;
       title: String;
+      criticality: Integer;
 }

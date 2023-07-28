@@ -1,24 +1,22 @@
 {
   "name": "logistics-partner",
-  "version": "1.0.0",
+  "version": "4.0.0",
   "description": "A simple CAP project.",
   "repository": "<Add your repository here>",
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
-    "@sap/cds": ">=5",
+    "@sap/cds": "^7",
     "express": "^4",
-    "sqlite3": "^5.0.4"
+    "@cap-js/sqlite":"^1.0.1",
+    "sqlite3": "^5.1.6"
   },
   "devDependencies": {
     "@sap/ux-specification": "^1.102.14",
-    "sqlite3": "^5.0.4"
+    "@cap-js/sqlite":"^1.0.1"
   },
   "scripts": {
-    "start": "NODE_ENV=development cds run --with-mocks --in-memory"
-  },
-  "engines": {
-    "node": "^14.18.0"
+    "start": "NODE_ENV=development cds-serve --with-mocks --in-memory"
   },
   "eslintConfig": {
     "extends": "eslint:recommended",
@@ -46,7 +44,6 @@
     }
   },
   "sapux": [
-    "app/logistics",
     "app/logistics"
   ]
 }

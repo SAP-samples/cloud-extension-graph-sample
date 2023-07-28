@@ -1,5 +1,13 @@
 # What's New
 
+## 2023-07-28
+
+This release brings major changes to the mission with Graph capability of API Management within SAP Integration Suite.
+
+    * Setup and Activate Graph capability within Integration Suite.
+    * Bump application to major CAP cds version 7.0
+    * Re-vamp of the mission specific to SAP Integration Suite.
+
 ## 2023-03-13
 
     > note: This release brings changes to the existing mission with additional SAP Graph capabilities.

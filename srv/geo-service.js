@@ -58,13 +58,13 @@ module.exports = cds.service.impl(async (srv) => {
 
     const bupa = await graphCC.run(
       SELECT.one(BusinessPartner, (bp) => {
-          bp.to_BusinessPartnerAddress(address => {
-            address('customerCountry')
-          })
+        bp.to_BusinessPartnerAddress(address => {
+          address('customerCountry')
+        })
       }).where({ customerId })
     )
     if (!bupa) return;
-    let {to_BusinessPartnerAddress:[{customerCountry}]} = bupa
+    let { to_BusinessPartnerAddress: [{ customerCountry }] } = bupa
     if (!customerCountry) return
     await UPDATE(Customers)
       .where({ customerId })
@@ -88,22 +88,33 @@ module.exports = cds.service.impl(async (srv) => {
 
   srv.before("UPDATE", Customers, async (req) => {
     // Determine changes and update to source system
-    await determineChanges(req.data, req.query["_activeData"], req);
+    const diff = await req.diff()
+    const { _old: source, ...incoming } = diff
+    await determineChanges(incoming, source, req);
   });
 
   srv.on("READ", Logistics, async (req) => {
 
-    const [{customerId}] = req.params;
-    const data =  await customAPI.run(SELECT.from(LogisticsPartner).where({ "customerId": customerId }));
+    return await loadLogisticsInfo(req)
+  });
+
+  srv.on("READ", Logistics.drafts, async (req) => {
+
+    return await loadLogisticsInfo(req)
+  });
+
+  async function loadLogisticsInfo(req) {
+    const [{ customerId }] = req.params;
+    const data = await customAPI.run(SELECT.from(LogisticsPartner).where({ "customerId": customerId }));
     data.$count = data.length
-    if(data.length) {
+    if (data.length) {
       setShipmentCriticality(data)
     }
     return data;
-  });
+  }
 
   function setShipmentCriticality(data) {
-    data.map(obj =>  obj.criticality = shipmentStatus[data.status] || 4)
+    data.map(obj => obj.criticality = shipmentStatus[data.status] || 4)
     return data;
   }
 
@@ -119,7 +130,7 @@ module.exports = cds.service.impl(async (srv) => {
 
     if (source.salesEmployee_empID == null && incoming.salesEmployee_empID != null) {
       // Update to Sales cloud system
-      await addAccountTeam(req, incoming);
+      await addAccountTeam(req, req.data);
     }
     else if (incoming.salesEmployee_empID !== source.salesEmployee_empID) {
       // second update
@@ -161,13 +172,13 @@ module.exports = cds.service.impl(async (srv) => {
     const bpIDs = customers.map((bp) => bp.cxsalesId).filter(n => n);
     LOG.info("Request information for ::: ", bpIDs);
     // if(bpIDs.length ==0 && req?.query.SELECT.columns.findIndex(({ expand, ref }) => expand && ref[0] === 'salesEmployee') > 0) return await getAccountTeam(customers);
-    if (bpIDs.length == 0) return isEdit? customers[0]:customers;
+    if (bpIDs.length == 0) return isEdit ? customers[0] : customers;
     let bpAddress = await prepareExpandedQuery(sapGraph, CorporateAccount, bpIDs);
     bpAddress = await contextMapper(bpAddress, filterDefaultPoint, customerFallback);
     LOG.debug("bp === ", bpAddress);
     // Convert in a map for easier lookup
     customers = converToMap(bpAddress, customers);
-    return isEdit?customers[0]: customers;
+    return isEdit ? customers[0] : customers;
   }
 
   function filterDefaultPoint(data) {

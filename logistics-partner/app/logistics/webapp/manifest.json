@@ -11,7 +11,7 @@
         "description": "{{appDescription}}",
         "dataSources": {
             "mainService": {
-                "uri": "/logistics/",
+                "uri": "/odata/v4/fiori/",
                 "type": "OData",
                 "settings": {
                     "odataVersion": "4.0"

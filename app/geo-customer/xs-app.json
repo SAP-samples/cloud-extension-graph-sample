@@ -1,7 +1,7 @@
 {
 	"welcomeFile": "webapp/index.html",
 	"routes": [{
-			"source": "^/geo/(.*)$",
+			"source": "^/odata/v4/geo/(.*)$",
 			"destination": "srv-binding"
 		},
 

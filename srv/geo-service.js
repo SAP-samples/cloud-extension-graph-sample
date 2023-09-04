@@ -79,11 +79,10 @@ module.exports = cds.service.impl(async (srv) => {
     return customers[0] ? await mapDataFromGraph(customers) : customers;
   });
 
-  srv.on("EDIT", Customers, async (req, next) => {
+  srv.on("READ", Customers.drafts, async (req, next) => {
     const data = await next();
     const customers = Array.isArray(data) ? data : [data];
-    return customers[0] ? await mapDataFromGraph(customers, true) : customers;
-    // return customers;
+    return customers[0] ? await mapDataFromGraph(customers) : customers;
   });
 
   srv.before("UPDATE", Customers, async (req) => {
@@ -114,7 +113,10 @@ module.exports = cds.service.impl(async (srv) => {
   }
 
   function setShipmentCriticality(data) {
-    data.map(obj => obj.criticality = shipmentStatus[data.status] || 4)
+    data.map(obj => {
+      obj.criticality = shipmentStatus[data.status] || 4
+      obj.HasActiveEntity = true
+    })
     return data;
   }
 

@@ -61,6 +61,11 @@ annotate my.Logistics with {
 	status @title: '{i18n>shipment_status}';
 }
 
+annotate my.Logistics @(
+    Capabilities: {
+        Insertable : false
+});
+
 annotate my.CustomerProcesses @(
     Capabilities: {
         Insertable : false

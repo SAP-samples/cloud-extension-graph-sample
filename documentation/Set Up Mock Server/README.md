@@ -95,11 +95,421 @@ You need to configure two destinations for your SAP Sales Cloud system mock and 
     - URL: `https://<mock_srv_url>/v2/odata/v4/api-business-partner`
     - Authentication: `No Authentication`
 
-### Adjust the Configuration in SAP Graph
+## Set Up Graph
+
+### Configure Model Extension
+
+1. Select **Graph** under **Design Artifacts** in the left-side menu of the SAP Integration Suite interface.
+
+<!-- ![graph designer](./images/graph-designer.png) -->
+<img src="./images/graph-designer.png" width=50%>
+
+2. Choose **Model Extensions** tab and click on **create from file**.
+
+<!-- ![model ext](./images/new-model.png) -->
+<img src="./images/new-model.png" width=50%>
+
+3. Give the name **Logistics Partner** and upload the file [Logistics.custom.json](../../logistics-partner/config/Logistics.custom.json) from the config folder.
+
+<!-- ![model popup](./images/model-ext-popup.png) -->
+<img src="./images/model-ext-popup.png" width=50%>
+
+4. Click on **Create**.
+
+Logistics Partner model extension was created successfully and can now be used in a business data graph.
+
+### Create a Business Data Graph
+
+1. Select **Graph** under **Design Artifacts** in the left-side menu of the SAP Integration Suite interface.
+
+<img src="./images/graph-designer.png" width=50%>
+
+2. Select **Create new business data graph** in the panel.
+
+<img src="./images/new-bdg.png" width=50%>
+
+3. Provide an **ID** for the business data Graph as `v1`. Click **Next**.
+
+<img src="./images/setup-step1.png" width=50%>
+
+4. Select the data sources to include in the business data graph. These are the destinations you previously configured in the SAP BTP cockpit.
+
+  - bupa
+  - graph-c4c-dest
+  - logistics-partner
+
+<img src="./images/setup-step2.png" width=50%>
+
+Select **Next**
+
+5. Choose the configured **Model extension** `Logistics Partner` and select **Next**
+
+6. Once the draft busines data gets generated, review the configuration.
+
+7. Add the following Key mappings in the locating policy.
+
+```json
+"keyMapping": [
+            {
+                "foreignKey": {
+                    "attributes": [
+                        "ExternalID"
+                    ],
+                    "dataSource": "c4c",
+                    "entityName": "sap.c4c.CorporateAccountCollection"
+                },
+                "references": {
+                    "attributes": [
+                        "BusinessPartner"
+                    ],
+                    "dataSource": "s4",
+                    "entityName": "sap.s4.A_BusinessPartner"
+                }
+            },
+            {
+                "foreignKey": {
+                    "attributes": [
+                        "ExternalID"
+                    ],
+                    "dataSource": "c4c",
+                    "entityName": "sap.c4c.IndividualCustomerCollection"
+                },
+                "references": {
+                    "attributes": [
+                        "BusinessPartner"
+                    ],
+                    "dataSource": "s4",
+                    "entityName": "sap.s4.A_BusinessPartner"
+                }
+            }
+        ]
+```
+
+After adding, full configuration should look like this
+
+```json
+{
+    "businessDataGraphIdentifier": "v1",
+    "description": "This business data graph includes APIs of SAP S/4HANA Cloud and SAP Sales Cloud",
+    "graphModelVersion": "^v3",
+    "schemaVersion": "1.2.0",
+    "extensions": [
+        "Logistics Partner"
+    ],
+    "dataSources": [
+        {
+            "name": "s4",
+            "services": [
+                {
+                    "destinationName": "bupa"
+                }
+            ]
+        },
+        {
+            "name": "c4c",
+            "services": [
+                {
+                    "destinationName": "graph-c4c-dest"
+                }
+            ]
+        },
+        {
+            "name": "my.custom",
+            "services": [
+                {
+                    "destinationName": "logistics-partner"
+                }
+            ],
+            "namespace": "my.custom"
+        }
+    ],
+    "locatingPolicy": {
+        "cues": [],
+        "keyMapping": [
+            {
+                "foreignKey": {
+                    "attributes": [
+                        "ExternalID"
+                    ],
+                    "dataSource": "c4c",
+                    "entityName": "sap.c4c.CorporateAccountCollection"
+                },
+                "references": {
+                    "attributes": [
+                        "BusinessPartner"
+                    ],
+                    "dataSource": "s4",
+                    "entityName": "sap.s4.A_BusinessPartner"
+                }
+            },
+            {
+                "foreignKey": {
+                    "attributes": [
+                        "ExternalID"
+                    ],
+                    "dataSource": "c4c",
+                    "entityName": "sap.c4c.IndividualCustomerCollection"
+                },
+                "references": {
+                    "attributes": [
+                        "BusinessPartner"
+                    ],
+                    "dataSource": "s4",
+                    "entityName": "sap.s4.A_BusinessPartner"
+                }
+            }
+        ],
+        "rules": [
+            {
+                "name": "sap.s4.*",
+                "leading": "s4",
+                "local": []
+            },
+            {
+                "name": "sap.c4c.*",
+                "leading": "c4c",
+                "local": []
+            },
+            {
+                "name": "sap.graph.*",
+                "leading": "s4",
+                "local": [
+                   
+                ]
+            },
+            {
+                "name": "sap.graph.AppointmentActivity",
+                "leading": "c4c"
+            },
+            {
+                "name": "sap.graph.BusinessUser",
+                "leading": "c4c"
+            },
+            {
+                "name": "sap.graph.ClassificationCharacteristic",
+                "leading": "c4c"
+            },
+            {
+                "name": "sap.graph.ClassificationClass",
+                "leading": "c4c"
+            },
+            {
+                "name": "sap.graph.Company",
+                "leading": "c4c"
+            },
+            {
+                "name": "sap.graph.ContactPerson",
+                "leading": "c4c",
+                "local": [
+                    "s4"
+                ]
+            },
+            {
+                "name": "sap.graph.CorporateAccount",
+                "leading": "c4c",
+                "local": [
+                    "s4"
+                ]
+            },
+            {
+                "name": "sap.graph.Country",
+                "leading": "c4c"
+            },
+            {
+                "name": "sap.graph.Currency",
+                "leading": "c4c"
+            },
+            {
+                "name": "sap.graph.Customer",
+                "leading": "c4c",
+                "local": [
+                    "s4"
+                ]
+            },
+            {
+                "name": "sap.graph.CustomerGroup",
+                "leading": "c4c"
+            },
+            {
+                "name": "sap.graph.DistributionChannel",
+                "leading": "c4c"
+            },
+            {
+                "name": "sap.graph.Division",
+                "leading": "c4c"
+            },
+            {
+                "name": "sap.graph.Equipment",
+                "leading": "c4c"
+            },
+            {
+                "name": "sap.graph.FunctionalLocation",
+                "leading": "c4c"
+            },
+            {
+                "name": "sap.graph.IncotermsClassification",
+                "leading": "c4c"
+            },
+            {
+                "name": "sap.graph.IndividualCustomer",
+                "leading": "c4c",
+                "local": [
+                    "s4"
+                ]
+            },
+            {
+                "name": "sap.graph.IndustrySector",
+                "leading": "c4c"
+            },
+            {
+                "name": "sap.graph.Job",
+                "leading": "c4c"
+            },
+            {
+                "name": "sap.graph.Language",
+                "leading": "c4c"
+            },
+            {
+                "name": "sap.graph.MeasurementDocument",
+                "leading": "c4c"
+            },
+            {
+                "name": "sap.graph.MeasurementPoint",
+                "leading": "c4c"
+            },
+            {
+                "name": "sap.graph.PersonMaritalStatus",
+                "leading": "c4c"
+            },
+            {
+                "name": "sap.graph.PersonTitle",
+                "leading": "c4c"
+            },
+            {
+                "name": "sap.graph.PhoneCallActivity",
+                "leading": "c4c"
+            },
+            {
+                "name": "sap.graph.Product",
+                "leading": "c4c"
+            },
+            {
+                "name": "sap.graph.ProductCategory",
+                "leading": "c4c"
+            },
+            {
+                "name": "sap.graph.ProductCategoryHierarchy",
+                "leading": "c4c"
+            },
+            {
+                "name": "sap.graph.ProductType",
+                "leading": "c4c"
+            },
+            {
+                "name": "sap.graph.SalesContract",
+                "leading": "c4c"
+            },
+            {
+                "name": "sap.graph.SalesDocumentCancellationReason",
+                "leading": "c4c"
+            },
+            {
+                "name": "sap.graph.SalesDocumentReason",
+                "leading": "c4c"
+            },
+            {
+                "name": "sap.graph.SalesLead",
+                "leading": "c4c"
+            },
+            {
+                "name": "sap.graph.SalesOpportunity",
+                "leading": "c4c"
+            },
+            {
+                "name": "sap.graph.SalesOrder",
+                "leading": "c4c"
+            },
+            {
+                "name": "sap.graph.SalesOrganization",
+                "leading": "c4c"
+            },
+            {
+                "name": "sap.graph.SalesPricingConditionType",
+                "leading": "c4c"
+            },
+            {
+                "name": "sap.graph.SalesQuote",
+                "leading": "c4c"
+            },
+            {
+                "name": "sap.graph.SalesRoute",
+                "leading": "c4c"
+            },
+            {
+                "name": "sap.graph.SalesVisit",
+                "leading": "c4c"
+            },
+            {
+                "name": "sap.graph.ServiceDocumentPriority",
+                "leading": "c4c"
+            },
+            {
+                "name": "sap.graph.ServiceRequest",
+                "leading": "c4c"
+            },
+            {
+                "name": "sap.graph.ServiceRequestType",
+                "leading": "c4c"
+            },
+            {
+                "name": "sap.graph.TaskActivity",
+                "leading": "c4c"
+            },
+            {
+                "name": "sap.graph.TimeSheet",
+                "leading": "c4c"
+            },
+            {
+                "name": "sap.graph.TimeZone",
+                "leading": "c4c"
+            },
+            {
+                "name": "sap.graph.WorkAssignment",
+                "leading": "c4c"
+            },
+            {
+                "name": "my.custom.*",
+                "leading": "my.custom"
+            },
+            {
+                "name": "custom.ns.Logistics",
+                "leading": "my.custom",
+                "local": []
+            },
+            {
+                "name": "custom.ns.Logistics",
+                "leading": "s4",
+                "local": [],
+                "sourceEntity": "sap.s4.A_BusinessPartner"
+            }
+        ]
+    }
+}
+```
+
+Click on **Create**.
+
+See [Configuration File](https://help.sap.com/docs/graph/graph/business-data-graph-configuration-file) in the SAP Graph documentation.
+
+7. Wait for status to update to **Available**.
+
+The status goes from Processing > Offline > Available.
+
+<!-- ### Adjust the Configuration in SAP Graph
 
 Adjust the configuration in SAP Graph in [Step 3](../Set%20Up%20SAP%20Graph/README.md#sap-graph-configuration).
 
-Remove the `path` parameter from the graph configuration and also adjust the destination names provided for the mock APIs in the previous step.
+Remove the `path` parameter from the graph configuration and also adjust the destination names provided for the mock APIs in the previous step. -->
 
 ### Demo Script
 

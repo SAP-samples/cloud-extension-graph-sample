@@ -103,17 +103,25 @@ Logistics Partner model extension was created successfully and can now be used i
 
 1. Select **Graph** under **Design Artifacts** in the left-side menu of the SAP Integration Suite interface.
 
+
+
 <!-- ![graph designer](./images/graph-designer.png) -->
 <img src="./images/graph-designer.png" width=50%>
 
-2. Select **Create new business data graph** in the panel.
+2. Select **Create from file** in the panel
 
-<!-- ![new bdg](./images/new-bdg.png) -->
+<img src="./images/new-bdg.png" width=50%>
+
+3. Select the [configuration file](./graph-config.json) and click **Next**.
+
+4. The Business Data Configuration should look like this
+
+<!-- 2. Select **Create new business data graph** in the panel.
+
 <img src="./images/new-bdg.png" width=50%>
 
 3. Provide an **ID** for the business data Graph as `v1`. Click **Next**.
 
-<!-- ![setup1](./images/setup-step1.png) -->
 <img src="./images/setup-step1.png" width=50%>
 
 4. Select the data sources to include in the business data graph. These are the destinations you previously configured in the SAP BTP cockpit.
@@ -122,7 +130,6 @@ Logistics Partner model extension was created successfully and can now be used i
   - graph-c4c-dest
   - logistics-partner
 
-<!-- ![setup2](./images/setup-step2.png) -->
 <img src="./images/setup-step2.png" width=50%>
 
 Select **Next**
@@ -170,7 +177,9 @@ Select **Next**
         ]
 ```
 
-After adding, full configuration should look like this
+After adding, full configuration should look like this -->
+
+<!-- Select **Create new business data graph** in the panel. -->
 
 ```json
 {
@@ -186,7 +195,8 @@ After adding, full configuration should look like this
             "name": "s4",
             "services": [
                 {
-                    "destinationName": "bupa"
+                    "destinationName": "xf_api_bupa",
+                    "path": "sap/opu/odata/sap/API_BUSINESS_PARTNER"
                 }
             ]
         },

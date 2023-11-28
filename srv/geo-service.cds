@@ -31,7 +31,8 @@ service GeoService  @(requires:'authenticated-user') {
         key BusinessPartner         as customerId,
             BusinessPartnerFullName as customerName,
             Language                as customerLanguage,
-            to_BusinessPartnerAddress
+            to_BusinessPartnerAddress,
+            to_Customer
     }
 
     entity BusinessPartnerAddress as projection on external.A_BusinessPartnerAddress {
@@ -63,10 +64,9 @@ service GeoService  @(requires:'authenticated-user') {
        formattedName,
        addresses,
        language,
-       _s4,
+       _s4 : redirected to BusinessPartner,
        _c4c
    }
-
    entity CorporateAccountAddress as projection on graph.CorporateAccount_addresses{
         phoneNumbers,
        street,
@@ -81,7 +81,13 @@ service GeoService  @(requires:'authenticated-user') {
        number
    }
 
+   entity Customer as projection on external.A_Customer {
+    Customer,
+    to_CustomerUnloadingPoint
+   }
+
    entity CustomerUnloadingPoint as projection on external.A_CustomerUnloadingPoint {
+       Customer,
        UnloadingPointName,
        IsDfltBPUnloadingPoint
 

@@ -7,6 +7,6 @@
         },
         "license": "ISC",
         "dependencies": {
-                "@sap/approuter": "^14.2.0"
+                "@sap/approuter": "^14.4.3"
         }
 }

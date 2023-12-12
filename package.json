@@ -9,9 +9,9 @@
     "@sap-cloud-sdk/http-client": "^3.2.0",
     "@sap-cloud-sdk/util": "^3.2.0",
     "@sap/audit-logging": "^5.0.0",
-    "@sap/cds": "^7",
+    "@sap/cds": "^7.0.3",
     "@sap/xb-msg-amqp-v100": "^0.9.53",
-    "@sap/xssec": "^3.2.2",
+    "@sap/xssec": "^3.6.0",
     "express": "^4",
     "@sap/cds-hana": "^2",
     "passport": "^0.4.1"

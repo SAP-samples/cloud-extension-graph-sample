@@ -54,7 +54,7 @@ module.exports = cds.service.impl(async (srv) => {
   });
 
 
-  updateBPCountry = async (customerId) => {
+  const updateBPCountry = async (customerId) => {
 
     const bupa = await graphCC.run(
       SELECT.one(BusinessPartner, (bp) => {
@@ -73,17 +73,24 @@ module.exports = cds.service.impl(async (srv) => {
     return bupa;
   };
 
-  srv.on("READ", Customers, async (req, next) => {
-    const data = await next();
-    const customers = Array.isArray(data) ? data : [data];
-    return customers[0] ? await mapDataFromGraph(customers) : customers;
-  });
+  // srv.on("READ", Customers, async (req, next) => {
+  //   // const data = await next();
+  //   // const customers = Array.isArray(data) ? data : [data];
+  //   // return customers[0] ? await mapDataFromGraph(customers) : customers;
+  //   return await next();
+  // });
 
-  srv.on("READ", Customers.drafts, async (req, next) => {
-    const data = await next();
+  srv.after("READ", Customers, async (data, next) => {
     const customers = Array.isArray(data) ? data : [data];
-    return customers[0] ? await mapDataFromGraph(customers) : customers;
-  });
+      return customers[0] ? await mapDataFromGraph(customers) : customers;
+  })
+// Support Lean draft...
+
+  // srv.on("READ", Customers.drafts, async (req, next) => {
+  //   const data = await next();
+  //   const customers = data ?(Array.isArray(data) ? data : [data]): [];
+  //   return customers[0] ? await mapDataFromGraph(customers) : customers;
+  // });
 
   srv.before("UPDATE", Customers, async (req) => {
     // Determine changes and update to source system

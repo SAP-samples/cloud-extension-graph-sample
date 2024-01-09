@@ -590,6 +590,9 @@ GET https://<mock_srv_url>/v2/odata/v4/c4codata/CorporateAccountCollection('<OBJ
 
 Replace `mock_srv_url` and `OBJECT_ID` accordingly.
 
+>Hint:
+`OBJECT_ID` can be located in the details page as `Sales Cloud Object`.
+
 12. Open `Logistics Information` section and notice the shipment details.
 
     ![Logistics tab](./images/9.png)

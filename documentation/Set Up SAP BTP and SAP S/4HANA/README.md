@@ -15,7 +15,7 @@ To do that, you must register your SAP S/4HANA Cloud system in your global accou
 
 1. In the SAP BTP cockpit, navigate to your global account, and then choose **System Landscape**.
 
-2. In the **Systems** tab, choose **Add System**.
+2. In the **System Landscape** tab, choose **Add System**.
 
  ![Register System](./images/setup1.png)
 
@@ -24,7 +24,7 @@ To do that, you must register your SAP S/4HANA Cloud system in your global accou
 - Enter a name for the system you want to register.
 > Use only printable ASCII characters.
 
-- In the **Type** dropdown list, select the system type.
+- In the **System Type** dropdown list, select the system type.
 
  ![Choose Register](./images/setup2.png)
 

@@ -89,6 +89,8 @@ You need to configure a destination for your SAP Sales Cloud system, which would
 
     ![Setup System5](./images/setup5.png)
 
+4. Click on **Save**.
+
 ## Set Up the Communication System for the Mapping Business System
 
 1. Log on to your SAP Sales Cloud tenant.

@@ -14,7 +14,7 @@
             ],
             "subscribeFilter": [
                 "${namespace}/*",
-                "sap/S4HANAOD/g999/*"
+                "sap/S4HANAOD/*"
             ]
         },
         "topicRules": {

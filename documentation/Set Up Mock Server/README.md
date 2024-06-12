@@ -184,8 +184,9 @@ Select **Next**
             }
         ]
 ```
+**Note** : Kinldy remove the "c4c" from  locatingPolicy/rules/name:"sap.graph.*"/local
 
-After adding, full configuration should look like this
+After adding and removing, full configuration should look like this
 
 ```json
 {

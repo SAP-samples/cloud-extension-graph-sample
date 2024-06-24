@@ -53,6 +53,8 @@ cf apps
 
 9. Now, go back to the Geo Relations application to see if the new Business Partner has been updated in the UI.
 
+ *Troubleshoot* : If BP is not reflecting on the Geo Relations application, remove and add the Outbound Topic binding again as described in the chapter [Set Up SAP BTP and SAP S4HANA Cloud](https://github.com/SAP-samples/cloud-extension-graph-sample/blob/main/documentation/Set%20Up%20SAP%20BTP%20and%20SAP%20S/4HANA/README.md).
+ 
 10. Go to the details page for the new Business Partner. Choose **Edit**.
 
     ![Business Partner Details](./images/4.png)

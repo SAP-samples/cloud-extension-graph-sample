@@ -184,8 +184,19 @@ Select **Next**
             }
         ]
 ```
+8. In the locating policy, remove the local reference of c4c from the rule sap.graph.*. This will result in the rule as
 
-After adding, full configuration should look like this
+   ```
+   {
+    "name": "sap.graph.*",
+    "leading": "s4",
+    "local": [
+       
+        ]
+   }
+   ```
+
+After the changes, full configuration should look like this
 
 ```json
 {
@@ -497,11 +508,11 @@ After adding, full configuration should look like this
 }
 ```
 
-Click on **Create**.
+9. Click on **Create**.
 
 See [Configuration File](https://help.sap.com/docs/graph/graph/business-data-graph-configuration-file) in the SAP Graph documentation.
 
-7. Wait for status to update to **Available**.
+10. Wait for status to update to **Available**.
 
 The status goes from Processing > Offline > Available.
 

@@ -38,36 +38,33 @@ Make sure to assign the `Integration_Provisioner` role collection to the user.
 <!-- ![IS app](./images/go-to-app.png) -->
 <img src="./images/go-to-app.png" width=50%>
 
-2. In the capabilities section, look for `Manage Capabilities`
+2. In the capabilities section, look for `Manage Capabilities/Add Capabilities`
 
 3. Ensure the **Manage APIs** capability is enabled.
 
 <!-- ![capability](./images/manage-apis.png) -->
 <img src="./images/manage-apis.png" width=50%>
 
-The log out of the Integration Suite application and switch back to the SAP BTP subaccount.
-
-4. Assign the role collection to the user
-
-Go to **Users** > Select user > **Assign Role collection** > select **APIManagement.SelfService.Administrator** > Assign Role collection.
-
-<!-- ![API Role](./images/api-role.png) -->
-<img src="./images/api-role.png" width=50%>
-
-5. Open the SAP Integration Suite Application again.
-
-6. Enable `Graph` in the capabilities.
+4. Enable `Graph` in the capabilities.
 
 <!-- ![Graph activate](./images/graph-activate.png) -->
 <img src="./images/graph-activate.png" width=50%>
 
 wait to have the `Active` status.
 
-7. Switch back to SAP BTP subaccount, to assign the following role collections
+5. Then log out of the Integration Suite application and switch back to the SAP BTP subaccount.
 
-  - **AuthGroup.SelfService.Admin**
+6. Assign the role collection to the user
+
+7. Go to **Users** > Select user > **Assign Role collection** > select 
+
+ - **APIManagement.SelfService.Administrator** 
+ - **AuthGroup.SelfService.Admin**
   - **Graph.KeyUser**
-  - **GraphNavigation.Viewer**
+  - **GraphNavigation.Viewer** > Assign Role collection.
+
+<!-- ![API Role](./images/api-role.png) -->
+<img src="./images/api-role.png" width=50%>
 
 8. Log in back to Integration Suite Application, you should be able to see the `Graph` designer option in the menu.
 

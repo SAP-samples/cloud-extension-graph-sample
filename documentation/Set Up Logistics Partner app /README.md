@@ -48,6 +48,6 @@ You have to create a destination in your subaccount in SAP BTP for the deployed 
 
     - Name: `logistics-partner`
     - Type: HTTP
-    - URL: `<URL of deployed app>/logistics`
+    - URL: `<URL of deployed app>/odata/v4/logistics`
     - Proxy Type: Internet
     - Authentication: No Authentication

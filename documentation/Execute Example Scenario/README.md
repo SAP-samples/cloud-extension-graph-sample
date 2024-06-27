@@ -45,7 +45,7 @@ cf apps
 
 6. Log in to the SAP S/4HANA Cloud system.
 
-7. Navigate to the *Manage Customer Master Data* transaction.
+7. Navigate to the *Manage Business partner Master Data* transaction.
 
 8. Create a Business Partner/Customer of type *Organization* with location DE(whichever country was specified in role) and role *FLCU01*. Provide language, address, email, and phone number as well for the customer.
 

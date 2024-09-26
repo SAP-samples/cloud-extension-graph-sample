@@ -68,7 +68,8 @@ service GeoService  @(requires:'authenticated-user') {
        _c4c
    }
    entity CorporateAccountAddress as projection on graph.CorporateAccount_addresses{
-        phoneNumbers,
+        id,
+       phoneNumbers,
        street,
        city,
        country,
@@ -78,7 +79,8 @@ service GeoService  @(requires:'authenticated-user') {
    }
 
    entity CorporateAccountPhoneNumbers as projection on graph.CorporateAccount_addresses_phoneNumbers {
-       number
+       id,
+      number
    }
 
    entity Customer as projection on external.A_Customer {

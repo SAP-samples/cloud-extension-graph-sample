@@ -39,7 +39,7 @@ cf apps
 
     ![fiori tile](./images/1.png)
 
-5. The list of **Customer Relation Processes** along with their **Customer Status** gets displayed.
+5. An empty list of **Customer Relation Processes** along with their **Customer Status** gets displayed.
 
     ![Business Partner list](./images/2.png)
 

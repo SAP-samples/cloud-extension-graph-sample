@@ -12,7 +12,7 @@
     "@sap/audit-logging": "^5.0.0",
     "@sap/cds": "^8",
     "@sap/xb-msg-amqp-v100": "^0.9.53",
-    "@sap/xssec": "^3.6.0",
+    "@sap/xssec": "^4",
     "express": "^4",
     "passport": "^0.4.1"
   },
@@ -20,7 +20,8 @@
     "@cap-js/sqlite": "^1.0.1",
     "chai": "^4.3.4",
     "chai-http": "^4.3.0",
-    "mocha": "^9.0.2"
+    "mocha": "^9.0.2",
+    "sqlite3": "^5.1.7"
   },
   "scripts": {
     "start": "cds-serve",
@@ -40,7 +41,7 @@
         "[production]": {
           "kind": "enterprise-messaging-shared",
           "queue": {
-            "name": "sap/geograph/1/georel-graph-srv/1234"
+            "name": "sap/geograph/2/georel-graph-srv/1234"
           },
           "amqp": {
             "incomingSessionWindow": 30
@@ -50,7 +51,7 @@
         "[hybrid]": {
           "kind": "enterprise-messaging-shared",
           "queue": {
-            "name": "sap/geograph/1/georel-graph-srv/1234"
+            "name": "sap/geograph/2/georel-graph-srv/1234"
           },
           "amqp": {
             "incomingSessionWindow": 30

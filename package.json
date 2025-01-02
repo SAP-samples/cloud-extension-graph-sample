@@ -40,7 +40,7 @@
         "[production]": {
           "kind": "enterprise-messaging-shared",
           "queue": {
-            "name": "sap/geograph/2/georel-graph-srv/1234"
+            "name": "sap/geograph/1/georel-graph-srv/1234"
           },
           "amqp": {
             "incomingSessionWindow": 30
@@ -50,7 +50,7 @@
         "[hybrid]": {
           "kind": "enterprise-messaging-shared",
           "queue": {
-            "name": "sap/geograph/2/georel-graph-srv/1234"
+            "name": "sap/geograph/1/georel-graph-srv/1234"
           },
           "amqp": {
             "incomingSessionWindow": 30

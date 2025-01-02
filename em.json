@@ -1,6 +1,6 @@
 {
-    "emname": "Geograph2",
-    "namespace": "sap/geograph/2",
+    "emname": "Geograph",
+    "namespace": "sap/geograph/1",
     "version": "1.1.0",
     "options": {
         "management": true,

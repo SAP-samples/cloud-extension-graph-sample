@@ -6,10 +6,9 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
-    "@sap/cds": "^7",
+    "@sap/cds": "^8",
     "express": "^4",
-    "@cap-js/sqlite":"^1.0.1",
-    "sqlite3": "^5.1.6"
+    "@cap-js/sqlite":"^1.0.1"
   },
   "devDependencies": {
     "@sap/ux-specification": "^1.102.14",

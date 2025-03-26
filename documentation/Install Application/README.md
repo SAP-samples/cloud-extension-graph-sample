@@ -22,7 +22,7 @@ git clone https://github.com/SAP-samples/cloud-extension-graph-sample.git
 ```
 npm install
 
-npm install @cap-js/sqlite 
+npm install @cap-js/sqlite -D
 ```
 
 > In case of issues or errors, make sure that your Node installation is up to date. Specifically in case of issues installing @cap-js/sqlite packages on Windows you could try:

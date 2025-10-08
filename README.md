@@ -1,3 +1,10 @@
+# Important Notice
+
+This public repository is read-only and no longer maintained.
+
+![](https://img.shields.io/badge/STATUS-NOT%20CURRENTLY%20MAINTAINED-red.svg?longCache=true&style=flat)
+
+---
 # Build an Extension Application Using SAP Graph and SAP Event Mesh
 
 > Note: The content of this GitHub repository has been created as a source for the SAP Discovery Center Mission [Build an Extension Application Using SAP Graph and SAP Event Mesh](https://discovery-center.cloud.sap/missiondetail/3702/3745/). We recommend that you use the mission directly in SAP Discovery Center.
